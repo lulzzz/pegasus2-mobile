@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using PegasusMissionNAEMobile.Pages;
 
 namespace PegasusMissionNAEMobile
 {
@@ -11,18 +12,8 @@ namespace PegasusMissionNAEMobile
 	{
 		public App ()
 		{
-			// The root page of your application
-			MainPage = new ContentPage {
-				Content = new StackLayout {
-					VerticalOptions = LayoutOptions.Center,
-					Children = {
-						new Label {
-							HorizontalTextAlignment = TextAlignment.Center,
-							Text = "Welcome to Xamarin Forms!"
-						}
-					}
-				}
-			};
+            // The root page of your application
+            MainPage = new NAEMainPage();
 		}
 
 		protected override void OnStart ()
