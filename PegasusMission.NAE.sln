@@ -17,6 +17,11 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "PegasusMissionNAEMobile", "
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		PegasusMissionNAEMobile\PegasusMissionNAEMobile\PegasusMissionNAEMobile.projitems*{42c5d3a1-c072-4012-8429-aa1d5f5347d0}*SharedItemsImports = 4
+		PegasusMissionNAEMobile\PegasusMissionNAEMobile\PegasusMissionNAEMobile.projitems*{55115f61-8e0f-4a64-ba59-d4fbf2136a37}*SharedItemsImports = 4
+		PegasusMissionNAEMobile\PegasusMissionNAEMobile\PegasusMissionNAEMobile.projitems*{5a4cab48-902f-45fc-b52f-8a4f034832b0}*SharedItemsImports = 4
+		PegasusMissionNAEMobile\PegasusMissionNAEMobile\PegasusMissionNAEMobile.projitems*{85a6919e-317b-474a-a191-c45cff4475c0}*SharedItemsImports = 4
+		PegasusMissionNAEMobile\PegasusMissionNAEMobile\PegasusMissionNAEMobile.projitems*{a46647aa-ffb9-4fc0-9427-1fd31d3bb2a7}*SharedItemsImports = 4
 		PegasusMissionNAEMobile\PegasusMissionNAEMobile\PegasusMissionNAEMobile.projitems*{d1464902-3f96-44d3-a47e-708ffde790aa}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
