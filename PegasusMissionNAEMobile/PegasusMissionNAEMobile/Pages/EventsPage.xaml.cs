@@ -8,9 +8,9 @@ using Xamarin.Forms;
 
 namespace PegasusMissionNAEMobile.Pages
 {
-	public partial class NAEMainPage : TabbedPage
-    {
-		public NAEMainPage ()
+	public partial class EventsPage : ContentPage
+	{
+		public EventsPage ()
 		{
 			InitializeComponent ();
 		}
