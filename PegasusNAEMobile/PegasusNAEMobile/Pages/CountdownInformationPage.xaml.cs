@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace PegasusNAEMobile.Pages
+namespace PegasusNAEMobile
 {
     public partial class CountdownInformationPage : ContentPage
     {
         public CountdownInformationPage()
         {
             InitializeComponent();
+            this.BindingContext = new CountdownInformationViewModel();
         }
     }
 }

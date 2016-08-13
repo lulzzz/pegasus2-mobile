@@ -1,6 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PegasusNAEMobile.Views.CountdownView">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
-</ContentPage>
+             x:Class="PegasusNAEMobile.CountdownView">
+
+  <ContentView.Content>
+    <Grid VerticalOptions="FillAndExpand">
+      
+      <Image x:Name="pegasus_HeroBackground" Grid.RowSpan="3" Aspect="AspectFill" IsVisible="True"></Image>
+      <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+        <Label Text="{Binding HeroMessage}"
+             VerticalOptions="CenterAndExpand"
+             FontAttributes="Bold"
+             FontSize="45"
+             Margin="50,30,50,20"             
+             HorizontalOptions="CenterAndExpand"
+             TextColor="White" ></Label>
+        <Label Text="{Binding TimeToLiveEvent}"
+               FontSize="30"              
+               TextColor="White"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand"></Label>
+        <Button Text="WATCH LIVE EVENT" TextColor="White" Margin="30" BackgroundColor="#d90000" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Button>
+      </StackLayout>
+             
+      
+    </Grid>    
+  </ContentView.Content> 
+</ContentView>
