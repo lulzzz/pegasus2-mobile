@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace PegasusNAEMobile.Pages
+namespace PegasusNAEMobile
 {
-    public partial class MainPage : MasterDetailPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
