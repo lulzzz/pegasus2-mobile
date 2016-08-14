@@ -14,7 +14,7 @@ namespace PegasusNAEMobile
         public App()
         {
             // The root page of your application
-            MainPage = new CountdownInformationPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
