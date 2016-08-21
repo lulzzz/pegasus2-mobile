@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Piraeus.Web.WebSockets
+namespace PiraeusWebSockets
 {
     public delegate void WebSocketEventHandler(object sender, string message);
     public delegate void WebSocketErrorHandler(object sender, Exception ex);
