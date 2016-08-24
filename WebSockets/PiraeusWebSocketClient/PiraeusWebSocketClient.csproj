@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5CFBC09A-6DB1-47A8-AAFC-B759218B9E86}</ProjectGuid>
+    <ProjectGuid>{F1C19ED6-19B2-4743-B922-A2C0CDA75982}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PegasusNAEMobile</RootNamespace>
-    <AssemblyName>PegasusNAEMobile</AssemblyName>
+    <RootNamespace>PiraeusWebSocketClient</RootNamespace>
+    <AssemblyName>PiraeusWebSocketClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -35,53 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
-    <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="Pages\CountdownInformationPage.xaml.cs">
-      <DependentUpon>CountdownInformationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MasterPage.xaml.cs">
-      <DependentUpon>MasterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TelemetryPage.xaml.cs">
-      <DependentUpon>TelemetryPage.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="PiraeusWebSocketClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\BasicViewModel.cs" />
-    <Compile Include="ViewModels\CountdownViewModel.cs" />
-    <Compile Include="ViewModels\Pages\CountdownInformationViewModel.cs" />
-    <Compile Include="Views\CountdownView.xaml.cs">
-      <DependentUpon>CountdownView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="WebSocketClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="GettingStarted.Xamarin" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\PiraeusWebSockets\PiraeusWebSockets.csproj">
+      <Project>{e9c435f7-8335-4d3a-8460-f899fbfc85dc}</Project>
+      <Name>PiraeusWebSockets</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\TelemetryPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Settings, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugins.Settings.2.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Settings.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Settings.Abstractions, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xam.Plugins.Settings.2.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Plugin.Settings.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
@@ -96,45 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\MasterPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\CountdownInformationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\pegasus_HeroBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\CountdownView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\PegasusData\PegasusData.csproj">
-      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>PegasusData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Piraeus.ServiceModel.Protocols.Coap.Phone.PCLTimer\Piraeus.ServiceModel.Protocols.Coap.Phone.PCLTimer.csproj">
-      <Project>{990c1d79-a460-40b9-aa26-f8790fe3bd6b}</Project>
-      <Name>Piraeus.ServiceModel.Protocols.Coap.Phone.PCLTimer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Piraeus.ServiceModel.Protocols.Coap.Phone\Piraeus.ServiceModel.Protocols.Coap.Phone.csproj">
-      <Project>{f4297d99-d786-4f0d-944b-77ea9e4b13a9}</Project>
-      <Name>Piraeus.ServiceModel.Protocols.Coap.Phone</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

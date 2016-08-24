@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 namespace PegasusData
 {
     // This is based on VehicleJsonV1.json at aka.ms/pegasusmissions
+    // This will be used for the live run.
     [JsonObject]
     public class VehicleTelemetry
     {

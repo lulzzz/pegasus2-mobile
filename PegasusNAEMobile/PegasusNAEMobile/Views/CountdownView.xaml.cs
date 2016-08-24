@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 
 namespace PegasusNAEMobile
@@ -20,6 +19,11 @@ namespace PegasusNAEMobile
             WinPhone: ImageSource.FromFile("Assets/pegasus_herobackground.png"));
         }
 
+        private async void WatchLiveEvent_Clicked(object sender, EventArgs e)
+        {
+            App.Instance.ConnectWebSocketLiveTelemetry();
+           
+        }
         
     }
 }

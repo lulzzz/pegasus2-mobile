@@ -2,20 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using PegasusData;
 using Xamarin.Forms;
-
 using PegasusNAEMobile.Pages;
+using System.Threading.Tasks;
+using System.Net.Http;
+using PegasusNAEMobile.Helpers;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using Piraeus.ServiceModel.Protocols.Coap;
 
 namespace PegasusNAEMobile
 {
+    public delegate void WebSocketEventHandler(object sender, string message);
+    public delegate void WebSocketErrorHandler(object sender, Exception ex);
+    public delegate void WebSocketMessageHandler(object sender, byte[] message);
+    public interface IWebSocketClient
+    {
+        event WebSocketEventHandler OnOpen;
+        event WebSocketEventHandler OnClose;
+        event WebSocketErrorHandler OnError;
+        event WebSocketMessageHandler OnMessage;       
+        Task ConnectAsync(string host);
+
+        Task ConnectAsync(string host, string subprotocol, string securityToken);
+        
+        //public Task CloseAsync();
+
+        Task SendAsync(byte[] message);
+    }
+
     public class App : Application
     {
+        private ushort messageId;
+        public static IWebSocketClient WebSocketClient { get; set; }
+        public static void Init(IWebSocketClient client)
+        {
+            WebSocketClient = client; 
+        }
+        
         public App()
         {
+
             // The root page of your application
+            Instance = this;
             MainPage = new MainPage();
-        }
+        }       
 
         protected override void OnStart()
         {
@@ -30,6 +63,72 @@ namespace PegasusNAEMobile
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static App Instance
+        {
+            get;
+            private set;
+        }
+
+        public async void ConnectWebSocketLiveTelemetry()
+        {
+            if (App.WebSocketClient != null)
+            {
+                try
+                {
+                    // GET security Token.
+
+                    if (String.IsNullOrEmpty(Constants.SavedSecurityToken))
+                    {
+                        await LoadSecurityToken();
+                    }
+                    messageId = 1;
+                    
+                    await App.WebSocketClient.ConnectAsync(Constants.LiveTelemetryHostUri, Constants.SubProtocol, Constants.SavedSecurityToken);    // Use the token to open the web socket connection.
+                    
+                    await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri          
+                }
+                catch (Exception ex)
+                {
+                    //App.WebSocketClient.OnError
+                }
+            }            
+        }
+
+        /// <summary>
+        /// GETs the security token needed to make future requests. 
+        /// The token is stored in App Settings.
+        /// </summary>
+        /// <returns></returns>
+        private async Task LoadSecurityToken()
+        {
+            string requestUriString = String.Format("{0}?key={1}", Constants.TokenWebApiUri, Constants.TokenSecret);
+
+            var request = WebRequest.CreateHttp(requestUriString);
+            WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
+            using (var responseStream = responseObject.GetResponseStream())
+            {
+                using (var sr = new StreamReader(responseStream))
+                {
+                    string jsonString = await sr.ReadToEndAsync();
+                    string token = JsonConvert.DeserializeObject<string>(jsonString);
+                    Constants.SavedSecurityToken = token;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Subscribes to messages from a URI
+        /// </summary>
+        /// <param name="subscribeUri"></param>
+        /// <returns></returns>
+        private Task SubscribeTopicAsync(string subscribeUri)
+        {
+            Uri resourceUri = new Uri(subscribeUri);
+            CoapRequest request = new CoapRequest(messageId++, RequestMessageType.NonConfirmable, MethodType.POST, resourceUri, MediaType.Json);
+            byte[] message = request.Encode();
+            return (App.WebSocketClient.SendAsync(message));
         }
     }
 }

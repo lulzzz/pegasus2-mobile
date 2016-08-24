@@ -20,7 +20,15 @@
                TextColor="White"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="CenterAndExpand"></Label>
-        <Button Text="WATCH LIVE EVENT" TextColor="White" Margin="30" BackgroundColor="#d90000" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Button>
+        <Button Text="WATCH LIVE EVENT" 
+                x:Name="WatchLiveEvent"
+                TextColor="White" 
+                Margin="30" 
+                Clicked="WatchLiveEvent_Clicked"
+                BackgroundColor="#d90000" 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"></Button>
+        
       </StackLayout>
              
       

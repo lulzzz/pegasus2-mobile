@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 
 namespace PegasusData
 {
+    // Onboard Telemetry. This will be used to show the run after it's already over. //Copied from NAE.DATA/EagleTelemetery.cs. 
+    //non live. Values are in units. Stick position is between 0 and 1. Neutral is 0.5. The config.cs file will point to the JSON file that contains this.
     [JsonObject]
     public class OnboardTelemetry
     {
@@ -18,7 +20,7 @@ namespace PegasusData
         [JsonProperty("timestamp")]
         public DateTime Timestamp { get; set; }
 
-        [JsonProperty("aero1Psi")]
+        [JsonProperty("aero1Psi")]  // not gonna show any of the aero
         public double Aero1Psi { get; set; }
 
         [JsonProperty("aero2Psi")]
@@ -57,7 +59,7 @@ namespace PegasusData
         [JsonProperty("aero16Psi")]
         public double Aero16Psi { get; set; }
 
-        [JsonProperty("endevcoForeKph")]
+        [JsonProperty("endevcoForeKph")]   // Not going to show any of the endevco
         public double EndevcoForeKph { get; set; }
 
         [JsonProperty("endevcoMidKph")]
@@ -69,25 +71,25 @@ namespace PegasusData
         /// <summary>
         /// Position of stick between 0 (full Left) and 1 (full right)
         /// </summary>
-        [JsonProperty("stickPosition")]
+        [JsonProperty("stickPosition")]   // definitely show
         public double StickPosition { get; set; }
         
-        [JsonProperty("steeringBoxPositionDegrees")]
+        [JsonProperty("steeringBoxPositionDegrees")]  // definitely show
         public double SteeringBoxPositionDegrees { get; set; }
 
-        [JsonProperty("noseWeightLbf")]
+        [JsonProperty("noseWeightLbf")]     // // definitely show
         public double NoseWeightLbf { get; set; }
 
-        [JsonProperty("airSpeedKph")]
+        [JsonProperty("airSpeedKph")]      // still deciding
         public double AirSpeedKph { get; set; }
 
-        [JsonProperty("throttlePosition")]
+        [JsonProperty("throttlePosition")]  // still deciding
         public double ThrottlePosition { get; set; }
 
-        [JsonProperty("leftRearWeightLbf")]
+        [JsonProperty("leftRearWeightLbf")]     // definitely show
         public double LeftRearWeightLbf { get; set; }
 
-        [JsonProperty("rightRearWeightLbf")]
+        [JsonProperty("rightRearWeightLbf")]        // definitely show
         public double RightRearWeightLbf { get; set; }
 
         [JsonProperty("accelXG")]
@@ -99,13 +101,13 @@ namespace PegasusData
         [JsonProperty("accelZG")]
         public double AccelZG { get; set; }
 
-        [JsonProperty("steerBoxAccelXG")]
+        [JsonProperty("steerBoxAccelXG")]       // definitely show
         public double SteerBoxAccelXG { get; set; }
 
-        [JsonProperty("steerBoxAccelYG")]
+        [JsonProperty("steerBoxAccelYG")]       // definitely show
         public double SteerBoxAccelYG { get; set; }
 
-        [JsonProperty("steerBoxAccelZG")]
+        [JsonProperty("steerBoxAccelZG")]       // definitely show
         public double SteerBoxAccelZG { get; set; }
     }
 }

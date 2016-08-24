@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="OnboardTelemetry.cs" />
     <Compile Include="PegasusData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

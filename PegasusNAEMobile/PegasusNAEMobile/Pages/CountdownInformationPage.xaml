@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
           </Grid.RowDefinitions>
-          <pegasus:CountdownView x:Name="CountdownView" Grid.Row="0" BindingContext="{Binding Countdown}"></pegasus:CountdownView>
+          <pegasus:CountdownView x:Name="CountdownView" Grid.Row="0"></pegasus:CountdownView>
         </Grid>
       </ScrollView>
       </Grid>
