@@ -43,6 +43,11 @@ namespace PegasusData
             get { return "coaps://pegasusmission.io/subscribe?topic=http://pegasusnae.org/telemetry"; }
         }
 
+        public static string TelemteryPublishUri
+        {
+            get { return "coaps://pegasusmission.i/publis?topic=http://pegasusnae.org/telemetr"; }
+        }
+
         public static string UserMessageUri
         {
             get { return "coaps://pegasusmission.io/publish?topic=http://pegasus2.org/usermessage"; }

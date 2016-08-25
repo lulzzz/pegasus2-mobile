@@ -54,6 +54,7 @@
     <Compile Include="ViewModels\BasicViewModel.cs" />
     <Compile Include="ViewModels\CountdownViewModel.cs" />
     <Compile Include="ViewModels\Pages\CountdownInformationViewModel.cs" />
+    <Compile Include="ViewModels\TelemetryViewModel.cs" />
     <Compile Include="Views\CountdownView.xaml.cs">
       <DependentUpon>CountdownView.xaml</DependentUpon>
     </Compile>

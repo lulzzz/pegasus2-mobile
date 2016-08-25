@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// asgangal : NOT USED. I'll delete it.
+/// </summary>
+
 namespace PegasusData
 {
     public class TelemetryData

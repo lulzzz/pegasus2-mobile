@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using PegasusData;
 using Xamarin.Forms;
-using PegasusNAEMobile.Pages;
 using System.Threading.Tasks;
-using System.Net.Http;
-using PegasusNAEMobile.Helpers;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
@@ -108,6 +103,14 @@ namespace PegasusNAEMobile
         {
             //throw new NotImplementedException();
             System.Diagnostics.Debug.WriteLine("Message Received");
+
+            CoapMessage coapMessage = CoapMessage.DecodeMessage(message);
+            string jsonString = Encoding.UTF8.GetString(coapMessage.Payload, 0, coapMessage.Payload.Length);
+
+            if (coapMessage.ResourceUri.OriginalString == Constants.TelemteryPublishUri)
+            {
+                var telemetry = JsonConvert.DeserializeObject<VehicleTelemetry>(jsonString);
+            }
         }
 
         private void WebSocketClient_OnError(object sender, Exception ex)
