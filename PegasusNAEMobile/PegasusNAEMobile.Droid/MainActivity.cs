@@ -262,6 +262,7 @@ namespace PegasusNAEMobile.Droid
             base.OnCreate(bundle);
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
+            PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }

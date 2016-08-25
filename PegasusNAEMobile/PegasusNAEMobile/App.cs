@@ -84,7 +84,10 @@ namespace PegasusNAEMobile
                         await LoadSecurityToken();
                     }
                     messageId = 1;
-                    
+                    App.WebSocketClient.OnClose += WebSocketClient_OnClose;
+                    App.WebSocketClient.OnError += WebSocketClient_OnError;
+                    App.WebSocketClient.OnMessage += WebSocketClient_OnMessage;
+                    App.WebSocketClient.OnOpen += WebSocketClient_OnOpen;
                     await App.WebSocketClient.ConnectAsync(Constants.LiveTelemetryHostUri, Constants.SubProtocol, Constants.SavedSecurityToken);    // Use the token to open the web socket connection.
                     
                     await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri          
@@ -94,6 +97,39 @@ namespace PegasusNAEMobile
                     //App.WebSocketClient.OnError
                 }
             }            
+        }
+
+        private void WebSocketClient_OnOpen(object sender, string message)
+        {
+            System.Diagnostics.Debug.WriteLine(message);
+        }
+
+        private void WebSocketClient_OnMessage(object sender, byte[] message)
+        {
+            //throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine("Message Received");
+        }
+
+        private void WebSocketClient_OnError(object sender, Exception ex)
+        {
+            //throw new NotImplementedException();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                // this.AppData.StatusMessage = "Web Socket error: " + ex.Message;
+                //this.AppData.BusyCount--;
+                App.WebSocketClient = null;
+                // Always give us two seconds before trying to reconnect, in case
+                // the phone is bringing up a connection.  This also solves an
+                // animation problem.
+                await Task.Delay(2000);
+                ConnectWebSocketLiveTelemetry();
+            });
+        }
+
+        private void WebSocketClient_OnClose(object sender, string message)
+        {
+            //throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine(message);
         }
 
         /// <summary>
