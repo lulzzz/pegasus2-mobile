@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PegasusData;
-
 namespace PegasusNAEMobile.ViewModels
 {
-    public class TelemetryViewModel : BasicViewModel<VehicleTelemetry>
+    public class LiveTelemetryViewModel : BasicViewModel<VehicleTelemetry>
     {
-        public TelemetryViewModel() { }
+        public LiveTelemetryViewModel() { }
     }
 }

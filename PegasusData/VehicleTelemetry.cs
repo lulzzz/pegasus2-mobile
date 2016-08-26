@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace PegasusData
 {
     // This is based on VehicleJsonV1.json at aka.ms/pegasusmissions
     // This will be used for the live run.
     [JsonObject]
-    public class VehicleTelemetry
+    public class VehicleTelemetry 
     {
 
         [JsonProperty("timestamp")]

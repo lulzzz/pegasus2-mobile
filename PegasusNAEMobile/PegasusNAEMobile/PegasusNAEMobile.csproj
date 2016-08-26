@@ -40,6 +40,9 @@
     <Compile Include="Pages\CountdownInformationPage.xaml.cs">
       <DependentUpon>CountdownInformationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LiveEventTelemetry.xaml.cs">
+      <DependentUpon>LiveEventTelemetry.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -53,8 +56,9 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BasicViewModel.cs" />
     <Compile Include="ViewModels\CountdownViewModel.cs" />
+    <Compile Include="ViewModels\LiveTelemetryViewModel.cs" />
     <Compile Include="ViewModels\Pages\CountdownInformationViewModel.cs" />
-    <Compile Include="ViewModels\TelemetryViewModel.cs" />
+    <Compile Include="ViewModels\Pages\TelemetryViewModel.cs" />
     <Compile Include="Views\CountdownView.xaml.cs">
       <DependentUpon>CountdownView.xaml</DependentUpon>
     </Compile>
@@ -136,6 +140,12 @@
       <Project>{f4297d99-d786-4f0d-944b-77ea9e4b13a9}</Project>
       <Name>Piraeus.ServiceModel.Protocols.Coap.Phone</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\LiveEventTelemetry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

@@ -7,7 +7,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using Piraeus.ServiceModel.Protocols.Coap;
-
+using PegasusNAEMobile.ViewModels;
 namespace PegasusNAEMobile
 {
     public delegate void WebSocketEventHandler(object sender, string message);
@@ -42,6 +42,7 @@ namespace PegasusNAEMobile
 
             // The root page of your application
             Instance = this;
+            CurrentVehicleTelemetry = new LiveTelemetryViewModel();
             MainPage = new MainPage();
         }       
 
@@ -61,6 +62,12 @@ namespace PegasusNAEMobile
         }
 
         public static App Instance
+        {
+            get;
+            private set;
+        }
+
+        public LiveTelemetryViewModel CurrentVehicleTelemetry
         {
             get;
             private set;
@@ -99,6 +106,9 @@ namespace PegasusNAEMobile
             System.Diagnostics.Debug.WriteLine(message);
         }
 
+        /// <summary>
+        /// Invoked when a message is received on the opened WebSocket
+        /// </summary>        
         private void WebSocketClient_OnMessage(object sender, byte[] message)
         {
             //throw new NotImplementedException();
@@ -110,6 +120,7 @@ namespace PegasusNAEMobile
             if (coapMessage.ResourceUri.OriginalString == Constants.TelemteryPublishUri)
             {
                 var telemetry = JsonConvert.DeserializeObject<VehicleTelemetry>(jsonString);
+                this.CurrentVehicleTelemetry.Data = telemetry;
             }
         }
 

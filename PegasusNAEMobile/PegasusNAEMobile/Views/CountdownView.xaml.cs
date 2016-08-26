@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
+using PegasusNAEMobile.Pages;
 namespace PegasusNAEMobile
 {
     public partial class CountdownView : ContentView
@@ -22,7 +22,9 @@ namespace PegasusNAEMobile
         private async void WatchLiveEvent_Clicked(object sender, EventArgs e)
         {
             App.Instance.ConnectWebSocketLiveTelemetry();
-           
+            //var LiveEventTelemetryPage = new LiveEventTelemetry();
+            //LiveEventTelemetryPage.BindingContext = App.Instance.CurrentVehicleTelemetry;
+            //await Navigation.PushModalAsync(new LiveEventTelemetry());
         }
         
     }
