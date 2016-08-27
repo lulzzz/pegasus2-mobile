@@ -10,150 +10,141 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
-    
-    <Grid >
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"></ColumnDefinition>
-        <ColumnDefinition Width="*"></ColumnDefinition>
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
-      </Grid.RowDefinitions>
+    <ScrollView>
       
-      <Grid Grid.Row="0" Grid.Column="0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="*"></RowDefinition>
-          <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Label x:Name="RunTimeStamp" Text="August 25, 2016" FontSize="25" TextColor="White"></Label>
-        <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" FontSize="17" TextColor="White"></Label>
-      </Grid>
-      
-        <!--Air Speed-->
-      <Grid Grid.Row="1" Grid.Column="0" Margin="12">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"></RowDefinition>
-          <RowDefinition Height="*"></RowDefinition>
-          <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="SpeedGridTitle" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Text="MAX AIR SPEED" FontSize="17" TextColor="White"></Label>
-        <Label x:Name="SpeedMPH" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" FontSize="30" TextColor="White"></Label>
-        <Label x:Name="SppedKPH" Text="{Binding LiveTelemetry.Data.GpsSpeedKph, Converter={StaticResource roundToDecimalPlace}}" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="Center" FontSize="30" TextColor="White"></Label>
-        <Label Text="MPH" Grid.Row="1" Grid.Column="1" FontSize="17" TextColor="White"></Label>
-        <Label Text="KPH" Grid.Row="2" Grid.Column="1" FontSize="17" TextColor="White"></Label>
-      </Grid>
-      
-      <!--Sound Level-->
-      <Grid Grid.Row="2" Grid.Column="0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"></RowDefinition>
-          <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label Text="SOUND LEVEL" FontSize="17" TextColor="White"></Label>
-        <Label x:Name="SoundLevel" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Sound}" FontSize="30" TextColor="White"></Label>
-        <Label Grid.Row="2" Grid.Column="1" Text="DB" TextColor="White"></Label>
-      </Grid>
-      
-      <!--Atmospheric Grid-->
-      <Grid Grid.Row="3" Grid.Column="0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"></RowDefinition>
-          <RowDefinition Height="Auto"></RowDefinition>         
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label Text="ATMOSPHERIC" FontSize="20" Grid.ColumnSpan="3" TextColor="White"></Label>
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-          <StackLayout Orientation="Horizontal">
-            <Label x:Name="atmTemperature" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Temperature, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text=" c" FontSize="17" TextColor="White"></Label>
-          </StackLayout>        
-          <Label Grid.Row="2" Grid.Column="1" FontSize="17" Text="TEMP" TextColor="White"></Label>
-        </StackLayout>
-        
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-          <StackLayout Orientation="Horizontal">
-            <Label x:Name="atmHumidity" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Humidity, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text=" %" FontSize="17" TextColor="White"></Label>
-          </StackLayout>        
-          <Label Grid.Row="2" Grid.Column="1" FontSize="17" Text="HUMIDITY" TextColor="White"></Label>
-        </StackLayout>
-      
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
-          <StackLayout Orientation="Horizontal">
-            <Label x:Name="atmPressure" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Pressure, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text=" kpa" FontSize="17" TextColor="White"></Label>
-          </StackLayout>        
-          <Label Grid.Row="2" Grid.Column="1" FontSize="17" Text="Pressure" TextColor="White"></Label>
-        </StackLayout>
-      </Grid>
-    
-      <Grid Grid.Row="4" Grid.Column="0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto"></RowDefinition>
-          <RowDefinition Height="Auto"></RowDefinition>         
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label Text="LINEAR ACCELERATION" FontSize="20" Grid.ColumnSpan="3" TextColor="White"></Label>
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
-          <StackLayout Orientation="Horizontal">
-            <Label x:Name="AccelX" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelX, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text=" g" FontSize="17" TextColor="White"></Label>
-          </StackLayout>        
-          <Label Grid.Row="2" Grid.Column="1" FontSize="17" Text="ACCEL X" TextColor="White"></Label>
-        </StackLayout>
-        
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-          <StackLayout Orientation="Horizontal">
-            <Label x:Name="AccelY" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelY, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text=" g" FontSize="17" TextColor="White"></Label>
-          </StackLayout>        
-          <Label Grid.Row="2" Grid.Column="1" FontSize="17" Text="ACCEL Y" TextColor="White"></Label>
-        </StackLayout>
-      
-        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
-          <StackLayout Orientation="Horizontal">
-            <Label x:Name="AccelZ" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelZ, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text=" g" FontSize="17" TextColor="White"></Label>
-          </StackLayout>        
-          <Label Grid.Row="2" Grid.Column="1" FontSize="17" Text="ACCEL Z" TextColor="White"></Label>
-        </StackLayout>
-      </Grid>
-    
-      <Grid Grid.Row="5" Grid.Column="0">
-        <Grid.RowDefinitions>
-          <RowDefinition Height="*"></RowDefinition>
-          <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-          <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label Text="ORIENTATION" FontSize="17" TextColor="White"></Label>
-        <Label x:Name="Orientation" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource roundToDecimalPlace}}" FontSize="30" TextColor="White"></Label>
-        <Label Grid.Row="2" Grid.Column="1" Text="HEADING" TextColor="White"></Label>
-      </Grid>
+        <StackLayout Orientation="Vertical" Grid.Column="0" Spacing="10">
+          <Grid Margin="5,5,5,10">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label x:Name="RunTimeStamp" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
+            <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>
+          </Grid>
 
-    </Grid>
+          <!--Air Speed-->
+          <Grid Margin="5,5,5,10">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="SpeedGridTitle" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Text="MAX AIR SPEED"  TextColor="White"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="1">
+              <Label x:Name="SpeedMPH" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label Text="MPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Grid.Row="2">
+              <Label x:Name="SppedKPH" Text="{Binding LiveTelemetry.Data.GpsSpeedKph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
+
+            </StackLayout>
+          </Grid>
+
+          <!--Sound Level-->
+          <Grid Margin="5,5,5,10">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Label Text="SOUND LEVEL"  TextColor="White"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="1">
+              <Label x:Name="SoundLevel" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label Text="DB" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
+            </StackLayout>
+          </Grid>
+
+          <!--Atmospheric Grid-->
+          <Grid Margin="5,5,5,10">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="ATMOSPHERIC" Grid.ColumnSpan="3" TextColor="White"></Label>
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="0,0,10,0">
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="atmTemperature"
+                       Text="{Binding LiveTelemetry.Data.Temperature, Converter={StaticResource roundToDecimalPlace}}"
+                       TextColor="White"></Label>
+                <Label Text=" c" TextColor="White"></Label>
+              </StackLayout>
+              <Label Text="TEMP" TextColor="#656472"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="0,0,10,0">
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="atmHumidity" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Humidity, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
+                <Label Text=" %"  TextColor="White"></Label>
+              </StackLayout>
+              <Label Text="HUMIDITY" TextColor="#656472"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="atmPressure" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Pressure, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
+                <Label Text=" kpa"  TextColor="White"></Label>
+              </StackLayout>
+              <Label  Text="Pressure" TextColor="#656472"></Label>
+            </StackLayout>
+          </Grid>
+
+          <Grid Margin="5,5,5,10">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Text="LINEAR ACCELERATION" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3" FontSize="20" TextColor="White"></Label>
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="AccelX" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelX, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+              </StackLayout>
+              <Label Grid.Row="2" Grid.Column="1"  Text="ACCEL X" TextColor="#656472"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="AccelY" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelY, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
+                <Label Text=" g"  TextColor="White"></Label>
+              </StackLayout>
+              <Label Text="ACCEL Y" TextColor="#656472"></Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="AccelZ" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelZ, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+              </StackLayout>
+              <Label Grid.Row="2" Grid.Column="1"  Text="ACCEL Z" TextColor="#656472"></Label>
+            </StackLayout>
+          </Grid>
+
+          <Grid Margin="5,5,5,10">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>            
+            <Label Text="ORIENTATION"  TextColor="White"></Label>
+            <Label x:Name="Orientation" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
+            <Label Grid.Row="2" Text="HEADING" TextColor="#656472"></Label>
+          </Grid>
+
+        </StackLayout>
+      
+    </ScrollView>
+   
   </ContentPage.Content>
 </ContentPage>

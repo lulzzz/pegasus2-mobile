@@ -15,14 +15,13 @@ namespace PegasusNAEMobile
         public LiveEventTelemetry()
         {
             InitializeComponent();
+            Padding = new Thickness(5, Device.OnPlatform(20, 0, 0), 5, 0);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.BindingContext = new TelemetryViewModel();
-            
-               
+            this.BindingContext = new TelemetryViewModel();        
         }
     }
 
