@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace PegasusNAEMobile.Pages
 {
-    public partial class MasterPage : ContentPage
+    public partial class MasterPage : NavigationPage
     {
         public MasterPage()
         {

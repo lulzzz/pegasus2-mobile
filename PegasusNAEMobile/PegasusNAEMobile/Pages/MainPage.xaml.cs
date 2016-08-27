@@ -8,11 +8,15 @@ using Xamarin.Forms;
 
 namespace PegasusNAEMobile
 {
-    public partial class MainPage : TabbedPage
+    public partial class MainPage : ContentPage
     {
         public MainPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            this.BindingContext = new MainPageViewModel();
+            this.Title = "Pegasus Mission";
+                  
         }
+
     }
 }

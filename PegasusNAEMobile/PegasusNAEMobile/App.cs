@@ -43,7 +43,7 @@ namespace PegasusNAEMobile
             // The root page of your application
             Instance = this;
             CurrentVehicleTelemetry = new LiveTelemetryViewModel();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }       
 
         protected override void OnStart()

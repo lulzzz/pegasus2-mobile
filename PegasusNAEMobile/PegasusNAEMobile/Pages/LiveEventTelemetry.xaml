@@ -10,7 +10,8 @@
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
-    <Grid>
+    
+    <Grid >
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="Auto"></ColumnDefinition>
         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -23,6 +24,7 @@
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
+      
       <Grid Grid.Row="0" Grid.Column="0">
         <Grid.RowDefinitions>
           <RowDefinition Height="*"></RowDefinition>
@@ -33,7 +35,7 @@
       </Grid>
       
         <!--Air Speed-->
-      <Grid Grid.Row="1" Grid.Column="0">
+      <Grid Grid.Row="1" Grid.Column="0" Margin="12">
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"></RowDefinition>
           <RowDefinition Height="*"></RowDefinition>
