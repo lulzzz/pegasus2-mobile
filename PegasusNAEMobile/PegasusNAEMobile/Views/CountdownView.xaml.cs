@@ -25,7 +25,7 @@ namespace PegasusNAEMobile
             //throw new NotImplementedException();
             double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
             if (fontsizeLarge < 35)
-                fontsizeLarge = 35;
+                fontsizeLarge = 45;
             double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
             HeroMessageLabel.FontSize = fontsizeLarge;

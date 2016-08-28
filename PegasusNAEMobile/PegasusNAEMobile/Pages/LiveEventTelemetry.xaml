@@ -3,27 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Black"
              xmlns:converter="clr-namespace:PegasusNAEMobile"
-             x:Class="PegasusNAEMobile.LiveEventTelemetry">
+             x:Class="PegasusNAEMobile.LiveEventTelemetry">  
   <ContentPage.Resources>
     <ResourceDictionary>
       <converter:RoundToDecimalPlaces x:Key="roundToDecimalPlace"></converter:RoundToDecimalPlaces>
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
-    <ScrollView>
-      
+    <ScrollView>      
         <StackLayout Orientation="Vertical" Grid.Column="0" Spacing="10">
-          <Grid Margin="5,5,5,10">
-            <Grid.RowDefinitions>
+          <Grid Margin="5,5,5,10">            
+              <Grid.RowDefinitions>
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Label x:Name="RunTimeStamp" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
-            <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>
+            <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>         
           </Grid>
 
           <!--Air Speed-->
           <Grid Margin="5,5,5,10">
+            
             <Grid.RowDefinitions>
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>

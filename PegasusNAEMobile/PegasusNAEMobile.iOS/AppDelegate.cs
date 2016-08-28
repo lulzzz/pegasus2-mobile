@@ -268,6 +268,9 @@ namespace PegasusNAEMobile.iOS
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
             global::Xamarin.Forms.Forms.Init();
+            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(35,35,43,1);
+            UINavigationBar.Appearance.BackIndicatorImage = null;
+            UINavigationBar.Appearance.TintColor = UIColor.White;
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

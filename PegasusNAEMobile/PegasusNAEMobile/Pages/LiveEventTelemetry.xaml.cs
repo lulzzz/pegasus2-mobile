@@ -23,6 +23,7 @@ namespace PegasusNAEMobile
             base.OnAppearing();
             this.BindingContext = new TelemetryViewModel();        
         }
+        
     }
 
     public class RoundToDecimalPlaces : IValueConverter

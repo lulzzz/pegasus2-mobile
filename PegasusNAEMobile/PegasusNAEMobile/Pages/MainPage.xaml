@@ -4,12 +4,20 @@
                   xmlns:local="clr-namespace:PegasusNAEMobile"
                   x:Class="PegasusNAEMobile.MainPage">
   <ContentPage.Content>
-    
-      <local:CountdownView x:Name="CountdownView" 
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand"
-                           Grid.Row="0" BindingContext="{Binding Countdown}"></local:CountdownView>
-    
+    <ScrollView>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <local:CountdownView x:Name="CountdownView"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand"
+                             Grid.Row="1" BindingContext="{Binding Countdown}">
+        </local:CountdownView>
+      </Grid>
+    </ScrollView>
+       
          
   </ContentPage.Content>
  <!--<local:LiveEventTelemetry x:Name="LiveTelemetryPage" Title="Telemetry"></local:LiveEventTelemetry>-->

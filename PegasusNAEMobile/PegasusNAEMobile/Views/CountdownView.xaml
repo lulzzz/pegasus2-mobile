@@ -4,7 +4,7 @@
              x:Class="PegasusNAEMobile.CountdownView">
 
   <ContentView.Content>
-    <Grid VerticalOptions="CenterAndExpand">
+    <Grid VerticalOptions="FillAndExpand">
       <Grid.RowDefinitions>
         <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
@@ -35,7 +35,7 @@
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="Center"></Button>
 
-      
+       
 
 
     </Grid>    
