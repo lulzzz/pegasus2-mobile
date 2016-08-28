@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PegasusNAEMobile.NonLiveEventTelemetry">
+  <ContentPage.Content>
+    <ScrollView>
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Stuff on the right side : Max Acc, Nose Weight, Rear Left, Rear Right, Up and Down-->
+        <Grid Grid.Column="1">
+         <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+           <!--Data above the vehicle image-->
+           <StackLayout Grid.Row="0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+             <Label Text="MAX ACCELERATION" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
+             <Grid>
+               <BoxView Grid.Row="0" HeightRequest="30" WidthRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></BoxView>
+               <Label Grid.Row="0" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Text="4.5g"></Label>
+             </Grid>
+           </StackLayout>
+           <!--Data that will overlay on the vehicle image-->
+            <Grid Grid.Row="1">
+             <Grid.RowDefinitions>
+               <RowDefinition Height="Auto"></RowDefinition>
+               <RowDefinition Height="*"></RowDefinition>
+             </Grid.RowDefinitions>
+             <Label Text="NOSE WEIGHT" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+             <Image x:Name="vehicle" Grid.Row="1" Aspect="AspectFit" IsVisible="True"></Image>
+             
+             <BoxView Grid.Row="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="60"></BoxView>
+             <Label x:Name="NoseWeight" Text="231 lbf" Grid.Row="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>            
+             
+             <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+               <Label Text="SIDE TO SIDE"></Label>
+               <Grid>
+                 <BoxView Grid.Row="0" HeightRequest="30" WidthRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></BoxView>
+                 <Label Text="3.2g" x:Name="SideToSideG"></Label>
+               </Grid>
+             </StackLayout>
+             
+           </Grid>
+           <!--Data that will be displayed below the vehicle image-->
+           <StackLayout Orientation="Horizontal" Grid.Row="2">
+             <StackLayout Orientation="Vertical">
+               <Label Text="REAR LEFT"></Label>
+               <Grid>
+                 <BoxView HeightRequest="30" WidthRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></BoxView>
+                 <Label VerticalOptions="End" HorizontalOptions="CenterAndExpand" Text="431 lbf"></Label>
+               </Grid>
+             </StackLayout>
+
+             <StackLayout Orientation="Vertical">
+               <Label Text="REAR RIGHT"></Label>
+               <Grid>
+                 <BoxView HeightRequest="30" WidthRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></BoxView>
+                 <Label VerticalOptions="End" HorizontalOptions="CenterAndExpand" Text="502 lbf"></Label>
+               </Grid>
+             </StackLayout>
+           </StackLayout>
+
+           <StackLayout Orientation="Vertical" Grid.Row="3">
+             <Label Text="UP AND DOWN"></Label>
+             <Grid>
+               <BoxView HeightRequest="30" WidthRequest="60" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></BoxView>
+               <Label VerticalOptions="End" HorizontalOptions="CenterAndExpand" Text="4.5 g"></Label>
+             </Grid>
+           </StackLayout>
+           
+         </Grid>
+        </Grid>
+        
+        <!--Stuff on the left side-->
+        <StackLayout Grid.Column="0" Orientation="Vertical">
+
+        </StackLayout>
+      </Grid>
+    </ScrollView>
+  </ContentPage.Content>
+</ContentPage>
