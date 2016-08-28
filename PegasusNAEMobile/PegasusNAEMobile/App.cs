@@ -43,7 +43,11 @@ namespace PegasusNAEMobile
             // The root page of your application
             Instance = this;
             CurrentVehicleTelemetry = new LiveTelemetryViewModel();
+            NavigationPage page = new NavigationPage(new MainPage());
+            page.BarBackgroundColor = Color.FromRgba(35, 35, 43, 1);
+            page.BarTextColor = Color.White;
             MainPage = new NavigationPage(new MainPage());
+            
         }       
 
         protected override void OnStart()
@@ -180,5 +184,37 @@ namespace PegasusNAEMobile
             byte[] message = request.Encode();
             return (App.WebSocketClient.SendAsync(message));
         }
+
+
+        public async Task SendUserMessageAsync(string message)
+        {
+            //this.AppData.StatusMessage = "Sending...";
+            //this.AppData.BusyCount++;
+
+            UserMessage umessage = new UserMessage();
+            umessage.Message = message;
+
+            umessage.Id = Guid.NewGuid().ToString();
+            string jsonString = UserMessage.UserMessageSerializer(umessage);
+            byte[] payload = Encoding.UTF8.GetBytes(jsonString);
+            CoapRequest request = new CoapRequest(messageId++,
+                                                    RequestMessageType.NonConfirmable,
+                                                    MethodType.POST,
+                                                    new Uri(Constants.UserMessageTopicUri),
+                                                    MediaType.Json,
+                                                    payload);
+
+            byte[] messageBytes = request.Encode();
+            try
+            {
+                await App.WebSocketClient.SendAsync(messageBytes);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
+
     }
 }

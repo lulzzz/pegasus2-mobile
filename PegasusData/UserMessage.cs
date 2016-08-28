@@ -15,6 +15,11 @@ namespace PegasusData
 
         }
 
+        public static string UserMessageSerializer(UserMessage message)
+        {
+            return (JsonConvert.SerializeObject(message));
+        } 
+
         public static UserMessage Load(byte[] message)
         {
             return JsonConvert.DeserializeObject<UserMessage>(Encoding.UTF8.GetString(message, 0, message.Length - 1));

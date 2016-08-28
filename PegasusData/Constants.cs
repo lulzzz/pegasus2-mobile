@@ -12,7 +12,11 @@ namespace PegasusData
         {
 
         }
-
+        
+        public static string UserMessageTopicUri
+        {
+            get { return "coaps://pegasusmission.io/publish?topic=http://pegasus2.org/usermessage"; }
+        }
         public static string TokenSecret
         {
             get { return "851o2LqnMUod9lp7DvVxSrH+KQAkydBF9MDREicDus4="; }
