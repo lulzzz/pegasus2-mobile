@@ -7,6 +7,7 @@ using UIKit;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Net.WebSockets;
+using System.Net;
 
 namespace PegasusNAEMobile.iOS
 {
@@ -267,6 +268,8 @@ namespace PegasusNAEMobile.iOS
         {
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init();
             UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(35,35,43,1);
             UINavigationBar.Appearance.BackIndicatorImage = null;

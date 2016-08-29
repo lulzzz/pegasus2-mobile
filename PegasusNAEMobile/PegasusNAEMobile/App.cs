@@ -8,6 +8,8 @@ using System.IO;
 using Newtonsoft.Json;
 using Piraeus.ServiceModel.Protocols.Coap;
 using PegasusNAEMobile.ViewModels;
+using ModernHttpClient;
+using System.Net.Http;
 namespace PegasusNAEMobile
 {
     public delegate void WebSocketEventHandler(object sender, string message);
@@ -158,17 +160,26 @@ namespace PegasusNAEMobile
         private async Task LoadSecurityToken()
         {
             string requestUriString = String.Format("{0}?key={1}", Constants.TokenWebApiUri, Constants.TokenSecret);
-
-            var request = WebRequest.CreateHttp(requestUriString);
-            WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
-            using (var responseStream = responseObject.GetResponseStream())
+            try
             {
-                using (var sr = new StreamReader(responseStream))
+                //var httpclient = new HttpClient(new NativeMessageHandler());
+                //var str = await httpclient.GetStreamAsync(requestUriString);
+               // HttpResponseMessage response = await httpclient.GetAsync(new Uri(requestUriString));
+                var request = WebRequest.CreateHttp(requestUriString);
+                WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
+                using (var responseStream = responseObject.GetResponseStream())
                 {
-                    string jsonString = await sr.ReadToEndAsync();
-                    string token = JsonConvert.DeserializeObject<string>(jsonString);
-                    Constants.SavedSecurityToken = token;
+                    using (var sr = new StreamReader(responseStream))
+                    {
+                        string jsonString = await sr.ReadToEndAsync();
+                        string token = JsonConvert.DeserializeObject<string>(jsonString);
+                        Constants.SavedSecurityToken = token;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
 
