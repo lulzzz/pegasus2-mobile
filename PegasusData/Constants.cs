@@ -12,7 +12,20 @@ namespace PegasusData
         {
 
         }
-        
+
+        private static int _screenHeight;
+        public static int ScreenHeight
+        {
+            get { return _screenHeight; }
+            set { _screenHeight = value; }
+        }
+
+        private static int _screenWidth;
+        public static int ScreenWidth
+        {
+            get { return _screenWidth; }
+            set { _screenWidth = value; }
+        }
         public static string UserMessageTopicUri
         {
             get { return "coaps://pegasusmission.io/publish?topic=http://pegasus2.org/usermessage"; }
