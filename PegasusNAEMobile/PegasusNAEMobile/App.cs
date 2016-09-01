@@ -153,6 +153,24 @@ namespace PegasusNAEMobile
         }
 
         /// <summary>
+        /// Used to store the device's height and width
+        /// </summary>
+        /// <param name="height"></param>
+        /// <param name="width"></param>
+        public static void SetScreenHeightAndWidth(int height, int width)
+        {
+            try
+            {
+                Constants.ScreenHeight = height;
+                Constants.ScreenWidth = width;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+        }
+
+        /// <summary>
         /// GETs the security token needed to make future requests. 
         /// The token is stored in App Settings.
         /// </summary>

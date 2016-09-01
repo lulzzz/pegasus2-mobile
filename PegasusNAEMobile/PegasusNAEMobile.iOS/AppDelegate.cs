@@ -275,7 +275,7 @@ namespace PegasusNAEMobile.iOS
             UINavigationBar.Appearance.BackIndicatorImage = null;
             UINavigationBar.Appearance.TintColor = UIColor.White;
             LoadApplication(new App());
-
+            App.SetScreenHeightAndWidth((int)UIScreen.MainScreen.Bounds.Height, (int)UIScreen.MainScreen.Bounds.Width);
             return base.FinishedLaunching(app, options);
         }
     }
