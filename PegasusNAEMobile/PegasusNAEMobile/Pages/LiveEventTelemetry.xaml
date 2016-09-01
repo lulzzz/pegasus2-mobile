@@ -143,7 +143,14 @@
           </Grid>
 
         </StackLayout>
-       
+        <!--<Grid Grid.ColumnSpan="2">
+          <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinition Width="*"></Grid.ColumnDefinition>
+            <Grid.ColumnDefinition Width="Auto"></Grid.ColumnDefinition>
+            <Grid.ColumnDefinition Width="Auto"></Grid.ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          
+        </Grid>-->
     </ScrollView>
    
   </ContentPage.Content>
