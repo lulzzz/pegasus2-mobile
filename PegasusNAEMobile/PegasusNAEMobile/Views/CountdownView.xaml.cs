@@ -41,6 +41,10 @@ namespace PegasusNAEMobile
             //LiveEventTelemetryPage.BindingContext = App.Instance.CurrentVehicleTelemetry;
             await Navigation.PushAsync(new LiveEventTelemetry());
         }
-        
+
+        private async void WatchPreviousRuns_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NonLiveEventTelemetry());
+        }
     }
 }

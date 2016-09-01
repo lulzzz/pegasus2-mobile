@@ -21,11 +21,21 @@
                TextColor="White" ></Label>
         <Label Text="CountDownToLiveEvent"
                x:Name="CountDownLabel"               
-               Grid.Row="1"
+               Grid.Row="1" IsVisible="False"
                TextColor="White"
                HorizontalOptions="CenterAndExpand"
                VerticalOptions="Center"></Label>
-        <Button Text="WATCH LIVE EVENT"
+      <Button Text="WATCH PREVIOUS RUNS"
+                x:Name="WatchPreviousRuns"
+                TextColor="White"
+                Margin="30"
+                Grid.Row="1"
+                Clicked="WatchPreviousRuns_Clicked"
+                BackgroundColor="#d90000"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center"></Button>
+
+      <Button Text="WATCH LIVE EVENT"
                 x:Name="WatchEventButton"                
                 TextColor="White"
                 Margin="30"
