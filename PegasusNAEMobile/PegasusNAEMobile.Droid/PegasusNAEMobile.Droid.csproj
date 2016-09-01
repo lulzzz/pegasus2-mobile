@@ -52,6 +52,14 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Azure.Engagement.Xamarin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Engagement.Xamarin.1.0.2\lib\MonoAndroid\Microsoft.Azure.Engagement.Xamarin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Engagement.Xamarin.AndroidBinding, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Azure.Engagement.Xamarin.1.0.2\lib\MonoAndroid\Microsoft.Azure.Engagement.Xamarin.AndroidBinding.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
@@ -136,6 +144,32 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\pegasus_herobackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pegasus_vehicle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pegasus_vehicle_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\res\drawable\engagement_close.png" />
+    <Content Include="Resources\res\drawable\engagement_content_title.xml" />
+    <Content Include="Resources\res\layout\engagement_button_bar.xml" />
+    <Content Include="Resources\res\layout\engagement_content_title.xml" />
+    <Content Include="Resources\res\layout\engagement_loading.xml" />
+    <Content Include="Resources\res\layout\engagement_notification_area.xml" />
+    <Content Include="Resources\res\layout\engagement_notification_overlay.xml" />
+    <Content Include="Resources\res\layout\engagement_poll.xml" />
+    <Content Include="Resources\res\layout\engagement_poll_choice.xml" />
+    <Content Include="Resources\res\layout\engagement_poll_question.xml" />
+    <Content Include="Resources\res\layout\engagement_text_announcement.xml" />
+    <Content Include="Resources\res\layout\engagement_web_announcement.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
