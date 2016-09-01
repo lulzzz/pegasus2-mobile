@@ -20,7 +20,7 @@ using Windows.Web;
 using PegasusData;
 using Newtonsoft.Json;
 using Windows.Storage.Streams;
-
+using PegasusNAEMobile;
 namespace PegasusNAEMobile.UWP
 {
     public sealed partial class MainPage : IWebSocketClient
@@ -43,6 +43,7 @@ namespace PegasusNAEMobile.UWP
             this.messageQueue = new Queue<byte[]>();
             this.InitializeComponent();
             PegasusNAEMobile.App.Init(this);
+            PegasusNAEMobile.App.SetScreenHeightAndWidth((int)Window.Current.Bounds.Height, (int)Window.Current.Bounds.Width);
             LoadApplication(new PegasusNAEMobile.App());
         }
 

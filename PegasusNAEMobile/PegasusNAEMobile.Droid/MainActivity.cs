@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
+using PegasusNAEMobile;
+using Android.Util;
 
 namespace PegasusNAEMobile.Droid
 {
@@ -263,7 +265,8 @@ namespace PegasusNAEMobile.Droid
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
             PegasusNAEMobile.App.Init(this);
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            global::Xamarin.Forms.Forms.Init(this, bundle);            
+            App.SetScreenHeightAndWidth((int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density),(int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density) );  // Get device independednt pixels
             LoadApplication(new App());
         }
     }
