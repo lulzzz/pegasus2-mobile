@@ -45,9 +45,15 @@ namespace PegasusNAEMobile
             // The root page of your application
             Instance = this;
             CurrentVehicleTelemetry = new LiveTelemetryViewModel();
-            NavigationPage page = new NavigationPage(new MainPage());
-            page.BarBackgroundColor = Color.FromRgba(35, 35, 43, 1);
+            NavigationPage page = new NavigationPage(new MainPage() { Title = "Pegasus Mission" })
+            {
+                BackgroundColor = Color.FromRgba(35, 35, 43, 1)
+                
+            };
             page.BarTextColor = Color.White;
+            
+            //page.BarBackgroundColor = Color.FromRgba(35, 35, 43, 1);
+            
             MainPage = new NavigationPage(new MainPage());
             
         }       

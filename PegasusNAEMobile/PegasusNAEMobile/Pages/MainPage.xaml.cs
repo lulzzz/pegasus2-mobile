@@ -13,9 +13,8 @@ namespace PegasusNAEMobile
         public MainPage()
         {
             InitializeComponent();
-            this.BindingContext = new MainPageViewModel();
-            this.Title = "Pegasus Mission";
-                           
+            NavigationPage.SetHasNavigationBar(this, false);
+            this.BindingContext = new MainPageViewModel();                           
         }
 
     }
