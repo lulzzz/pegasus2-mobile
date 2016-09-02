@@ -14,9 +14,9 @@ namespace PegasusNAEMobile
         {
             InitializeComponent();
             vehicle.Source = Device.OnPlatform(
-            iOS: ImageSource.FromFile("pegasus_vehicle.png"),
-            Android: ImageSource.FromFile("pegasus_vehicle.png"),
-            WinPhone: ImageSource.FromFile("Assets/pegasus_vehicle.png"));
+            iOS: ImageSource.FromFile("pegasus_vehicle_small.png"),
+            Android: ImageSource.FromFile("pegasus_vehicle_small.png"),
+            WinPhone: ImageSource.FromFile("Assets/pegasus_vehicle_small.png"));
             System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);
             if (Constants.ScreenHeight < 600)
             {

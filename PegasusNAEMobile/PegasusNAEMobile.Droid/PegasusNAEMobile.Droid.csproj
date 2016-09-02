@@ -153,11 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\pegasus_vehicle.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\pegasus_vehicle_small.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\res\drawable\engagement_close.png" />
     <Content Include="Resources\res\drawable\engagement_content_title.xml" />
     <Content Include="Resources\res\layout\engagement_button_bar.xml" />

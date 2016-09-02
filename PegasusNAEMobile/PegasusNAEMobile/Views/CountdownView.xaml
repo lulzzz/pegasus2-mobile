@@ -36,15 +36,25 @@
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="Center"></Button>
           <Button Text="WATCH LIVE EVENT"
-                x:Name="WatchEventButton"
-                TextColor="White"
+                  x:Name="WatchEventButton"
+                  TextColor="White"
                   FontAttributes="Bold"
                   Margin="0,15,0,0"
-                HeightRequest="50"
-                Clicked="WatchLiveEvent_Clicked"
-                BackgroundColor="#d90000"
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="Center"></Button>
+                  HeightRequest="50"
+                  Clicked="WatchLiveEvent_Clicked"
+                  BackgroundColor="#d90000"
+                  HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="Center"></Button>
+         <Button Text="WATCH PREVIOUS RUNS"
+                 x:Name="WatchPreviousRuns"
+                 TextColor="White"
+                 Margin="0,15,0,0"
+                 FontAttributes="Bold"
+                 HeightRequest="50"
+                 Clicked="WatchPreviousRuns_Clicked"
+                 BackgroundColor="#d90000"
+                 HorizontalOptions="CenterAndExpand"
+                 VerticalOptions="Center"></Button>
         </StackLayout>
       </Grid>
     </Grid>
