@@ -11,8 +11,9 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
-using PegasusNAEMobile;
 using Android.Util;
+using Microsoft.Azure.Engagement.Xamarin;
+using Microsoft.Azure.Engagement.Xamarin.Activity;
 
 namespace PegasusNAEMobile.Droid
 {
@@ -95,9 +96,7 @@ namespace PegasusNAEMobile.Droid
                 try
                 {
                     byte[] prefix = new byte[4];
-                    //result = await client.ReceiveAsync(new ArraySegment<byte>(prefix), CancellationToken.None);                                                
-                    //prefix = BitConverter.IsLittleEndian ? prefix.Reverse().ToArray() : prefix;
-                    //remainingLength = BitConverter.ToInt32(prefix, 0);  
+                    
                     int prefixSize = 4;
                     int offset = 0;
                     while (offset < prefix.Length)
@@ -135,13 +134,11 @@ namespace PegasusNAEMobile.Droid
                     else
                     {
                         Buffer.BlockCopy(buffer, 0, message, index, result.Count);
-                        //Buffer.BlockCopy(buffer, 0, message, index, buffer.Length);
-                        //index += bufferSize;
-                        //remainingLength = buffer.Length - index;
+                       
                         remainingLength = remainingLength - result.Count;
                     }
 
-                    //                    } while (remainingLength > 0);
+                   
 
                     if (!result.EndOfMessage)
                     {
@@ -163,8 +160,7 @@ namespace PegasusNAEMobile.Droid
                 catch (Exception ex)
                 {
                     exception = ex;
-                    //Trace.TraceWarning("Web socket receive faulted.");
-                    //Trace.TraceError(ex.Message);
+                    
                     break;
                 }
             }
@@ -178,6 +174,10 @@ namespace PegasusNAEMobile.Droid
             }
         }
 
+        /// <summary>
+        /// Send a message through the websocket
+        /// </summary>
+        /// <param name="messageBytes"></param>
         public void Send(byte[] messageBytes)
         {
             this.messageQueue.Enqueue(messageBytes);
@@ -262,12 +262,28 @@ namespace PegasusNAEMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+            engagementConfiguration.ConnectionString = "Endpoint=PegasusMissions.device.mobileengagement.windows.net;SdkKey=8793710d17cf2f66578a557eedb0e00b;AppId=cup000171";
+            EngagementAgent.Init(engagementConfiguration);
+
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
             PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);            
             App.SetScreenHeightAndWidth((int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density),(int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density) );  // Get device independednt pixels
             LoadApplication(new App());
+        }
+
+        protected override void OnResume()
+        {
+            EngagementAgent.StartActivity(EngagementAgentUtils.BuildEngagementActivityName(Java.Lang.Class.FromType(this.GetType())), null);
+            base.OnResume();
+        }
+
+        protected override void OnPause()
+        {
+            EngagementAgent.EndActivity();
+            base.OnPause();
         }
     }
 }
