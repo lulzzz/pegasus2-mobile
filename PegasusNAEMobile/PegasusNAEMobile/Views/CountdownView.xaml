@@ -23,7 +23,7 @@
           <RowDefinition Height="*"></RowDefinition>
           <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Text="Pegasus Mission Goes Supersonic with NAE" TextColor="White" x:Name="HeroTitle" XAlign="Start" Margin="15,20,25,0"></Label>
+        <Label  x:Name="HeroTitle" Text="Pegasus Mission Goes Supersonic with NAE" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" XAlign="Start" Margin="15,20,25,0"></Label>
         
         <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
           <Button Text="REGISTER FOR EVENT NOTIFICATIONS"
@@ -31,14 +31,14 @@
                   TextColor="White" 
                   HeightRequest="50"
                   Margin="0,0,0,10"
-                  FontAttributes="Bold"
+                 
                   BackgroundColor="#d90000"
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="Center"></Button>
           <Button Text="WATCH LIVE EVENT"
                   x:Name="WatchEventButton"
                   TextColor="White"
-                  FontAttributes="Bold"
+                  
                   Margin="0,15,0,0"
                   HeightRequest="50"
                   Clicked="WatchLiveEvent_Clicked"
@@ -49,7 +49,7 @@
                  x:Name="WatchPreviousRuns"
                  TextColor="White"
                  Margin="0,15,0,0"
-                 FontAttributes="Bold"
+                 
                  HeightRequest="50"
                  Clicked="WatchPreviousRuns_Clicked"
                  BackgroundColor="#d90000"
