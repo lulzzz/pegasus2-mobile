@@ -147,14 +147,11 @@
     <AndroidResource Include="Resources\drawable\pegasus_herobackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pause.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Play.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\pegasus_vehicle.png" />
     <AndroidResource Include="Resources\drawable\pegasus_vehicle_small.png" />
+    <AndroidResource Include="Resources\drawable\Send.png" />
+    <AndroidResource Include="Resources\drawable\Play.png" />
+    <AndroidResource Include="Resources\drawable\Pause.png" />
     <Content Include="Resources\res\drawable\engagement_close.png" />
     <Content Include="Resources\res\drawable\engagement_content_title.xml" />
     <Content Include="Resources\res\layout\engagement_button_bar.xml" />
