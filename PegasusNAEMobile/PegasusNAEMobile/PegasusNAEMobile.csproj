@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="CustomRenderers\RoundedBoxView.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Pages\LiveEventTelemetry.xaml.cs">
       <DependentUpon>LiveEventTelemetry.xaml</DependentUpon>
