@@ -66,7 +66,7 @@
             <Label Text="MAX ACCELERATION" Grid.Row="0" TextColor="White" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
             <Grid>
               <BoxView Grid.Row="0" HeightRequest="30" Color="Red" WidthRequest="60" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></BoxView>
-              <Label Grid.Row="0" VerticalOptions="Center" TextColor="White" HorizontalOptions="CenterAndExpand" Text="4.5g"></Label>
+              <Label x:Name="MaxAccl" Grid.Row="0" VerticalOptions="Center" TextColor="White" HorizontalOptions="CenterAndExpand" Text="4.5g"></Label>
             </Grid>
             <Label Text="NOSE WEIGHT" Margin="0,10,0,0" Grid.Row="1" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>             
           </StackLayout>
@@ -82,7 +82,7 @@
                <Label Text="SIDE TO SIDE" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
                <Grid>
                  <BoxView Grid.Row="0" Color="Red" HeightRequest="30" WidthRequest="80" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></BoxView>
-                 <Label Text="3.2g" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" x:Name="SideToSideG"></Label>
+                 <Label x:Name="SideToSide" Text="3.2g" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
                </Grid>
              </StackLayout>
           </Grid>
@@ -92,14 +92,14 @@
                 <Label Text="REAR LEFT" TextColor="White"></Label>
                 <Grid>
                  <BoxView HeightRequest="30" WidthRequest="60" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Color="#656472"></BoxView>
-                 <Label TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Text="502 lbf"></Label>
+                 <Label x:Name="RearLeft" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Text="502 lbf"></Label>
                </Grid>
                 </StackLayout>
               <StackLayout Orientation="Vertical" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
                 <Label Text="REAR RIGHT" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
                 <Grid>
                  <BoxView HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="60" Color="#656472"></BoxView>
-                 <Label Text="431 lbf" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                 <Label x:Name="RearRight" Text="431 lbf" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>
                </Grid>
               
               </StackLayout>
@@ -109,7 +109,14 @@
       
       </Grid>
         <Grid Grid.Row="1" Margin="15">
-          <Slider Minimum="0" Maximum="100"></Slider>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="60"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Button x:Name="PlayPauseButton" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="PlayPauseButton_Clicked"></Button>
+          <Slider x:Name="TelemetrySlider" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1" Value="{Binding currenttelemetrypos}"></Slider>
+          <Label x:Name="TotalTelemetryPlaybackTime" Grid.Column="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
         </Grid>
       </Grid>
       <!--<Grid>
