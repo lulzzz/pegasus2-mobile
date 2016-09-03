@@ -36,6 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Collections\OnboardTelemetryCollection.cs" />
+    <Compile Include="CustomRenderers\Flip.cs" />
     <Compile Include="CustomRenderers\RoundedBoxView.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Pages\LiveEventTelemetry.xaml.cs">
