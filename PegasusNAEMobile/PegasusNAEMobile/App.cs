@@ -10,6 +10,8 @@ using Piraeus.ServiceModel.Protocols.Coap;
 using PegasusNAEMobile.ViewModels;
 using ModernHttpClient;
 using System.Net.Http;
+using PegasusNAEMobile.Collections;
+
 namespace PegasusNAEMobile
 {
     public delegate void WebSocketEventHandler(object sender, string message);
@@ -250,6 +252,30 @@ namespace PegasusNAEMobile
             }
         }
 
+        /// <summary>
+        /// Downloads the file that contains oboard telemetry
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> GetLaunchInfoAsync()
+        {
+            var request = WebRequest.CreateHttp(Constants.TempEagleTelemetryUri);
+            try
+            {
+                WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
+                using (var responseStream = responseObject.GetResponseStream())
+                {
+                    using (var sr = new StreamReader(responseStream))
+                    {
+                        string jsonString = await sr.ReadToEndAsync();
 
+                        return jsonString;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
