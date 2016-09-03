@@ -44,7 +44,7 @@
           <StackLayout Orientation="Vertical" Grid.Row="3" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
             <Label Text="THROTTLE POSITION" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
             <Label Text="120" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
-            <Slider x:Name="ThrottlePositionSliderNonLive" Minimum="0" Maximum="3" IsEnabled="False"></Slider>
+            <ProgressBar x:Name="ThrottlePositionSliderNonLive"></ProgressBar>
           </StackLayout>
 
           <StackLayout Orientation="Vertical" Grid.Row="4" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">

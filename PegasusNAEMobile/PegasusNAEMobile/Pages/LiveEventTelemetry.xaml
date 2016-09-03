@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Black"
              xmlns:converter="clr-namespace:PegasusNAEMobile"
+             xmlns:renderer="clr-namespace:PegasusNAEMobile;assembly=PegasusNAEMobile"
              x:Class="PegasusNAEMobile.LiveEventTelemetry">  
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -11,14 +12,19 @@
   </ContentPage.Resources>
   <ContentPage.Content>
     <ScrollView>      
-        <StackLayout Orientation="Vertical" Grid.Column="0" Spacing="10">
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Grid.Column="0" Spacing="10">
           <Grid Margin="5,5,5,10">            
               <Grid.RowDefinitions>
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Label x:Name="RunTimeStamp" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
-            <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>         
+            <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>
+            <renderer:RoundedBoxView WidthRequest="100" HeightRequest="200" Color="Red" Grid.Column="1"></renderer:RoundedBoxView>
           </Grid>
 
           <!--Air Speed-->
@@ -37,7 +43,7 @@
 
             </StackLayout>
             <StackLayout Orientation="Horizontal" Grid.Row="2">
-              <Label x:Name="SppedKPH" Text="{Binding LiveTelemetry.Data.GpsSpeedKph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label x:Name="SpeedKPH" Text="{Binding LiveTelemetry.Data.GpsSpeedKph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
             </StackLayout>
@@ -50,7 +56,7 @@
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             
-            <Label Text="SOUND LEVEL"  TextColor="White"></Label>
+            <Label Text="SOUND LEVEL" x:Name="SoundLevelLabel"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
               <Label x:Name="SoundLevel" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="DB" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>

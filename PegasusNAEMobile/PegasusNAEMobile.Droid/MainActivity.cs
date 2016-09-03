@@ -277,6 +277,7 @@ namespace PegasusNAEMobile.Droid
         protected override void OnResume()
         {
             EngagementAgent.StartActivity(EngagementAgentUtils.BuildEngagementActivityName(Java.Lang.Class.FromType(this.GetType())), null);
+
             base.OnResume();
         }
 
