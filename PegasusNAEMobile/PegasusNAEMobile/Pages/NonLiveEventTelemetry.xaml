@@ -4,122 +4,118 @@
              BackgroundColor="Black"
              x:Class="PegasusNAEMobile.NonLiveEventTelemetry">
   <ContentPage.Content>
-    <ScrollView>
-      <Grid>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <ScrollView Grid.Row="0">
+        <!--<Grid>
         <Grid.RowDefinitions>
           <RowDefinition Height="Auto"></RowDefinition>
           <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-       <Grid Grid.Row="0">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*"></ColumnDefinition>
-          <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Margin="15,15,0,0">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-          </Grid.RowDefinitions>
-          <StackLayout Orientation="Vertical" Grid.Row="0" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
-            <Label x:Name="RunTimeStampNonLive" Text="August 31, 2016" TextColor="White"></Label>
-            <Label x:Name="RunIDNonLive" Text="Joe, Pilot" Grid.Row="1" TextColor="#656472"></Label>         
-          </StackLayout> 
-          <StackLayout Orientation="Vertical" Grid.Row="1" Margin="12,0,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
-            <Label x:Name="SpeedGridTitleNonLive" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="MAX AIR SPEED"  TextColor="White"></Label>
-            <StackLayout Orientation="Horizontal">
-              <Label x:Name="SpeedKPHNonLive" Text="763.965"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
-              <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
-            </StackLayout>
-          </StackLayout>
-          
-          <StackLayout Orientation="Vertical" Grid.Row="2" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
-            <Label Text="STICK POSITION" TextColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
-            <Slider x:Name="StickPositionSliderNonLive" Minimum="0" Maximum="3" IsEnabled="False"></Slider>
-          </StackLayout>
-          
-          <StackLayout Orientation="Vertical" Grid.Row="3" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
-            <Label Text="THROTTLE POSITION" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
-            <Label Text="120" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
-            <ProgressBar x:Name="ThrottlePositionSliderNonLive"></ProgressBar>
-          </StackLayout>
-
-          <StackLayout Orientation="Vertical" Grid.Row="4" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
-            <Label  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="STEERING BOX POSITION"  TextColor="White"></Label>
-            <StackLayout Orientation="Horizontal">
-              <Label x:Name="SteeringBoxPositionNonLive" TextColor="White" Text="-20"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
-              <Label Text="DEGREES" VerticalOptions="End" HorizontalOptions="StartAndExpand" TextColor="#656472"></Label>
-            </StackLayout>
-          </StackLayout>
-
-        </Grid>
-        <Grid Grid.Column="1">
-          <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-          </Grid.RowDefinitions>
-          <StackLayout Orientation="Vertical" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15,0,0">
-            <Label Text="MAX ACCELERATION" Grid.Row="0" TextColor="White" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
-            <Grid>
-              <BoxView Grid.Row="0" HeightRequest="30" Color="Red" WidthRequest="60" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></BoxView>
-              <Label x:Name="MaxAccl" Grid.Row="0" VerticalOptions="Center" TextColor="White" HorizontalOptions="CenterAndExpand" Text="4.5g"></Label>
-            </Grid>
-            <Label Text="NOSE WEIGHT" Margin="0,10,0,0" Grid.Row="1" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>             
-          </StackLayout>
-          <Grid Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+        </Grid.RowDefinitions>-->
+        <Grid Grid.Row="0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <Grid Grid.Column="0" Margin="15,15,0,0">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Image x:Name="vehicle" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" IsVisible="True"></Image>                    
-            <BoxView Grid.Row="0" VerticalOptions="Center" Color="Red" HorizontalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="80"></BoxView>
-            <Label x:Name="NoseWeightNonLive" Text="231 lbf" TextColor="White" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>                   
-            <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-               <Label Text="SIDE TO SIDE" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
-               <Grid>
-                 <BoxView Grid.Row="0" Color="Red" HeightRequest="30" WidthRequest="80" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></BoxView>
-                 <Label x:Name="SideToSide" Text="3.2g" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
-               </Grid>
-             </StackLayout>
-          </Grid>
-          <StackLayout Orientation="Vertical" Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">              
-              <StackLayout Orientation="Vertical" Grid.Column="0" Margin="10,0,10,0" HorizontalOptions="Center" VerticalOptions="Center">
-                <Label Text="REAR LEFT" TextColor="White"></Label>
-                <Grid>
-                 <BoxView HeightRequest="30" WidthRequest="60" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Color="#656472"></BoxView>
-                 <Label x:Name="RearLeft" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Text="502 lbf"></Label>
-               </Grid>
-                </StackLayout>
-              <StackLayout Orientation="Vertical" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
-                <Label Text="REAR RIGHT" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
-                <Grid>
-                 <BoxView HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="60" Color="#656472"></BoxView>
-                 <Label x:Name="RearRight" Text="431 lbf" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>
-               </Grid>
-              
+            <StackLayout Orientation="Vertical" Grid.Row="0" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+              <Label x:Name="RunTimeStampNonLive" Text="August 31, 2016" TextColor="White"></Label>
+              <Label x:Name="RunIDNonLive" Text="Joe, Pilot" Grid.Row="1" TextColor="#656472"></Label>
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="12,0,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+              <Label x:Name="SpeedGridTitleNonLive" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="MAX AIR SPEED"  TextColor="White"></Label>
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="SpeedKPHNonLive" Text="763.965"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+                <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
               </StackLayout>
             </StackLayout>
-          </StackLayout>
-        </Grid>             
-      
-      </Grid>
-        <Grid Grid.Row="1" Margin="15">
-          <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="60"></ColumnDefinition>
-          </Grid.ColumnDefinitions>
-          <Button x:Name="PlayPauseButton" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="PlayPauseButton_Clicked"></Button>
-          <Slider x:Name="TelemetrySlider" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1" Value="{Binding currenttelemetrypos}"></Slider>
-          <Label x:Name="TotalTelemetryPlaybackTime" Grid.Column="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+
+            <StackLayout Orientation="Vertical" Grid.Row="2" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+              <Label Text="STICK POSITION" TextColor="White"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
+              <Slider x:Name="StickPositionSliderNonLive" Minimum="0" Maximum="3" IsEnabled="False"></Slider>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="3" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+              <Label Text="THROTTLE POSITION" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="Center"></Label>
+              <Label Text="120" TextColor="White" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
+              <ProgressBar x:Name="ThrottlePositionSliderNonLive"></ProgressBar>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" Grid.Row="4" Margin="12,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+              <Label  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="STEERING BOX POSITION"  TextColor="White"></Label>
+              <StackLayout Orientation="Horizontal">
+                <Label x:Name="SteeringBoxPositionNonLive" TextColor="White" Text="-20"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"></Label>
+                <Label Text="DEGREES" VerticalOptions="End" HorizontalOptions="StartAndExpand" TextColor="#656472"></Label>
+              </StackLayout>
+            </StackLayout>
+
+          </Grid>
+          <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackLayout Orientation="Vertical" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,15,0,0">
+              <Label Text="MAX ACCELERATION" Grid.Row="0" TextColor="White" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
+              <Grid>
+                <BoxView Grid.Row="0" HeightRequest="30" Color="Red" WidthRequest="60" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></BoxView>
+                <Label x:Name="MaxAccl" Grid.Row="0" VerticalOptions="Center" TextColor="White" HorizontalOptions="CenterAndExpand" Text="4.5g"></Label>
+              </Grid>
+              <Label Text="NOSE WEIGHT" Margin="0,10,0,0" Grid.Row="1" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            </StackLayout>
+            <Grid Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+              </Grid.RowDefinitions>
+              <Image x:Name="vehicle" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" IsVisible="True"></Image>
+              <BoxView Grid.Row="0" VerticalOptions="Center" Color="Red" HorizontalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="80"></BoxView>
+              <Label x:Name="NoseWeightNonLive" Text="231 lbf" TextColor="White" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
+              <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                <Label Text="SIDE TO SIDE" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                <Grid>
+                  <BoxView Grid.Row="0" Color="Red" HeightRequest="30" WidthRequest="80" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></BoxView>
+                  <Label x:Name="SideToSide" Text="3.2g" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
+                </Grid>
+              </StackLayout>
+            </Grid>
+            <StackLayout Orientation="Vertical" Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+              <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical" Grid.Column="0" Margin="10,0,10,0" HorizontalOptions="Center" VerticalOptions="Center">
+                  <Label Text="REAR LEFT" TextColor="White"></Label>
+                  <Grid>
+                    <BoxView HeightRequest="30" WidthRequest="60" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Color="#656472"></BoxView>
+                    <Label x:Name="RearLeft" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Text="502 lbf"></Label>
+                  </Grid>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Margin="10,0,10,0">
+                  <Label Text="REAR RIGHT" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+                  <Grid>
+                    <BoxView HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="60" Color="#656472"></BoxView>
+                    <Label x:Name="RearRight" Text="431 lbf" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                  </Grid>
+
+                </StackLayout>
+              </StackLayout>
+            </StackLayout>
+          </Grid>
+
         </Grid>
-      </Grid>
-      <!--<Grid>
+
+        <!--</Grid>-->
+        <!--<Grid>
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"></ColumnDefinition>
           <ColumnDefinition Width="*"></ColumnDefinition>
@@ -216,7 +212,7 @@
         </Grid>             
       
       </Grid>-->
-      <!--<Grid Margin="10">
+        <!--<Grid Margin="10">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"></ColumnDefinition>
           <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -225,7 +221,9 @@
           <RowDefinition Height="*"></RowDefinition>
           <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        --><!--Stuff on the right side : Max Acc, Nose Weight, Rear Left, Rear Right, Up and Down--><!--
+        -->
+        <!--Stuff on the right side : Max Acc, Nose Weight, Rear Left, Rear Right, Up and Down-->
+        <!--
         <Grid Grid.Column="1" Grid.Row="0">
          <Grid>
             <Grid.RowDefinitions>
@@ -234,7 +232,9 @@
               <RowDefinition Height="Auto"></RowDefinition>
               <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-           --><!--Data above the vehicle image--><!--
+           -->
+        <!--Data above the vehicle image-->
+        <!--
            <StackLayout Grid.Row="0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
              <Label Text="MAX ACCELERATION" Grid.Row="0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
              <Grid>
@@ -242,7 +242,9 @@
                <Label Grid.Row="0" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Text="4.5g"></Label>
              </Grid>
            </StackLayout>
-           --><!--Data that will overlay on the vehicle image--><!--
+           -->
+        <!--Data that will overlay on the vehicle image-->
+        <!--
             <Grid Grid.Row="1">
              <Grid.RowDefinitions>
                <RowDefinition Height="Auto"></RowDefinition>
@@ -263,7 +265,9 @@
              </StackLayout>
              
            </Grid>
-           --><!--Data that will be displayed below the vehicle image--><!--
+           -->
+        <!--Data that will be displayed below the vehicle image-->
+        <!--
            <StackLayout Orientation="Horizontal" Grid.Row="2">
              <StackLayout Orientation="Vertical">
                <Label Text="REAR LEFT"></Label>
@@ -293,7 +297,9 @@
          </Grid>
         </Grid>
         
-        --><!--Stuff on the left side--><!--
+        -->
+        <!--Stuff on the left side-->
+        <!--
         <StackLayout Grid.Column="0" Spacing="10" Grid.Row="0" Orientation="Vertical">
           <Grid>
             <Grid.RowDefinitions>
@@ -382,6 +388,19 @@
         <Slider Minimum="0" Maximum="100" Grid.Column="1" IsEnabled="True"></Slider>
         <Label x:Name="TotalLengthTime" Grid.Column="2"></Label>
       </Grid>-->
-    </ScrollView>
+      </ScrollView>
+      <Grid Grid.Row="1" Margin="15">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="50"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="60"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Button x:Name="PlayPauseButton" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="PlayPauseButton_Clicked"></Button>
+      <Slider x:Name="TelemetrySlider" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1" Value="{Binding currenttelemetrypos}"></Slider>
+      <Label x:Name="TotalTelemetryPlaybackTime" Grid.Column="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+    </Grid>
+    </Grid>
+   
+    
   </ContentPage.Content>
 </ContentPage>

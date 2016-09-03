@@ -23,18 +23,7 @@ namespace PegasusNAEMobile
             ronboardtelem = new RootObjectOnboardTelemetry();
             currenttelemetrypos = 0;
             cancellation = new CancellationTokenSource();
-            if (Device.OS == TargetPlatform.iOS)
-            {
-                PlayPauseButton.Image = "Pause.png";
-            }
-            else if (Device.OS == TargetPlatform.Android)
-            {
-                PlayPauseButton.Image = "Pause.png";
-            }
-            else
-            {
-                PlayPauseButton.Image = "Assets/Pause.png";
-            }
+            updateButtonIcon("Pause.png");
             vehicle.Source = Device.OnPlatform(
             iOS: ImageSource.FromFile("pegasus_vehicle_small.png"),
             Android: ImageSource.FromFile("pegasus_vehicle_small.png"),
@@ -42,6 +31,7 @@ namespace PegasusNAEMobile
             TelemetrySlider.PropertyChanged += TelemetrySlider_PropertyChanged;
             TelemetrySlider.ValueChanged += TelemetrySlider_ValueChanged;
             TelemetrySlider.BindingContext = currenttelemetrypos;
+            
             System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
         }
 
@@ -75,35 +65,13 @@ namespace PegasusNAEMobile
         {
             if (PlayPauseIcon)   // Pause is displayed. So Pause the playback
             {
-                if (Device.OS == TargetPlatform.iOS)
-                {
-                    PlayPauseButton.Image = "Play.png";
-                }
-                else if (Device.OS == TargetPlatform.Android)
-                {
-                    PlayPauseButton.Image = "Play.png";
-                }
-                else
-                {
-                    PlayPauseButton.Image = "Assets/Play.png";
-                }
+                updateButtonIcon("Play.png");
                 cancellation.Cancel();
-                PlayPauseIcon = false;   // Because now play icon is diplayed
+                PlayPauseIcon = false;   // Because the button has been changed to show the play icon
             }
             else   // Play icon is displayed. Set it to Pause and start the playback.
             {
-                if (Device.OS == TargetPlatform.iOS)
-                {
-                    PlayPauseButton.Image = "Pause.png";
-                }
-                else if (Device.OS == TargetPlatform.Android)
-                {
-                    PlayPauseButton.Image = "Pause.png";
-                }
-                else
-                {
-                    PlayPauseButton.Image = "Assets/Pause.png";
-                }
+                updateButtonIcon("Pause.png");
                 PlayPauseIcon = true;
                 cancellation = new CancellationTokenSource();
                 TimeSpan T = TimeSpan.FromSeconds(0.5);
@@ -149,10 +117,30 @@ namespace PegasusNAEMobile
                 else
                 {
                     System.Diagnostics.Debug.WriteLine("Stopping Timer");
+                    currenttelemetrypos = 0;
+                    TelemetrySlider.Value = 0;
+                    updateButtonIcon("Play.png");
+                    PlayPauseIcon = false;
                     return false;
                 }
             });
             
+        }
+
+        private void updateButtonIcon(string iconfilename)
+        {
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                PlayPauseButton.Image = iconfilename;
+            }
+            else if (Device.OS == TargetPlatform.Android)
+            {
+                PlayPauseButton.Image = iconfilename;
+            }
+            else
+            {
+                PlayPauseButton.Image = "Assets/" + iconfilename;
+            }
         }
 
         private string RoundToDecimalPlaces(double val)
