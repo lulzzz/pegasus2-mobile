@@ -19,7 +19,7 @@ namespace PegasusNAEMobile.Collections
     public class Collection
     {
         [JsonProperty("timestamp")]
-        public string timestamp { get; set; }
+        public DateTime timestamp { get; set; }
         [JsonProperty("aero1Psi")]  // not gonna show any of the aero
         public double Aero1Psi { get; set; }
         [JsonProperty("aero2Psi")]
