@@ -69,5 +69,10 @@ namespace PegasusData
         {
             get { return "coaps://pegasusmission.io/publish?topic=http://pegasus2.org/usermessage"; }
         }
+
+        public static string TempEagleTelemetryUri
+        {
+            get { return "https://pegasustest.blob.core.windows.net/pegasustestblob/eagletelemetry.json"; }
+        }
     }
 }

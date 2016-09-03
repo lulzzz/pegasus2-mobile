@@ -24,7 +24,6 @@
             </Grid.ColumnDefinitions>
             <Label x:Name="RunTimeStamp" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
             <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>
-            <renderer:RoundedBoxView WidthRequest="100" HeightRequest="200" Color="Red" Grid.Column="1"></renderer:RoundedBoxView>
           </Grid>
 
           <!--Air Speed-->
@@ -148,7 +147,21 @@
             <Label Grid.Row="2" Text="HEADING" TextColor="#656472"></Label>
           </Grid>
 
+          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="20"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Entry Grid.Row="0" Grid.Column="0" x:Name="NAEUserMessage" Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Entry>
+            <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>
+            <Label x:Name="UserMessageSentStatus" TextColor="#d90000" Grid.Row="1" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+          </Grid>
         </StackLayout>
+        
         <!--<Grid Grid.ColumnSpan="2">
           <Grid.ColumnDefinitions>
             <Grid.ColumnDefinition Width="*"></Grid.ColumnDefinition>
@@ -157,7 +170,6 @@
           </Grid.ColumnDefinitions>
           
         </Grid>-->
-    </ScrollView>
-   
+    </ScrollView>   
   </ContentPage.Content>
 </ContentPage>

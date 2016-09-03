@@ -16,7 +16,10 @@ namespace PegasusNAEMobile
         {
             InitializeComponent();
             Padding = new Thickness(5, Device.OnPlatform(20, 0, 0), 5, 0);
+            //sendMessageButton.Image = ImageSource.FromFile("Assets/pegasus_herobackground.png");
+            sendMessageButton.Image = "Assets/Send.png";
             SizeChanged += LiveEventTelemetry_SizeChanged;
+            UserMessageSentStatus.FadeTo(0, 0);
         }
 
         private void LiveEventTelemetry_SizeChanged(object sender, EventArgs e)
@@ -31,6 +34,39 @@ namespace PegasusNAEMobile
             SpeedKPH.FontSize = fontsizeLarge;            
             SoundLevelLabel.FontSize = fontsizeMedium;
             SoundLevel.FontSize = fontsizeLarge;
+        }
+
+        private async void sendMessageButton_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                sendMessageButton.IsEnabled = false;
+                await App.Instance.SendUserMessageAsync(NAEUserMessage.Text);
+                UserMessageSentStatus.Text = "Your message was sent successfully";
+                await UserMessageSentStatus.FadeTo(1, 500);
+                startTimer(1);
+            }
+            catch (Exception ex)
+            {
+                UserMessageSentStatus.Text = "There was a problem sending your message";
+                await UserMessageSentStatus.FadeTo(1, 500);
+                startTimer(1);
+            }
+        }
+
+        private void startTimer(int seconds)
+        {
+            TimeSpan ts = TimeSpan.FromSeconds(seconds);
+            try
+            {
+                Device.StartTimer(ts, () => { UserMessageSentStatus.FadeTo(0, 300); return true; });
+                sendMessageButton.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                UserMessageSentStatus.FadeTo(0, 200);
+                sendMessageButton.IsEnabled = true;
+            }
         }
 
         protected override void OnAppearing()
