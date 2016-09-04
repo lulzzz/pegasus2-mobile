@@ -20,12 +20,7 @@ namespace PegasusNAEMobile
         public NonLiveEventTelemetry(PreviousRunCollection rpc)
         {
             InitializeComponent();
-            // Set image background for a button.
-            NAE_ScaledDown.Source = Device.OnPlatform(
-            iOS: ImageSource.FromFile("NAE_ScaledDown.png"),
-            Android: ImageSource.FromFile("NAE_ScaledDown.png"),
-            WinPhone: ImageSource.FromFile("Assets/NAE_ScaledDown.png"));
-
+           
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
 
             runcollect = new PreviousRunCollection();
@@ -164,6 +159,11 @@ namespace PegasusNAEMobile
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void TakeToVideosPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VideoList());
         }
 
         private string RoundToDecimalPlaces(double val)

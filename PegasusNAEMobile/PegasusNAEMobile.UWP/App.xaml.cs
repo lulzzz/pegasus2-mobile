@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Microsoft.Azure.Engagement;
+using Octane.Xam.VideoPlayer;
+using Octane.Xam.VideoPlayer.UWP;
 
 namespace PegasusNAEMobile.UWP
 {
@@ -60,7 +62,7 @@ namespace PegasusNAEMobile.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-
+                FormsVideoPlayer.Init();
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
