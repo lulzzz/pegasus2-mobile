@@ -16,6 +16,7 @@ namespace PegasusNAEMobile
         {
             runlist = new ObservableCollection<PreviousRunCollection>();
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "Back.png";
