@@ -156,6 +156,11 @@
     <AndroidResource Include="Resources\drawable\Back.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\Back.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\Back.png" />
+    <AndroidResource Include="Resources\drawable\NAE_ScaledDown.png" />
+    <AndroidResource Include="Resources\drawable\videocam.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\videocam.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\videocam.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\videocam.png" />
     <Content Include="Resources\res\drawable\engagement_close.png" />
     <Content Include="Resources\res\drawable\engagement_content_title.xml" />
     <Content Include="Resources\res\layout\engagement_button_bar.xml" />

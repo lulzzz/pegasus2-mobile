@@ -111,12 +111,14 @@
   <ItemGroup>
     <Content Include="Assets\Back%402x.png" />
     <Content Include="Assets\Back.png" />
+    <Content Include="Assets\NAE_ScaledDown.png" />
     <Content Include="Assets\Pause.png" />
     <Content Include="Assets\pegasus_herobackground.png" />
     <Content Include="Assets\pegasus_vehicle.png" />
     <Content Include="Assets\pegasus_vehicle_small.png" />
     <Content Include="Assets\Play.png" />
     <Content Include="Assets\Send.png" />
+    <Content Include="Assets\videocam.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

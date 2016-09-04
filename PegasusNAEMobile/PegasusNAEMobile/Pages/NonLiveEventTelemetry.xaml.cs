@@ -20,64 +20,59 @@ namespace PegasusNAEMobile
         public NonLiveEventTelemetry(PreviousRunCollection rpc)
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            // Set image background for a button.
+            NAE_ScaledDown.Source = Device.OnPlatform(
+            iOS: ImageSource.FromFile("NAE_ScaledDown.png"),
+            Android: ImageSource.FromFile("NAE_ScaledDown.png"),
+            WinPhone: ImageSource.FromFile("Assets/NAE_ScaledDown.png"));
+
+            NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
+
             runcollect = new PreviousRunCollection();
             runcollect = rpc;
             PlayPauseIcon = true; //Pause Icon is default
             ronboardtelem = new RootObjectOnboardTelemetry();
             currenttelemetrypos = 0;
-            cancellation = new CancellationTokenSource();
+            cancellation = new CancellationTokenSource();      // This will be used to stop the timer when the user leaves the page.
             updateButtonIcon("Pause.png");
+
+            // Add the Vehicle Image to the view.
             vehicle.Source = Device.OnPlatform(
             iOS: ImageSource.FromFile("pegasus_vehicle_small.png"),
             Android: ImageSource.FromFile("pegasus_vehicle_small.png"),
             WinPhone: ImageSource.FromFile("Assets/pegasus_vehicle_small.png"));
-            TelemetrySlider.PropertyChanged += TelemetrySlider_PropertyChanged;
-            TelemetrySlider.ValueChanged += TelemetrySlider_ValueChanged;
+            //TelemetrySlider.PropertyChanged += TelemetrySlider_PropertyChanged;
+            //TelemetrySlider.ValueChanged += TelemetrySlider_ValueChanged;
             TelemetrySlider.BindingContext = currenttelemetrypos;
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "Back.png";
+                TakeToVideosPage.Image = "videocam.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
                 BackButton.Image = "Back.png";
+                TakeToVideosPage.Image = "videocam.png";
             }
             else
             {
                 BackButton.Image = "Assets/" + "Back.png";
+                TakeToVideosPage.Image = "Assets/videocam.png";
             }
-            System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
+           // System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
         }
 
-        //public NonLiveEventTelemetry(PreviousRunCollection rprcollect)
-        //{
-        //   // runcollect = new PreviousRunCollection();
-        //    this.runcollect = rprcollect;
-        //   // InitializeComponent();
-        //}
-        private void TelemetrySlider_ValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
-            //System.Diagnostics.Debug.WriteLine("Value Changed");
-        }
-
-        private void TelemetrySlider_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            //throw new NotImplementedException();
-            //System.Diagnostics.Debug.WriteLine("Property Changed : " + e.PropertyName);
-        }
-
+       
         protected async override void OnAppearing()
         {
-            string onboardtelemetry = await App.Instance.GetFileFromBlob(runcollect.OnboardTelemetryUrl);
+            string onboardtelemetry = await App.Instance.GetFileFromBlob(runcollect.OnboardTelemetryUrl);   // Get the telemetry JSON file from the blob storage
             ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
             TelemetrySlider.Minimum = 0;
             TelemetrySlider.Maximum = ronboardtelem.collection.Count;
             TimeSpan duration = new TimeSpan(0, 0, 0, 0, (ronboardtelem.collection.Count * 500));
             TotalTelemetryPlaybackTime.Text = duration.ToString("g");
             TimeSpan T = TimeSpan.FromSeconds(0.5);
-            UpdateNonLiveTelemetryUI(T);
+            UpdateNonLiveTelemetryUI(T);                     
             //System.Diagnostics.Debug.WriteLine(rtelem.collection.Count);
             base.OnAppearing();
         }
@@ -99,12 +94,14 @@ namespace PegasusNAEMobile
                 UpdateNonLiveTelemetryUI(T);
             }
         }
+
         protected override void OnDisappearing()
         {
             //Interlocked.Exchange(ref this.cancellation, new CancellationTokenSource()).Cancel();
             cancellation.Cancel();
             base.OnDisappearing();
         }
+
         /// <summary>
         /// Callback method for the Timer. Updates the UI every T seconds.
         /// </summary>
