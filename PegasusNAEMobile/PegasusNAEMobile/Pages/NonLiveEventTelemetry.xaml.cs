@@ -20,6 +20,7 @@ namespace PegasusNAEMobile
         public NonLiveEventTelemetry(PreviousRunCollection rpc)
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             runcollect = new PreviousRunCollection();
             runcollect = rpc;
             PlayPauseIcon = true; //Pause Icon is default
