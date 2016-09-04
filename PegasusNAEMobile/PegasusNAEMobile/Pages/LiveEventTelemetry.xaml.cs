@@ -15,6 +15,7 @@ namespace PegasusNAEMobile
         public LiveEventTelemetry()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(5, Device.OnPlatform(20, 0, 0), 5, 0);
             //sendMessageButton.Image = ImageSource.FromFile("Assets/pegasus_herobackground.png");
             sendMessageButton.Image = "Assets/Send.png";
