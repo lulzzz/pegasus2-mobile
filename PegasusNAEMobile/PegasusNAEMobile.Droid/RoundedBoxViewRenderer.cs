@@ -10,9 +10,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+
 namespace PegasusNAEMobile.Droid
 {
-    public class RoundedBoxViewRenderer : BoxViewRenderer
+    public class RoundedBoxViewRenderer : BoxRenderer
     {
+        
     }
 }
