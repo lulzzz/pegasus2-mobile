@@ -109,6 +109,8 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Back%402x.png" />
+    <Content Include="Assets\Back.png" />
     <Content Include="Assets\Pause.png" />
     <Content Include="Assets\pegasus_herobackground.png" />
     <Content Include="Assets\pegasus_vehicle.png" />

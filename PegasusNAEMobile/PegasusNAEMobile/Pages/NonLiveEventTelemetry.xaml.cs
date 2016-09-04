@@ -35,7 +35,18 @@ namespace PegasusNAEMobile
             TelemetrySlider.PropertyChanged += TelemetrySlider_PropertyChanged;
             TelemetrySlider.ValueChanged += TelemetrySlider_ValueChanged;
             TelemetrySlider.BindingContext = currenttelemetrypos;
-            
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                BackButton.Image = "Back.png";
+            }
+            else if (Device.OS == TargetPlatform.Android)
+            {
+                BackButton.Image = "Back.png";
+            }
+            else
+            {
+                BackButton.Image = "Assets/" + "Back.png";
+            }
             System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
         }
 
@@ -151,6 +162,11 @@ namespace PegasusNAEMobile
             {
                 PlayPauseButton.Image = "Assets/" + iconfilename;
             }
+        }
+
+        private async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
 
         private string RoundToDecimalPlaces(double val)

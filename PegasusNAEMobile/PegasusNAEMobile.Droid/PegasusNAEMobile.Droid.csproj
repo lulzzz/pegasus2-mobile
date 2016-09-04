@@ -152,6 +152,10 @@
     <AndroidResource Include="Resources\drawable\Send.png" />
     <AndroidResource Include="Resources\drawable\Play.png" />
     <AndroidResource Include="Resources\drawable\Pause.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Back.png" />
+    <AndroidResource Include="Resources\drawable\Back.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Back.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Back.png" />
     <Content Include="Resources\res\drawable\engagement_close.png" />
     <Content Include="Resources\res\drawable\engagement_content_title.xml" />
     <Content Include="Resources\res\layout\engagement_button_bar.xml" />

@@ -16,6 +16,18 @@ namespace PegasusNAEMobile
         {
             runlist = new ObservableCollection<PreviousRunCollection>();
             InitializeComponent();
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                BackButton.Image = "Back.png";
+            }
+            else if (Device.OS == TargetPlatform.Android)
+            {
+                BackButton.Image = "Back.png";
+            }
+            else
+            {
+                BackButton.Image = "Assets/" + "Back.png";
+            }
         }
 
         protected async override void OnAppearing()
@@ -46,6 +58,11 @@ namespace PegasusNAEMobile
             System.Diagnostics.Debug.WriteLine("item selected");
             PreviousRunCollection runcollect = (PreviousRunCollection)e.SelectedItem;
             await Navigation.PushAsync(new NonLiveEventTelemetry(runcollect));
+        }
+
+        private async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

@@ -21,6 +21,18 @@ namespace PegasusNAEMobile
             sendMessageButton.Image = "Assets/Send.png";
             SizeChanged += LiveEventTelemetry_SizeChanged;
             UserMessageSentStatus.FadeTo(0, 0);
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                BackButton.Image = "Back.png";
+            }
+            else if (Device.OS == TargetPlatform.Android)
+            {
+                BackButton.Image = "Back.png";
+            }
+            else
+            {
+                BackButton.Image = "Assets/" + "Back.png";
+            }
         }
 
         private void LiveEventTelemetry_SizeChanged(object sender, EventArgs e)
@@ -35,6 +47,11 @@ namespace PegasusNAEMobile
             SpeedKPH.FontSize = fontsizeLarge;            
             SoundLevelLabel.FontSize = fontsizeMedium;
             SoundLevel.FontSize = fontsizeLarge;
+        }
+
+        private async void BackButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
 
         private async void sendMessageButton_Clicked(object sender, EventArgs e)
