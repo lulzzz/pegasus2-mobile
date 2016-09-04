@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:local="clr-namespace:PegasusNAEMobile"
+                  x:Class="PegasusNAEMobile.MainPage">
+  <ContentPage.Content>
+   
+      
+        <local:CountdownView x:Name="CountdownView"
+                             HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Center"
+                             BindingContext="{Binding Countdown}">
+        </local:CountdownView>
+     
+   
+       
+         
+  </ContentPage.Content>
+ <!--<local:LiveEventTelemetry x:Name="LiveTelemetryPage" Title="Telemetry"></local:LiveEventTelemetry>-->
+</ContentPage>

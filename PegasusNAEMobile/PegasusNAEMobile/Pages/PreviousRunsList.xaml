@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black"
+             x:Class="PegasusNAEMobile.PreviousRunsList">
+  <ContentPage.Content>
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <ListView x:Name="PreviousRunListView" ItemSelected="ListViewItemSelection_Changed" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid Margin="0,15,0,15">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                  <ColumnDefinition Width="*"></ColumnDefinition>
+                  <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" BackgroundColor="#23232b" >
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                  </Grid.RowDefinitions>
+                  <BoxView Grid.Row="0" Color="#d90000" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="0.5"></BoxView>
+
+                  <StackLayout Orientation="Vertical" Margin="15,10,5,5" Grid.Row="0">
+                    <Label Text="September 26, 2016" TextColor="White"></Label>
+                    <Label Text="{Binding Pilot}" TextColor="#656472"></Label>
+                  </StackLayout>
+                  <StackLayout Orientation="Vertical" Margin="15,10,5,5" Grid.Row="1">
+                    <Label Text="MAX AIR SPEED" TextColor="#d90000"></Label>
+                    <StackLayout Orientation="Horizontal">
+                      <Label Text="846.43" TextColor="White" FontSize="30"></Label>
+                      <Label Text="KPH" HorizontalOptions="Center" VerticalOptions="End" TextColor="#656472"></Label>
+                    </StackLayout>                    
+                  </StackLayout>
+                  <StackLayout Orientation="Vertical" Margin="15,10,5,5" Grid.Row="2">
+                    <StackLayout Orientation="Horizontal">
+                      
+                    </StackLayout>
+                  </StackLayout>
+                </Grid>
+                
+              </Grid>             
+            </ViewCell>            
+          </DataTemplate>
+        </ListView.ItemTemplate>      
+      </ListView>
+    </Grid>
+    
+  </ContentPage.Content>
+</ContentPage>
