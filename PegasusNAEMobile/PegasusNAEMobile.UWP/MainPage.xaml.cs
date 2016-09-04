@@ -20,7 +20,8 @@ using Windows.Web;
 using PegasusData;
 using Newtonsoft.Json;
 using Windows.Storage.Streams;
-using PegasusNAEMobile;
+using Microsoft.Azure.Engagement.Overlay;
+
 namespace PegasusNAEMobile.UWP
 {
     public sealed partial class MainPage : IWebSocketClient

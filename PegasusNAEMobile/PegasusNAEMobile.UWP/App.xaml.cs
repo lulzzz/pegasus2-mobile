@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Azure.Engagement;
 
 namespace PegasusNAEMobile.UWP
 {
@@ -39,7 +40,7 @@ namespace PegasusNAEMobile.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            InitEngagement(e);
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -102,6 +103,17 @@ namespace PegasusNAEMobile.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        private void InitEngagement(IActivatedEventArgs e)
+        {
+            EngagementAgent.Instance.Init(e);
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            InitEngagement(args);
+            base.OnActivated(args);
         }
     }
 }
