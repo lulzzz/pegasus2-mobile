@@ -56,7 +56,7 @@ namespace PegasusNAEMobile
 
         private async void WatchPreviousRuns_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NonLiveEventTelemetry());
+            await Navigation.PushAsync(new PreviousRunsList());
         }
     }
 }

@@ -36,7 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Collections\ConfigCollection.cs" />
     <Compile Include="Collections\OnboardTelemetryCollection.cs" />
+    <Compile Include="Collections\PreviousRunCollection.cs" />
     <Compile Include="CustomRenderers\Flip.cs" />
     <Compile Include="CustomRenderers\RoundedBoxView.cs" />
     <Compile Include="Helpers\Settings.cs" />
@@ -52,8 +54,8 @@
     <Compile Include="Pages\NonLiveEventTelemetry.xaml.cs">
       <DependentUpon>NonLiveEventTelemetry.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PreviousRuns.xaml.cs">
-      <DependentUpon>PreviousRuns.xaml</DependentUpon>
+    <Compile Include="Pages\PreviousRunsList.xaml.cs">
+      <DependentUpon>PreviousRunsList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -149,7 +151,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\PreviousRuns.xaml">
+    <EmbeddedResource Include="Pages\PreviousRunsList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

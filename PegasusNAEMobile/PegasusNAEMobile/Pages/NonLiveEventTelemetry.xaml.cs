@@ -13,12 +13,15 @@ namespace PegasusNAEMobile
     public partial class NonLiveEventTelemetry : ContentPage
     {
         private RootObjectOnboardTelemetry ronboardtelem;
+        private PreviousRunCollection runcollect;
         private int currenttelemetrypos;   // used to keep track of what telemetry has been displayed and what's left
         CancellationTokenSource cancellation;  // Used to check if Timer cancellation has been requested.
         private bool PlayPauseIcon; // TRUE - Display Pause Icon , FALSE - Display Play Icon  
-        public NonLiveEventTelemetry()
+        public NonLiveEventTelemetry(PreviousRunCollection rpc)
         {
             InitializeComponent();
+            runcollect = new PreviousRunCollection();
+            runcollect = rpc;
             PlayPauseIcon = true; //Pause Icon is default
             ronboardtelem = new RootObjectOnboardTelemetry();
             currenttelemetrypos = 0;
@@ -35,6 +38,12 @@ namespace PegasusNAEMobile
             System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
         }
 
+        //public NonLiveEventTelemetry(PreviousRunCollection rprcollect)
+        //{
+        //   // runcollect = new PreviousRunCollection();
+        //    this.runcollect = rprcollect;
+        //   // InitializeComponent();
+        //}
         private void TelemetrySlider_ValueChanged(object sender, ValueChangedEventArgs e)
         {
             //throw new NotImplementedException();
@@ -49,7 +58,7 @@ namespace PegasusNAEMobile
 
         protected async override void OnAppearing()
         {
-            string onboardtelemetry = await App.Instance.GetLaunchInfoAsync();
+            string onboardtelemetry = await App.Instance.GetFileFromBlob(runcollect.OnboardTelemetryUrl);
             ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
             TelemetrySlider.Minimum = 0;
             TelemetrySlider.Maximum = ronboardtelem.collection.Count;

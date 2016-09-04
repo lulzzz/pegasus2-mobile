@@ -253,12 +253,12 @@ namespace PegasusNAEMobile
         }
 
         /// <summary>
-        /// Downloads the file that contains oboard telemetry
+        /// Downloads file from given blob URL
         /// </summary>
         /// <returns></returns>
-        public async Task<string> GetLaunchInfoAsync()
+        public async Task<string> GetFileFromBlob(string uri)
         {
-            var request = WebRequest.CreateHttp(Constants.TempEagleTelemetryUri);
+            var request = WebRequest.CreateHttp(uri);
             try
             {
                 WebResponse responseObject = await Task<WebResponse>.Factory.FromAsync(request.BeginGetResponse, request.EndGetResponse, request);
@@ -276,6 +276,6 @@ namespace PegasusNAEMobile
             {
                 return null;
             }
-        }
+        }        
     }
 }
