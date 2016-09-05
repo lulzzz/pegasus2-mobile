@@ -20,7 +20,7 @@ using Windows.Web;
 using PegasusData;
 using Newtonsoft.Json;
 using Windows.Storage.Streams;
-using Microsoft.Azure.Engagement.Overlay;
+
 
 namespace PegasusNAEMobile.UWP
 {
@@ -45,6 +45,7 @@ namespace PegasusNAEMobile.UWP
             this.InitializeComponent();
             PegasusNAEMobile.App.Init(this);
             PegasusNAEMobile.App.SetScreenHeightAndWidth((int)Window.Current.Bounds.Height, (int)Window.Current.Bounds.Width);
+            
             LoadApplication(new PegasusNAEMobile.App());
         }
 
