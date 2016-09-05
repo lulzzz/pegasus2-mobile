@@ -130,9 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -149,18 +146,35 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\pegasus_vehicle.png" />
     <AndroidResource Include="Resources\drawable\pegasus_vehicle_small.png" />
-    <AndroidResource Include="Resources\drawable\Send.png" />
-    <AndroidResource Include="Resources\drawable\Play.png" />
-    <AndroidResource Include="Resources\drawable\Pause.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\Back.png" />
-    <AndroidResource Include="Resources\drawable\Back.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\Back.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\Back.png" />
     <AndroidResource Include="Resources\drawable\NAE_ScaledDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\send.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable\videocam.png" />
+  </ItemGroup>
+  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\videocam.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\videocam.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\videocam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pause.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

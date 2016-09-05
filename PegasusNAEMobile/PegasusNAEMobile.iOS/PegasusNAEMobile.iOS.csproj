@@ -163,16 +163,25 @@
     <BundleResource Include="Resources\pegasus_vehicle_small.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Back%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Back%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\NAE_ScaledDown.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pause%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pause%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\play%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\play%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\videocam.png" />
@@ -184,22 +193,22 @@
     <BundleResource Include="Resources\videocam%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\pause.png" />
+    <BundleResource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\pause%402x.png" />
+    <BundleResource Include="Resources\back%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\pause%403x.png" />
+    <BundleResource Include="Resources\back%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Play.png" />
+    <BundleResource Include="Resources\send.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Play_2x.png" />
+    <BundleResource Include="Resources\send%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Play_3x.png" />
+    <BundleResource Include="Resources\send%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

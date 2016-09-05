@@ -1943,7 +1943,7 @@ namespace PegasusNAEMobile.Droid
 			public const int abc_textfield_search_material = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int Back = 2130837579;
+			public const int back = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
 			public const int design_fab_background = 2130837580;
@@ -2210,7 +2210,7 @@ namespace PegasusNAEMobile.Droid
 			public const int notification_template_icon_bg = 2130837674;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int Pause = 2130837667;
+			public const int pause = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
 			public const int pegasus_herobackground = 2130837668;
@@ -2222,10 +2222,10 @@ namespace PegasusNAEMobile.Droid
 			public const int pegasus_vehicle_small = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int Play = 2130837671;
+			public const int play = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int Send = 2130837672;
+			public const int send = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
 			public const int videocam = 2130837673;
