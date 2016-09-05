@@ -96,6 +96,14 @@ namespace PegasusNAEMobile
                 SteeringBoxPositionNonLive.FontSize = fontsizelarge;
                 degrees.FontSize = fontsizesmall;
                 MaxAcclLabel.FontSize = fontsizesmall;
+                RearLeftLabel.FontSize = fontsizesmall;
+                RearRightLabel.FontSize = fontsizesmall;
+                RearLeft.FontSize = fontsizemedium;
+                RearRight.FontSize = fontsizemedium;
+                NoseWeightLabel.FontSize = fontsizesmall;
+                SideToSideLabel.FontSize = fontsizesmall;
+                NoseWeightNonLive.FontSize = fontsizemedium;
+                SideToSide.FontSize = fontsizemedium;
             }
         }
 
