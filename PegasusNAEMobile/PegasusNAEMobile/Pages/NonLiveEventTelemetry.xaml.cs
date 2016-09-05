@@ -163,7 +163,7 @@ namespace PegasusNAEMobile
 
         private async void TakeToVideosPage_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new VideoList());
+            await Navigation.PushAsync(new VideoList(runcollect));
         }
 
         private string RoundToDecimalPlaces(double val)

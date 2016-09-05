@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PegasusNAEMobile.Collections;
 
 using Xamarin.Forms;
 
@@ -10,9 +11,11 @@ namespace PegasusNAEMobile
 {
     public partial class VideoList : ContentPage
     {
-        public VideoList()
+        private PreviousRunCollection runcollect { get; set; }
+        public VideoList(PreviousRunCollection runcollect)
         {
             InitializeComponent();
+            this.runcollect = runcollect;
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(5, Device.OnPlatform(20, 0, 0), 5, 0);
             if (Device.OS == TargetPlatform.iOS)
@@ -66,16 +69,16 @@ namespace PegasusNAEMobile
 
         private async void Drone1VideoButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowVideo());
+            await Navigation.PushAsync(new ShowVideo(runcollect.Drone1VideoUrl));
         }
 
         private async void Drone2VideoButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowVideo());
+            await Navigation.PushAsync(new ShowVideo(runcollect.Drone2VideoUrl));
         }
         private async void OnboardVideoButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ShowVideo());
+            await Navigation.PushAsync(new ShowVideo(runcollect.OnboardVideoUrl));
         }
 
         private async void BackButton_Clicked(object sender, EventArgs e)
