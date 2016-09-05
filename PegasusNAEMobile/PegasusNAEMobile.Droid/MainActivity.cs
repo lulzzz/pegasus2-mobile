@@ -12,8 +12,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using Android.Util;
-using Microsoft.Azure.Engagement.Xamarin;
-using Microsoft.Azure.Engagement.Xamarin.Activity;
+
 
 namespace PegasusNAEMobile.Droid
 {
@@ -262,9 +261,9 @@ namespace PegasusNAEMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-            engagementConfiguration.ConnectionString = "Endpoint=PegasusMissions.device.mobileengagement.windows.net;SdkKey=8793710d17cf2f66578a557eedb0e00b;AppId=cup000171";
-            EngagementAgent.Init(engagementConfiguration);
+            //EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+            //engagementConfiguration.ConnectionString = "Endpoint=PegasusMissions.device.mobileengagement.windows.net;SdkKey=8793710d17cf2f66578a557eedb0e00b;AppId=cup000171";
+            //EngagementAgent.Init(engagementConfiguration);
 
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
@@ -274,18 +273,7 @@ namespace PegasusNAEMobile.Droid
             LoadApplication(new App());
         }
 
-        protected override void OnResume()
-        {
-            EngagementAgent.StartActivity(EngagementAgentUtils.BuildEngagementActivityName(Java.Lang.Class.FromType(this.GetType())), null);
-
-            base.OnResume();
-        }
-
-        protected override void OnPause()
-        {
-            EngagementAgent.EndActivity();
-            base.OnPause();
-        }
+       
     }
 }
 
