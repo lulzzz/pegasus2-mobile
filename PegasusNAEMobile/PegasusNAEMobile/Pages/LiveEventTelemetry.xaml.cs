@@ -12,11 +12,13 @@ namespace PegasusNAEMobile
 {
     public partial class LiveEventTelemetry : ContentPage
     {
+        private double width = 0;
+        private double height = 0;
         public LiveEventTelemetry()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            Padding = new Thickness(5, Device.OnPlatform(20, 0, 0), 5, 0);
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             //sendMessageButton.Image = ImageSource.FromFile("Assets/pegasus_herobackground.png");
             sendMessageButton.Image = "Assets/Send.png";
             SizeChanged += LiveEventTelemetry_SizeChanged;
@@ -44,7 +46,25 @@ namespace PegasusNAEMobile
             double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
             AtmosphericLabel.FontSize = fontsizeMedium;
             LinearAccelerationLabel.FontSize = fontsizeMedium;
+        }
 
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    Padding = new Thickness(0, 0, 0, 0);
+                }
+                else
+                {
+                    Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+                }
+            }
         }
 
         private void LiveEventTelemetry_SizeChanged(object sender, EventArgs e)

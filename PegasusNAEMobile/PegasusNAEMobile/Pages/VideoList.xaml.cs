@@ -11,13 +11,15 @@ namespace PegasusNAEMobile
 {
     public partial class VideoList : ContentPage
     {
+        private double width = 0;
+        private double height = 0;
         private PreviousRunCollection runcollect { get; set; }
         public VideoList(PreviousRunCollection runcollect)
         {
             InitializeComponent();
             this.runcollect = runcollect;
             NavigationPage.SetHasNavigationBar(this, false);
-            Padding = new Thickness(5, Device.OnPlatform(20, 0, 0), 5, 0);
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "Back.png";
@@ -65,6 +67,25 @@ namespace PegasusNAEMobile
             iOS: ImageSource.FromFile("NAE_ScaledDown.png"),
             Android: ImageSource.FromFile("NAE_ScaledDown.png"),
             WinPhone: ImageSource.FromFile("Assets/NAE_ScaledDown.png"));
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    Padding = new Thickness(0, 0, 0, 0);
+                }
+                else
+                {
+                    Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+                }
+            }
         }
 
         private async void Drone1VideoButton_Clicked(object sender, EventArgs e)

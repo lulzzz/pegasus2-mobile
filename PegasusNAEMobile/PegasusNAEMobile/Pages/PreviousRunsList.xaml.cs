@@ -11,11 +11,14 @@ namespace PegasusNAEMobile
 {
     public partial class PreviousRunsList : ContentPage
     {
+        private double width = 0;
+        private double height = 0;
         public ObservableCollection<PreviousRunCollection> runlist { get; set; }
         public PreviousRunsList()
         {
             runlist = new ObservableCollection<PreviousRunCollection>();
             InitializeComponent();
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             if (Device.OS == TargetPlatform.iOS)
             {
@@ -28,6 +31,25 @@ namespace PegasusNAEMobile
             else
             {
                 BackButton.Image = "Assets/" + "Back.png";
+            }
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    Padding = new Thickness(0, 0, 0, 0);
+                }
+                else
+                {
+                    Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+                }
             }
         }
 

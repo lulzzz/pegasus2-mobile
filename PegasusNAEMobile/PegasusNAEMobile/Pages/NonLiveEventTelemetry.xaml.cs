@@ -12,6 +12,8 @@ namespace PegasusNAEMobile
 {
     public partial class NonLiveEventTelemetry : ContentPage
     {
+        private double height = 0;
+        private double width = 0;
         private RootObjectOnboardTelemetry ronboardtelem;
         private PreviousRunCollection runcollect;
         private int currenttelemetrypos;   // used to keep track of what telemetry has been displayed and what's left
@@ -22,7 +24,7 @@ namespace PegasusNAEMobile
             InitializeComponent();
            
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
-
+            Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             runcollect = new PreviousRunCollection();
             runcollect = rpc;
             PlayPauseIcon = true; //Pause Icon is default
@@ -57,7 +59,25 @@ namespace PegasusNAEMobile
            // System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
         }
 
-       
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    Padding = new Thickness(0, 0, 0, 0);
+                }
+                else
+                {
+                    Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+                }
+            }
+        }
+
         protected async override void OnAppearing()
         {
             string onboardtelemetry = await App.Instance.GetFileFromBlob(runcollect.OnboardTelemetryUrl);   // Get the telemetry JSON file from the blob storage
