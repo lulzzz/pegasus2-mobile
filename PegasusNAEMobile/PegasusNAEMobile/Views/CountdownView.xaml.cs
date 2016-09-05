@@ -38,12 +38,7 @@ namespace PegasusNAEMobile
             RegisterForEventNotifications.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
             WatchEventButton.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
             WatchPreviousRuns.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
-            HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
-            //HeroMessageLabel.FontSize = fontsizeLarge;
-            //RegisterForEventNotifications.FontSize = fontSizeSmall - 2;
-            // CountDownLabel.FontSize = Math.Round((fontsizeMedium + fontsizeLarge) / 2);
-            //WatchEventButton.FontSize = fontSizeSmall - 2;
-            // //System.Diagnostics.Debug.WriteLine(fontsize);
+            HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);            
         }
 
         private async void WatchLiveEvent_Clicked(object sender, EventArgs e)

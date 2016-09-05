@@ -9,14 +9,28 @@
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
       </Grid.RowDefinitions>
-      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="75" WidthRequest="75"></ActivityIndicator>
-
+      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000" HeightRequest="75" WidthRequest="75"></ActivityIndicator>
+      
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
         <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="FillAndExpand"></Button>
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
-      <ScrollView Grid.Row="1" Margin="0,0,0,0">
+
+      <Grid Grid.Row="1" x:Name="NoFileAvailable" IsVisible="False">
+        <Label x:Name="NoFileLabel" Margin="15" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" XAlign="Center"
+            Text="It doesn't look like we have anything here right now. Check back again in a little bit. Or you could sign up for event updates, and we'll let you know once we have gathered all the data and videos from the vehicle."></Label>
+        <Button Text="GET EVENT UPDATES"
+                    x:Name="RegisterForEventNotifications"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Margin="0,0,0,10"
+                    BackgroundColor="#d90000"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center"></Button>
+      </Grid>
+      
+      <ScrollView x:Name="FileAvailable" Grid.Row="1" Margin="0,0,0,0">
         <Grid>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"></ColumnDefinition>

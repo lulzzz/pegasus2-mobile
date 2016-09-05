@@ -55,28 +55,48 @@ namespace PegasusNAEMobile
 
         protected async override void OnAppearing()
         {
+            ActivityIndicate.IsVisible = true;
             ActivityIndicate.IsRunning = true;
-            string configjson = await App.Instance.GetFileFromBlob("https://pegasustest.blob.core.windows.net/pegasustestblob/config.json");
-            RootObjectConfig rconfig = ConfigCollection.DataDeserializer(configjson);
-            runlist.Clear();
-            foreach (var config in rconfig.collection)
+            try
             {
-                PreviousRunCollection runcollect = new PreviousRunCollection();
-                runcollect.AggregateTelemtryUrl = config.AggregateTelemtryUrl;
-                runcollect.Drone1VideoUrl = config.Drone1VideoUrl;
-                runcollect.Drone2VideoUrl = config.Drone2VideoUrl;
-                runcollect.Location = config.Location;
-                runcollect.OnboardTelemetryUrl = config.OnboardTelemetryUrl;
-                runcollect.OnboardVideoUrl = config.OnboardVideoUrl;
-                runcollect.Pilot = config.Pilot;
-                runcollect.RunId = config.RunId;
-                runcollect.Timestamp = config.Timestamp;
-                addRunToUI(runcollect);
-                runlist.Add(runcollect);
-               // PreviousRunListView.ItemsSource = runlist;
-                //break;
+                string configjson = await App.Instance.GetFileFromBlob("https://pegasustest.blob.core.windows.net/pegasustestblob/config.json");
+                if (String.IsNullOrEmpty(configjson))
+                {
+                    NoFileAvailable.IsVisible = true;
+                    FileAvailable.IsVisible = false;
+                }
+                else
+                {
+                    NoFileAvailable.IsVisible = false;
+                    FileAvailable.IsVisible = true;
+                    RootObjectConfig rconfig = ConfigCollection.DataDeserializer(configjson);
+                    runlist.Clear();
+                    foreach (var config in rconfig.collection)
+                    {
+                        PreviousRunCollection runcollect = new PreviousRunCollection();
+                        runcollect.AggregateTelemtryUrl = config.AggregateTelemtryUrl;
+                        runcollect.Drone1VideoUrl = config.Drone1VideoUrl;
+                        runcollect.Drone2VideoUrl = config.Drone2VideoUrl;
+                        runcollect.Location = config.Location;
+                        runcollect.OnboardTelemetryUrl = config.OnboardTelemetryUrl;
+                        runcollect.OnboardVideoUrl = config.OnboardVideoUrl;
+                        runcollect.Pilot = config.Pilot;
+                        runcollect.RunId = config.RunId;
+                        runcollect.Timestamp = config.Timestamp;
+                        addRunToUI(runcollect);
+                        runlist.Add(runcollect);
+                        // PreviousRunListView.ItemsSource = runlist;
+                        //break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                NoFileAvailable.IsVisible = true;
+                FileAvailable.IsVisible = false;
             }
             ActivityIndicate.IsRunning = false;
+            ActivityIndicate.IsVisible = false;
             //PreviousRunListView.ItemsSource = runlist;
             base.OnAppearing();
         }

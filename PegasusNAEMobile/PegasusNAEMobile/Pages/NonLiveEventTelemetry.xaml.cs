@@ -104,19 +104,46 @@ namespace PegasusNAEMobile
                 SideToSideLabel.FontSize = fontsizesmall;
                 NoseWeightNonLive.FontSize = fontsizemedium;
                 SideToSide.FontSize = fontsizemedium;
+                AccelX_Label.FontSize = fontsizemicro;
+                AccelY_Label.FontSize = fontsizemicro;
+                AccelZ_Label.FontSize = fontsizemicro;
+                AccelX.FontSize = fontsizelarge;
+                AccelY.FontSize = fontsizelarge;
+                AccelZ.FontSize = fontsizelarge;
+                SteeringAcclLabel.FontSize = fontsizesmall;
+                NoFileLabel.FontSize = fontsizemedium;
+                RegisterForEventNotifications.FontSize = fontsizesmall;
             }
         }
 
         protected async override void OnAppearing()
         {
-            string onboardtelemetry = await App.Instance.GetFileFromBlob(runcollect.OnboardTelemetryUrl);   // Get the telemetry JSON file from the blob storage
-            ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
-            TelemetrySlider.Minimum = 0;
-            TelemetrySlider.Maximum = ronboardtelem.collection.Count;
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, (ronboardtelem.collection.Count * 500));
-            TotalTelemetryPlaybackTime.Text = duration.ToString("g");
-            TimeSpan T = TimeSpan.FromSeconds(0.5);
-            UpdateNonLiveTelemetryUI(T);                     
+            try
+            {
+                string onboardtelemetry = await App.Instance.GetFileFromBlob(runcollect.OnboardTelemetryUrl);   // Get the telemetry JSON file from the blob storage
+                if (String.IsNullOrEmpty(onboardtelemetry))   // File was empty or there was a problem getting the file
+                {
+                    NoFileAvailable.IsVisible = true;        // Show message that data isn't ready yet.
+                    FileAvailable.IsVisible = false;
+                }
+                else
+                {
+                    NoFileAvailable.IsVisible = false;
+                    FileAvailable.IsVisible = true;
+                    ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
+                    TelemetrySlider.Minimum = 0;
+                    TelemetrySlider.Maximum = ronboardtelem.collection.Count;
+                    TimeSpan duration = new TimeSpan(0, 0, 0, 0, (ronboardtelem.collection.Count * 500));
+                    TotalTelemetryPlaybackTime.Text = duration.ToString("g");
+                    TimeSpan T = TimeSpan.FromSeconds(0.5);
+                    UpdateNonLiveTelemetryUI(T);
+                }
+            }
+            catch (Exception ex)
+            {
+                NoFileAvailable.IsVisible = true;
+                FileAvailable.IsVisible = false;
+            }            
             //System.Diagnostics.Debug.WriteLine(rtelem.collection.Count);
             base.OnAppearing();
         }
@@ -157,6 +184,10 @@ namespace PegasusNAEMobile
                 if (cts.IsCancellationRequested)
                 {
                     System.Diagnostics.Debug.WriteLine("Timer cancellation requested");
+                    currenttelemetrypos = 0;
+                    TelemetrySlider.Value = 0;
+                    updateButtonIcon("Play.png");
+                    PlayPauseIcon = false;
                     return false;
                 }
                 if (currenttelemetrypos < ronboardtelem.collection.Count)
@@ -174,7 +205,9 @@ namespace PegasusNAEMobile
                     RearLeft.Text = RoundToDecimalPlaces(currenttelemetry.LeftRearWeightLbf);
                     RearRight.Text = RoundToDecimalPlaces(currenttelemetry.RightRearWeightLbf);
                     TelemetrySlider.Value = currenttelemetrypos;
-                    
+                    AccelX.Text = RoundToDecimalPlaces(currenttelemetry.AccelXG);
+                    AccelY.Text = RoundToDecimalPlaces(currenttelemetry.AccelYG);
+                    AccelZ.Text = RoundToDecimalPlaces(currenttelemetry.AccelZG);
                     //MaxAccl.Text = (currenttelemetry.acc)
                     currenttelemetrypos++;
                     return true;                    
