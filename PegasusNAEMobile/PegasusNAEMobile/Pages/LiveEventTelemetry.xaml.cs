@@ -33,6 +33,18 @@ namespace PegasusNAEMobile
             {
                 BackButton.Image = "Assets/" + "Back.png";
             }
+            SizeChanged += LiveEventTelemetry_SizeChanged1;
+        }
+
+        private void LiveEventTelemetry_SizeChanged1(object sender, EventArgs e)
+        {
+            //throw new NotImplementedException();
+            double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+            double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            AtmosphericLabel.FontSize = fontsizeMedium;
+            LinearAccelerationLabel.FontSize = fontsizeMedium;
+
         }
 
         private void LiveEventTelemetry_SizeChanged(object sender, EventArgs e)

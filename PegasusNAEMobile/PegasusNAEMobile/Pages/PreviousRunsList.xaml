@@ -11,12 +11,23 @@
       </Grid.RowDefinitions>
       
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
-        <Button x:Name="BackButton" Margin="10,10,0,10" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
+        <Button x:Name="BackButton" BackgroundColor="Transparent" Margin="10,10,0,10" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
-
-      <ListView x:Name="PreviousRunListView" ItemSelected="ListViewItemSelection_Changed" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+      <ScrollView Grid.Row="1" Margin="0,0,0,0">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <StackLayout x:Name="ListRuns" Margin="0,20,0,0" Grid.Column="1" >
+            
+          </StackLayout>
+        </Grid>
+      </ScrollView>
+      <!--<ListView x:Name="PreviousRunListView" ItemSelected="ListViewItemSelection_Changed" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -28,9 +39,9 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1" BackgroundColor="#23232b" >
                   <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                   </Grid.RowDefinitions>
                   <BoxView Grid.Row="0" Color="#d90000" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="0.5"></BoxView>
 
@@ -56,7 +67,7 @@
             </ViewCell>            
           </DataTemplate>
         </ListView.ItemTemplate>      
-      </ListView>
+      </ListView>-->
     </Grid>
     
   </ContentPage.Content>

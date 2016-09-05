@@ -18,7 +18,7 @@
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
-        <Button x:Name="BackButton" Margin="10,10,0,10" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
+        <Button x:Name="BackButton" BackgroundColor="Transparent" Margin="10,10,0,10" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
@@ -84,7 +84,7 @@
               <ColumnDefinition Width="Auto"></ColumnDefinition>
               <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="ATMOSPHERIC" Grid.ColumnSpan="3" TextColor="White"></Label>
+            <Label x:Name="AtmosphericLabel" Text="ATMOSPHERIC" Grid.ColumnSpan="3" TextColor="White"></Label>
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="0,0,10,0">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="atmTemperature"
@@ -122,7 +122,7 @@
               <ColumnDefinition Width="Auto"></ColumnDefinition>
               <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="LINEAR ACCELERATION" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3" FontSize="20" TextColor="White"></Label>
+            <Label x:Name="LinearAccelerationLabel" Text="LINEAR ACCELERATION" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3" TextColor="White"></Label>
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelX" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelX, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
@@ -153,7 +153,7 @@
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Text="ORIENTATION"  TextColor="White"></Label>
+            <Label x:Name="OrientationLabel" Text="ORIENTATION"  TextColor="White"></Label>
             <Label x:Name="Orientation" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
             <Label Grid.Row="2" Text="HEADING" TextColor="#656472"></Label>
           </Grid>
