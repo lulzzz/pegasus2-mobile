@@ -26,7 +26,7 @@
         <Label  x:Name="HeroTitle" Text="Pegasus Mission Goes Supersonic with NAE" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" XAlign="Start" Margin="15,20,25,0"></Label>
         
         <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
-          <Button Text="REGISTER FOR EVENT NOTIFICATIONS"
+          <Button Text="GET EVENT UPDATES"
                   x:Name="RegisterForEventNotifications"
                   TextColor="White" 
                   HeightRequest="50"
