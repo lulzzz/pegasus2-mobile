@@ -61,7 +61,9 @@ namespace PegasusNAEMobile
 
         protected override void OnSizeAllocated(double width, double height)
         {
+            
             base.OnSizeAllocated(width, height);
+            
             if (this.width != width || this.height != height)
             {
                 this.width = width;
@@ -70,11 +72,30 @@ namespace PegasusNAEMobile
                 if (width > height)
                 {
                     Padding = new Thickness(0, 0, 0, 0);
+                   
                 }
                 else
                 {
                     Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
                 }
+                
+                double fontsizelarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                double fontsizemedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                double fontsizemicro = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
+                double fontsizesmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                RunTimeStampNonLive.FontSize = fontsizesmall;
+                RunIDNonLive.FontSize = fontsizesmall;
+                SpeedGridTitleNonLive.FontSize = fontsizesmall;
+                SpeedKPHNonLive.FontSize = fontsizelarge;
+                kph.FontSize = fontsizemicro;
+                StickPositionLabel.FontSize = fontsizesmall;
+                StickPosition.FontSize = fontsizelarge;
+                ThrottlePositionLabel.FontSize = fontsizesmall;
+                ThrottlePosition.FontSize = fontsizelarge;
+                SteeringBoxLabel.FontSize = fontsizesmall;
+                SteeringBoxPositionNonLive.FontSize = fontsizelarge;
+                degrees.FontSize = fontsizesmall;
+                MaxAcclLabel.FontSize = fontsizesmall;
             }
         }
 
@@ -135,10 +156,13 @@ namespace PegasusNAEMobile
                     System.Diagnostics.Debug.WriteLine(currenttelemetrypos);
                     var currenttelemetry = ronboardtelem.collection[currenttelemetrypos];
                     RunTimeStampNonLive.Text = String.Format("{0:MMMM dd, yyyy}", currenttelemetry.timestamp);
+                    
                     SpeedKPHNonLive.Text = RoundToDecimalPlaces(currenttelemetry.AirSpeedKph);
                     SteeringBoxPositionNonLive.Text = RoundToDecimalPlaces(currenttelemetry.SteeringBoxPositionDegrees);
                     NoseWeightNonLive.Text = RoundToDecimalPlaces(currenttelemetry.NoseWeightLbf);
                     //SideToSide.Text = (currenttelemetry.)
+                    ThrottlePosition.Text = RoundToDecimalPlaces(currenttelemetry.ThrottlePosition);
+                    StickPosition.Text = RoundToDecimalPlaces(currenttelemetry.StickPosition);
                     RearLeft.Text = RoundToDecimalPlaces(currenttelemetry.LeftRearWeightLbf);
                     RearRight.Text = RoundToDecimalPlaces(currenttelemetry.RightRearWeightLbf);
                     TelemetrySlider.Value = currenttelemetrypos;
@@ -189,7 +213,7 @@ namespace PegasusNAEMobile
         private string RoundToDecimalPlaces(double val)
         {
             double round = (Math.Round((double)val, 2 , MidpointRounding.AwayFromZero));
-            return (String.Format("{0:0.00s}", round));
+            return (String.Format("{0:0.00}", round));
         }
     }
 }
