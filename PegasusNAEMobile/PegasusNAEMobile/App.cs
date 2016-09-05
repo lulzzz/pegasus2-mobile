@@ -133,6 +133,7 @@ namespace PegasusNAEMobile
 
             if (coapMessage.ResourceUri.OriginalString == Constants.TelemteryPublishUri)
             {
+                VehicleTelemetry vtr = VehicleTelemetry.Load(jsonString);
                 var telemetry = JsonConvert.DeserializeObject<VehicleTelemetry>(jsonString);
                 this.CurrentVehicleTelemetry.Data = telemetry;
             }
@@ -232,8 +233,9 @@ namespace PegasusNAEMobile
             umessage.Message = message;
 
             umessage.Id = Guid.NewGuid().ToString();
-            string jsonString = UserMessage.UserMessageSerializer(umessage);
-            byte[] payload = Encoding.UTF8.GetBytes(jsonString);
+            //string jsonString = UserMessage.UserMessageSerializer(umessage);
+            //byte[] payload = Encoding.UTF8.GetBytes(jsonString);
+            byte[] payload = UserMessage.ToCraftMessage(umessage);
             CoapRequest request = new CoapRequest(messageId++,
                                                     RequestMessageType.NonConfirmable,
                                                     MethodType.POST,
