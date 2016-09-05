@@ -272,8 +272,7 @@ namespace PegasusNAEMobile.iOS
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init();
-            FormsVideoPlayer.Init();
-            
+            FormsVideoPlayer.Init();            
             LoadApplication(new App());
             App.SetScreenHeightAndWidth((int)UIScreen.MainScreen.Bounds.Height, (int)UIScreen.MainScreen.Bounds.Width);
             return base.FinishedLaunching(app, options);

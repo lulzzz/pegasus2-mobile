@@ -33,6 +33,7 @@ namespace PegasusNAEMobile
 
         protected async override void OnAppearing()
         {
+            ActivityIndicate.IsRunning = true;
             string configjson = await App.Instance.GetFileFromBlob("https://pegasustest.blob.core.windows.net/pegasustestblob/config.json");
             RootObjectConfig rconfig = ConfigCollection.DataDeserializer(configjson);
             runlist.Clear();
@@ -53,6 +54,7 @@ namespace PegasusNAEMobile
                // PreviousRunListView.ItemsSource = runlist;
                 //break;
             }
+            ActivityIndicate.IsRunning = false;
             //PreviousRunListView.ItemsSource = runlist;
             base.OnAppearing();
         }

@@ -18,7 +18,7 @@
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
-        <Button x:Name="BackButton" BackgroundColor="Transparent" Margin="10,10,0,10" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
+        <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
