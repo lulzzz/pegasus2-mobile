@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Net.WebSockets;
 using System.Net;
+using Octane.Xam.VideoPlayer.iOS;
 
 namespace PegasusNAEMobile.iOS
 {
@@ -271,9 +272,8 @@ namespace PegasusNAEMobile.iOS
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init();
-            UINavigationBar.Appearance.BarTintColor = UIColor.FromRGBA(35,35,43,1);
-            UINavigationBar.Appearance.BackIndicatorImage = null;
-            UINavigationBar.Appearance.TintColor = UIColor.White;
+            FormsVideoPlayer.Init();
+            
             LoadApplication(new App());
             App.SetScreenHeightAndWidth((int)UIScreen.MainScreen.Bounds.Height, (int)UIScreen.MainScreen.Bounds.Width);
             return base.FinishedLaunching(app, options);

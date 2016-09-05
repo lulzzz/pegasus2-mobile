@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using Android.Util;
-
+using Octane.Xam.VideoPlayer.Android;
 
 namespace PegasusNAEMobile.Droid
 {
@@ -268,7 +268,8 @@ namespace PegasusNAEMobile.Droid
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
             PegasusNAEMobile.App.Init(this);
-            global::Xamarin.Forms.Forms.Init(this, bundle);            
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            FormsVideoPlayer.Init();          
             App.SetScreenHeightAndWidth((int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density),(int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density) );  // Get device independednt pixels
             LoadApplication(new App());
         }
