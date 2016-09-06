@@ -190,6 +190,8 @@ namespace PegasusNAEMobile
         protected override void OnDisappearing()
         {
             //Interlocked.Exchange(ref this.cancellation, new CancellationTokenSource()).Cancel();
+            currenttelemetrypos = 0;
+            TelemetrySlider.Value = 0;
             cancellation.Cancel();
             base.OnDisappearing();
         }
@@ -205,8 +207,7 @@ namespace PegasusNAEMobile
                 if (cts.IsCancellationRequested)
                 {
                     System.Diagnostics.Debug.WriteLine("Timer cancellation requested");
-                    currenttelemetrypos = 0;
-                    TelemetrySlider.Value = 0;
+                    
                     updateButtonIcon("play.png");
                     PlayPauseIcon = false;
                     return false;

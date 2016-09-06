@@ -95,26 +95,26 @@
             <Label x:Name="SteeringAcclLabel" Text="STEERING BOX ACCELERATION" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3" TextColor="White"></Label>
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
               <StackLayout Orientation="Horizontal">
-                <Label x:Name="AccelX" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelX}"  TextColor="White"></Label>
-                <Label x:Name="gLabelX" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="End" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+                <Label x:Name="AccelX" Text="{Binding LiveTelemetry.Data.LinearAccelX}"  TextColor="White"></Label>
+                <Label x:Name="gLabelX" HorizontalOptions="Start" VerticalOptions="End" Text="g"  TextColor="White"></Label>
               </StackLayout>
-              <Label x:Name="AccelX_Label" Grid.Row="2" Grid.Column="1"  Text="ACCEL X" TextColor="#656472"></Label>
+              <Label x:Name="AccelX_Label" Text="ACCEL X" TextColor="#656472"></Label>
             </StackLayout>
 
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
               <StackLayout Orientation="Horizontal">
-                <Label x:Name="AccelY" Grid.Row="1"  TextColor="White"></Label>
-                <Label x:Name="gLabelY" Text=" g" HorizontalOptions="Start" VerticalOptions="End"  TextColor="White"></Label>
+                <Label x:Name="AccelY" TextColor="White"></Label>
+                <Label x:Name="gLabelY" Text="g" HorizontalOptions="Start" VerticalOptions="End"  TextColor="White"></Label>
               </StackLayout>
               <Label x:Name="AccelY_Label" Text="ACCEL Y" TextColor="#656472"></Label>
             </StackLayout>
 
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
               <StackLayout Orientation="Horizontal">
-                <Label x:Name="AccelZ" Grid.Row="1"  TextColor="White"></Label>
-                <Label x:Name="gLabelZ" Grid.Row="2" HorizontalOptions="Start" VerticalOptions="End" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+                <Label x:Name="AccelZ" TextColor="White"></Label>
+                <Label x:Name="gLabelZ" HorizontalOptions="Start" VerticalOptions="End" Text="g"  TextColor="White"></Label>
               </StackLayout>
-              <Label x:Name="AccelZ_Label" Grid.Row="2" Grid.Column="1"  Text="ACCEL Z" TextColor="#656472"></Label>
+              <Label x:Name="AccelZ_Label" Text="ACCEL Z" TextColor="#656472"></Label>
             </StackLayout>
           </Grid>
           </Grid>
