@@ -43,7 +43,7 @@ namespace PegasusNAEMobile
             TelemetrySlider.BindingContext = currenttelemetrypos;
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "back.png";
+                BackButton.Image = "Back.png";
                 TakeToVideosPage.Image = "videocam.png";
             }
             else if (Device.OS == TargetPlatform.Android)
@@ -112,6 +112,18 @@ namespace PegasusNAEMobile
                     AccelX.FontSize = fontsizesmall;
                     AccelY.FontSize = fontsizesmall;
                     AccelZ.FontSize = fontsizesmall;
+                    gLabelX.FontSize = fontsizemicro;
+                    gLabelY.FontSize = fontsizemicro;
+                    gLabelZ.FontSize = fontsizemicro;
+                }
+                else if (this.width < 330)
+                {
+                    AccelX.FontSize = fontsizemicro;
+                    AccelY.FontSize = fontsizemicro;
+                    AccelZ.FontSize = fontsizemicro;
+                    gLabelX.FontSize = fontsizemicro;
+                    gLabelY.FontSize = fontsizemicro;
+                    gLabelZ.FontSize = fontsizemicro;
                 }
                 else
                 {

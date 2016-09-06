@@ -151,7 +151,7 @@
             <StackLayout Orientation="Vertical" Grid.Row="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
               <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <StackLayout Orientation="Vertical" Grid.Column="0" Margin="5,0,5,0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-                  <Label x:Name="RearLeftLabel" Text="REAR LEFT" TextColor="White"></Label>
+                  <Label x:Name="RearLeftLabel" HorizontalOptions="Center" VerticalOptions="Center" Text="REAR LEFT" TextColor="White"></Label>
                   <Grid>
                     <BoxView HeightRequest="30" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Color="#656472"></BoxView>
                     <Label x:Name="RearLeft" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" Text="502 lbf"></Label>
