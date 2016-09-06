@@ -4,9 +4,7 @@
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 	<uses-permission android:name="com.pegasusmission.nae.permission.C2D_MESSAGE" />
 	<permission android:name="com.pegasusmission.nae.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<application android:label="PegasusMission NAE">
-	
-	</application>
+	<application android:label="PegasusMission NAE"></application>
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

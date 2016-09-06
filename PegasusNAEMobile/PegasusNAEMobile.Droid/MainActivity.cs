@@ -16,7 +16,7 @@ using Octane.Xam.VideoPlayer.Android;
 
 namespace PegasusNAEMobile.Droid
 {
-    [Activity(Label = "PegasusNAEMobile", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PegasusMission NAE", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IWebSocketClient
     {
         public event WebSocketEventHandler OnClose;
