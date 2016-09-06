@@ -31,7 +31,7 @@ namespace PegasusNAEMobile
             ronboardtelem = new RootObjectOnboardTelemetry();
             currenttelemetrypos = 0;
             cancellation = new CancellationTokenSource();      // This will be used to stop the timer when the user leaves the page.
-            updateButtonIcon("Pause.png");
+            updateButtonIcon("pause.png");
 
             // Add the Vehicle Image to the view.
             vehicle.Source = Device.OnPlatform(
@@ -107,9 +107,18 @@ namespace PegasusNAEMobile
                 AccelX_Label.FontSize = fontsizemicro;
                 AccelY_Label.FontSize = fontsizemicro;
                 AccelZ_Label.FontSize = fontsizemicro;
-                AccelX.FontSize = fontsizelarge;
-                AccelY.FontSize = fontsizelarge;
-                AccelZ.FontSize = fontsizelarge;
+                if (this.width < 370)
+                {
+                    AccelX.FontSize = fontsizesmall;
+                    AccelY.FontSize = fontsizesmall;
+                    AccelZ.FontSize = fontsizesmall;
+                }
+                else
+                {
+                    AccelX.FontSize = fontsizelarge;
+                    AccelY.FontSize = fontsizelarge;
+                    AccelZ.FontSize = fontsizelarge;
+                }
                 SteeringAcclLabel.FontSize = fontsizesmall;
                 NoFileLabel.FontSize = fontsizemedium;
                 RegisterForEventNotifications.FontSize = fontsizesmall;
@@ -186,7 +195,7 @@ namespace PegasusNAEMobile
                     System.Diagnostics.Debug.WriteLine("Timer cancellation requested");
                     currenttelemetrypos = 0;
                     TelemetrySlider.Value = 0;
-                    updateButtonIcon("Play.png");
+                    updateButtonIcon("play.png");
                     PlayPauseIcon = false;
                     return false;
                 }
@@ -194,7 +203,7 @@ namespace PegasusNAEMobile
                 {
                     System.Diagnostics.Debug.WriteLine(currenttelemetrypos);
                     var currenttelemetry = ronboardtelem.collection[currenttelemetrypos];
-                    RunTimeStampNonLive.Text = String.Format("{0:MMMM dd, yyyy}", currenttelemetry.timestamp);
+                    RunTimeStampNonLive.Text = String.Format("{0:MMMM dd, yyyy HH:mm:ss}", currenttelemetry.timestamp);
                     
                     SpeedKPHNonLive.Text = RoundToDecimalPlaces(currenttelemetry.AirSpeedKph);
                     SteeringBoxPositionNonLive.Text = RoundToDecimalPlaces(currenttelemetry.SteeringBoxPositionDegrees);
@@ -217,7 +226,7 @@ namespace PegasusNAEMobile
                     System.Diagnostics.Debug.WriteLine("Stopping Timer");
                     currenttelemetrypos = 0;
                     TelemetrySlider.Value = 0;
-                    updateButtonIcon("Play.png");
+                    updateButtonIcon("play.png");
                     PlayPauseIcon = false;
                     return false;
                 }

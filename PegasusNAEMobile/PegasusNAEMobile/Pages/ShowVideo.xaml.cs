@@ -15,7 +15,7 @@ namespace PegasusNAEMobile
         public ShowVideo(string video_url)
         {
             InitializeComponent();
-            //VideoElement.Source = video_url;
+            VideoElement.Source = video_url;
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             if (Device.OS == TargetPlatform.iOS)

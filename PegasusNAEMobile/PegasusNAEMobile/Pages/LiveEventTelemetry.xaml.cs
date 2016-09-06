@@ -26,14 +26,17 @@ namespace PegasusNAEMobile
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "Back.png";
+                sendMessageButton.Image = "send.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
                 BackButton.Image = "back.png";
+                sendMessageButton.Image = "send.png";
             }
             else
             {
                 BackButton.Image = "Assets/" + "Back.png";
+                sendMessageButton.Image = "Assets/Send.png";
             }
             SizeChanged += LiveEventTelemetry_SizeChanged1;
         }

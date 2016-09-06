@@ -27,6 +27,8 @@ namespace PegasusNAEMobile
             else if (Device.OS == TargetPlatform.Android)
             {
                 BackButton.Image = "back.png";
+                ActivityIndicate.HorizontalOptions = LayoutOptions.Center;
+                ActivityIndicate.VerticalOptions = LayoutOptions.Center;
             }
             else
             {
