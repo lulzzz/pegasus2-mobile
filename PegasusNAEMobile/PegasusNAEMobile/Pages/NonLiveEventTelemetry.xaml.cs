@@ -43,12 +43,12 @@ namespace PegasusNAEMobile
             TelemetrySlider.BindingContext = currenttelemetrypos;
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
                 TakeToVideosPage.Image = "videocam.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
                 TakeToVideosPage.Image = "videocam.png";
             }
             else
@@ -152,13 +152,13 @@ namespace PegasusNAEMobile
         {
             if (PlayPauseIcon)   // Pause is displayed. So Pause the playback
             {
-                updateButtonIcon("Play.png");
+                updateButtonIcon("play.png");
                 cancellation.Cancel();
                 PlayPauseIcon = false;   // Because the button has been changed to show the play icon
             }
             else   // Play icon is displayed. Set it to Pause and start the playback.
             {
-                updateButtonIcon("Pause.png");
+                updateButtonIcon("pause.png");
                 PlayPauseIcon = true;
                 cancellation = new CancellationTokenSource();
                 TimeSpan T = TimeSpan.FromSeconds(0.5);

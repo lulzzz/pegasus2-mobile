@@ -22,11 +22,11 @@ namespace PegasusNAEMobile
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
             }
             else
             {

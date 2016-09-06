@@ -9,7 +9,7 @@
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
       </Grid.RowDefinitions>
-      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000" HeightRequest="75" WidthRequest="75"></ActivityIndicator>
+      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000"></ActivityIndicator>
       
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
         <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="FillAndExpand"></Button>

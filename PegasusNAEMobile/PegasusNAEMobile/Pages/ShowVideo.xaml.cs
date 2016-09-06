@@ -25,7 +25,7 @@ namespace PegasusNAEMobile
             }
             else if (Device.OS == TargetPlatform.Android)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
                 //TakeToVideosPage.Image = "videocam.png";
             }
             else
