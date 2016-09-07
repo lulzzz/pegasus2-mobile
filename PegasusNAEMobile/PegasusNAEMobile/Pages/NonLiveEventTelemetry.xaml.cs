@@ -68,6 +68,7 @@ namespace PegasusNAEMobile
             if (prevslidervalue > slider.Value)
             {
                 System.Diagnostics.Debug.WriteLine("User moved the slider");
+                slider.Value = (int)slider.Value;
                 cancellation.Cancel();
                 currenttelemetrypos = (int)slider.Value;
             }
