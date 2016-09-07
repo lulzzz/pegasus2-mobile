@@ -103,6 +103,7 @@ namespace PegasusNAEMobile
                 sendMessageButton.IsEnabled = false;
                 await App.Instance.SendUserMessageAsync(NAEUserMessage.Text);
                 UserMessageSentStatus.Text = "Your message was sent successfully";   //change the message
+                NAEUserMessage.Text = "";
                 await UserMessageSentStatus.FadeTo(1, 500);   // make it visible over 0.5 seconds
                 startTimer(1);
             }
@@ -135,7 +136,8 @@ namespace PegasusNAEMobile
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.BindingContext = new TelemetryViewModel();        
+            this.BindingContext = new TelemetryViewModel();
+            NAEUserMessage.Text = "";
         }
 
         private void NAEUserMessage_TextChanged(object sender, TextChangedEventArgs e)
