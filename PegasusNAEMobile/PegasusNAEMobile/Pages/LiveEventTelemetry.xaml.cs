@@ -49,6 +49,8 @@ namespace PegasusNAEMobile
             double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
             AtmosphericLabel.FontSize = fontsizeMedium;
             LinearAccelerationLabel.FontSize = fontsizeMedium;
+            CompassDirection.FontSize = fontsizeLarge;
+            DirectionLabel.FontSize = fontsizeMedium;
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -75,6 +77,7 @@ namespace PegasusNAEMobile
             double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
             double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            PageTitle.FontSize = fontsizeMedium;
             RunTimeStamp.FontSize = fontsizeMedium;
             RunID.FontSize = fontSizeSmall;
             SpeedGridTitle.FontSize = fontsizeMedium;
@@ -152,6 +155,23 @@ namespace PegasusNAEMobile
         {
             double round =  (Math.Round((double)value, 3, MidpointRounding.AwayFromZero));
             return (String.Format("{0:0.000}", round));
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class HeadingToCompassDirection : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            double heading = (double)value;
+            var directions = new string[] { "N", "NE", "E", "SE", "S", "SW", "W", "NW", "N" };
+            int degreesPerDirection = (int)(360 / (directions.Length - 1));
+            int index = (int)((heading + (degreesPerDirection / 2)) / degreesPerDirection);
+            return directions[index];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

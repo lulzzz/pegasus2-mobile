@@ -8,6 +8,7 @@
   <ContentPage.Resources>
     <ResourceDictionary>
       <converter:RoundToDecimalPlaces x:Key="roundToDecimalPlace"></converter:RoundToDecimalPlaces>
+      <converter:HeadingToCompassDirection x:Key="convertToCompass"></converter:HeadingToCompassDirection>
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
@@ -22,7 +23,7 @@
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
-      <ScrollView Grid.Row="1">
+      <ScrollView Grid.Row="1" Margin="10,0,0,0">
         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Grid.Column="0" Spacing="10">
           <Grid Margin="5,5,5,10">
             <Grid.RowDefinitions>
@@ -45,17 +46,25 @@
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Label x:Name="SpeedGridTitle" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Text="MAX AIR SPEED"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
               <Label x:Name="SpeedMPH" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="MPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Grid.Row="2">
+            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
               <Label x:Name="SpeedKPH" Text="{Binding LiveTelemetry.Data.GpsSpeedKph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.RowSpan="3" Grid.Column="1">
+              <Label x:Name="DirectionLabel" Text="DIRECTION" TextColor="White" HorizontalOptions="Start" VerticalOptions="Center"></Label>
+              <Label x:Name="CompassDirection" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource convertToCompass}}"
+                   TextColor="White" HorizontalOptions="Start" VerticalOptions="Center"></Label>
             </StackLayout>
           </Grid>
 
@@ -179,7 +188,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
           </Grid.ColumnDefinitions>
-          <Entry Grid.Row="0" TextChanged="NAEUserMessage_TextChanged" Grid.Column="0" x:Name="NAEUserMessage" Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Entry>
+          <Entry Grid.Row="0" TextChanged="NAEUserMessage_TextChanged" HeightRequest="35" Grid.Column="0" x:Name="NAEUserMessage" Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Entry>
           <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>
           <Label x:Name="UserMessageSentStatus" Text="40 characters remaining" TextColor="#d90000" Grid.Row="1" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
