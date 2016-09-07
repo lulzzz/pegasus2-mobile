@@ -127,7 +127,19 @@ namespace PegasusNAEMobile
             base.OnAppearing();
             this.BindingContext = new TelemetryViewModel();        
         }
-        
+
+        private void NAEUserMessage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Entry entry = sender as Entry;
+            string val = entry.Text;
+            UserMessageSentStatus.Text = (40 - val.Length).ToString() + " characters remaining.";
+            if (val.Length > 40)
+            {
+                val = val.Remove(val.Length - 1);
+                entry.Text = val;
+            }
+        }
+
     }
 
     public class RoundToDecimalPlaces : IValueConverter

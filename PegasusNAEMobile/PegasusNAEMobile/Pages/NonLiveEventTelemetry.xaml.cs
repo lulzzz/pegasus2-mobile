@@ -98,8 +98,7 @@ namespace PegasusNAEMobile
                 MaxAcclLabel.FontSize = fontsizesmall;
                 RearLeftLabel.FontSize = fontsizesmall;
                 RearRightLabel.FontSize = fontsizesmall;
-                RearLeft.FontSize = fontsizemedium;
-                RearRight.FontSize = fontsizemedium;
+                
                 NoseWeightLabel.FontSize = fontsizesmall;
                 SideToSideLabel.FontSize = fontsizesmall;
                 NoseWeightNonLive.FontSize = fontsizemedium;
@@ -115,6 +114,8 @@ namespace PegasusNAEMobile
                     gLabelX.FontSize = fontsizemicro;
                     gLabelY.FontSize = fontsizemicro;
                     gLabelZ.FontSize = fontsizemicro;
+                    RearLeft.FontSize = fontsizesmall;
+                    RearRight.FontSize = fontsizesmall;
                 }
                 else if (this.width < 330)
                 {
@@ -124,9 +125,13 @@ namespace PegasusNAEMobile
                     gLabelX.FontSize = fontsizemicro;
                     gLabelY.FontSize = fontsizemicro;
                     gLabelZ.FontSize = fontsizemicro;
+                    RearLeft.FontSize = fontsizesmall;
+                    RearRight.FontSize = fontsizesmall;
                 }
                 else
                 {
+                    RearLeft.FontSize = fontsizemedium;
+                    RearRight.FontSize = fontsizemedium;
                     AccelX.FontSize = fontsizelarge;
                     AccelY.FontSize = fontsizelarge;
                     AccelZ.FontSize = fontsizelarge;
