@@ -17,6 +17,8 @@ namespace PegasusNAEMobile
         private RootObjectOnboardTelemetry ronboardtelem;
         private PreviousRunCollection runcollect;
         private int currenttelemetrypos;   // used to keep track of what telemetry has been displayed and what's left
+        private double  prevslidervalue = -1;
+        
         CancellationTokenSource cancellation;  // Used to check if Timer cancellation has been requested.
         private bool PlayPauseIcon; // TRUE - Display Pause Icon , FALSE - Display Play Icon  
         public NonLiveEventTelemetry(PreviousRunCollection rpc)
@@ -39,7 +41,7 @@ namespace PegasusNAEMobile
             Android: ImageSource.FromFile("pegasus_vehicle_small.png"),
             WinPhone: ImageSource.FromFile("Assets/pegasus_vehicle_small.png"));
             //TelemetrySlider.PropertyChanged += TelemetrySlider_PropertyChanged;
-            //TelemetrySlider.ValueChanged += TelemetrySlider_ValueChanged;
+            TelemetrySlider.ValueChanged += TelemetrySlider_ValueChanged;
             TelemetrySlider.BindingContext = currenttelemetrypos;
             if (Device.OS == TargetPlatform.iOS)
             {
@@ -57,6 +59,21 @@ namespace PegasusNAEMobile
                 TakeToVideosPage.Image = "Assets/videocam.png";
             }
            // System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
+        }
+
+        private void TelemetrySlider_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            Slider slider = sender as Slider;
+            System.Diagnostics.Debug.WriteLine("Previous Slider Value : " + prevslidervalue + "  Current Slider Value : " + slider.Value);
+            if (prevslidervalue > slider.Value)
+            {
+                System.Diagnostics.Debug.WriteLine("User moved the slider");
+                cancellation.Cancel();
+                currenttelemetrypos = (int)slider.Value;
+            }
+            prevslidervalue = (int)slider.Value;
+            
+            //throw new NotImplementedException();
         }
 
         protected override void OnSizeAllocated(double width, double height)
