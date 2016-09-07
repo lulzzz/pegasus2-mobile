@@ -233,9 +233,9 @@ namespace PegasusNAEMobile
             umessage.Message = message;
 
             umessage.Id = Guid.NewGuid().ToString();
-            //string jsonString = UserMessage.UserMessageSerializer(umessage);
-            //byte[] payload = Encoding.UTF8.GetBytes(jsonString);
-            byte[] payload = UserMessage.ToCraftMessage(umessage);
+            string jsonString = UserMessage.UserMessageSerializer(umessage);
+            byte[] payload = Encoding.UTF8.GetBytes(jsonString);
+            //byte[] payload = UserMessage.ToCraftMessage(umessage);
             CoapRequest request = new CoapRequest(messageId++,
                                                     RequestMessageType.NonConfirmable,
                                                     MethodType.POST,
