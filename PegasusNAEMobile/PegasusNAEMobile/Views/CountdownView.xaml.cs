@@ -53,6 +53,10 @@ namespace PegasusNAEMobile
                 this.height = height;
                 
             }
+            if (this.width > this.height)
+            {
+
+            }
         }
 
         private async void WatchLiveEvent_Clicked(object sender, EventArgs e)

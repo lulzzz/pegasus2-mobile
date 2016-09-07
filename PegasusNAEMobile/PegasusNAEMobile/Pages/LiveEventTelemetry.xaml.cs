@@ -80,11 +80,14 @@ namespace PegasusNAEMobile
             PageTitle.FontSize = fontsizeMedium;
             RunTimeStamp.FontSize = fontsizeMedium;
             RunID.FontSize = fontSizeSmall;
-            SpeedGridTitle.FontSize = fontsizeMedium;
+            SpeedGridTitle.FontSize = fontSizeSmall;
             SpeedMPH.FontSize = fontsizeLarge;            
             SpeedKPH.FontSize = fontsizeLarge;            
-            SoundLevelLabel.FontSize = fontsizeMedium;
+            SoundLevelLabel.FontSize = fontSizeSmall;
             SoundLevel.FontSize = fontsizeLarge;
+            LinearAccelerationLabel.FontSize = fontSizeSmall;
+            OrientationLabel.FontSize = fontSizeSmall;
+            Orientation.FontSize = fontsizeMedium;
         }
 
         private async void BackButton_Clicked(object sender, EventArgs e)

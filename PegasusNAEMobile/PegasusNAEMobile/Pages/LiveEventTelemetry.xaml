@@ -135,7 +135,7 @@
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelX" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelX, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
-                <Label Grid.Row="2" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="g"  TextColor="White"></Label>
               </StackLayout>
               <Label Grid.Row="2" Grid.Column="1"  Text="ACCEL X" TextColor="#656472"></Label>
             </StackLayout>
@@ -143,7 +143,7 @@
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelY" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelY, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
-                <Label Text=" g"  TextColor="White"></Label>
+                <Label Text="g"  TextColor="White"></Label>
               </StackLayout>
               <Label Text="ACCEL Y" TextColor="#656472"></Label>
             </StackLayout>
@@ -151,7 +151,7 @@
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelZ" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelZ, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
-                <Label Grid.Row="2" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="g"  TextColor="White"></Label>
               </StackLayout>
               <Label Grid.Row="2" Grid.Column="1"  Text="ACCEL Z" TextColor="#656472"></Label>
             </StackLayout>
