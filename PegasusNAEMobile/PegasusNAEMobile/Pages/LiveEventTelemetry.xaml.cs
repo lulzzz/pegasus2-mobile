@@ -22,7 +22,7 @@ namespace PegasusNAEMobile
             //sendMessageButton.Image = ImageSource.FromFile("Assets/pegasus_herobackground.png");
             sendMessageButton.Image = "Assets/Send.png";
             SizeChanged += LiveEventTelemetry_SizeChanged;
-            UserMessageSentStatus.FadeTo(0, 0);
+            //UserMessageSentStatus.FadeTo(0, 0);
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "Back.png";
@@ -93,17 +93,19 @@ namespace PegasusNAEMobile
         {
             try
             {
+                await UserMessageSentStatus.FadeTo(0, 0);   // hide it
                 sendMessageButton.IsEnabled = false;
                 await App.Instance.SendUserMessageAsync(NAEUserMessage.Text);
-                UserMessageSentStatus.Text = "Your message was sent successfully";
-                await UserMessageSentStatus.FadeTo(1, 500);
+                UserMessageSentStatus.Text = "Your message was sent successfully";   //change the message
+                await UserMessageSentStatus.FadeTo(1, 500);   // make it visible over 0.5 seconds
                 startTimer(1);
             }
             catch (Exception ex)
             {
+                await UserMessageSentStatus.FadeTo(0, 0);
                 UserMessageSentStatus.Text = "There was a problem sending your message";
                 await UserMessageSentStatus.FadeTo(1, 500);
-                startTimer(1);
+                startTimer(2);
             }
         }
 
@@ -112,13 +114,15 @@ namespace PegasusNAEMobile
             TimeSpan ts = TimeSpan.FromSeconds(seconds);
             try
             {
-                Device.StartTimer(ts, () => { UserMessageSentStatus.FadeTo(0, 300); return true; });
+                Device.StartTimer(ts, () => { UserMessageSentStatus.FadeTo(0, 300); UserMessageSentStatus.Text = "40 characters remaining"; UserMessageSentStatus.FadeTo(1, 0); return true; });
                 sendMessageButton.IsEnabled = true;
             }
             catch (Exception ex)
             {
                 UserMessageSentStatus.FadeTo(0, 200);
                 sendMessageButton.IsEnabled = true;
+                UserMessageSentStatus.Text = "40 characters remaining";
+                UserMessageSentStatus.FadeTo(1, 0);
             }
         }
 
