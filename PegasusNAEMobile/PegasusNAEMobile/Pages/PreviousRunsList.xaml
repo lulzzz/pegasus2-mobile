@@ -18,11 +18,15 @@
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
 
       <Grid Grid.Row="1" x:Name="NoFileAvailable" IsVisible="False">
-        <Label x:Name="NoFileLabel" Margin="15" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" XAlign="Center"
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name="NoFileLabel" Grid.Row="0" Margin="15" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" XAlign="Center"
             Text="It doesn't look like we have anything here right now. Check back again in a little bit. Or you could sign up for event updates, and we'll let you know once we have gathered all the data and videos from the vehicle."></Label>
         <Button Text="GET EVENT UPDATES"
                     x:Name="RegisterForEventNotifications"
-                    TextColor="White"
+                    TextColor="White" Grid.Row="1"
                     Clicked="RegisterForEventNotifications_Clicked"
                     HeightRequest="50"
                     Margin="0,0,0,10"
