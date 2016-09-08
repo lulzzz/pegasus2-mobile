@@ -24,7 +24,7 @@
           <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label x:Name="NoFileLabel" Grid.Row="0" Margin="15" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" XAlign="Center"
-            Text="It doesn't look like we have anything here right now. Check back again in a little bit. Or you could sign up for event updates, and we'll let you know once we have gathered all the data and videos from the vehicle."></Label>
+            Text="It doesn't look like we have anything here right now. You can sign up for event updates, and we'll let you know once we have gathered all the data and videos from the vehicle."></Label>
         <Button Text="GET EVENT UPDATES"
                     x:Name="RegisterForEventNotifications"
                     TextColor="White" Grid.Row="1"
