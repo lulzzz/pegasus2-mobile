@@ -30,7 +30,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>PegasusMission NAE</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pegasusmission.NAE</string>
+	<string>com.pegasusmission.nae</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>CFBundleIconFiles</key>

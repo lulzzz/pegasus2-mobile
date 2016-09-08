@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
-  <Publisher>CN=CFCD7603-2705-427F-AA6D-77A13785BD07</Publisher>
-  <PublisherDisplayName>gangal</PublisherDisplayName>
+  <Publisher>CN=48C6633F-16D4-495E-B8D2-6E0132C798A9</Publisher>
+  <PublisherDisplayName>pegasusmissions</PublisherDisplayName>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
     <Language Code="af" InMinimumRequirementSet="true" />
@@ -358,19 +358,11 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>17158gangal.PegasusMissionNAE</MainPackageIdentityName>
+    <MainPackageIdentityName>18004pegasusmissions.PegasusMissionNAE</MainPackageIdentityName>
     <ReservedNames>
-      <ReservedName>Pegasus Mission NAE</ReservedName>
+      <ReservedName>PegasusMission NAE</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
-  <AccountPackageIdentityNames>
-    <MainPackageIdentityName>17158gangal.AuroraChasers</MainPackageIdentityName>
-    <MainPackageIdentityName>17158gangal.Bonnaroo</MainPackageIdentityName>
-    <MainPackageIdentityName>17158gangal.Dugout</MainPackageIdentityName>
-    <MainPackageIdentityName>17158gangal.Glimpse</MainPackageIdentityName>
-    <MainPackageIdentityName>17158gangal.RunmeterPro</MainPackageIdentityName>
-    <MainPackageIdentityName>17158gangal.TrackMyAct</MainPackageIdentityName>
-    <MainPackageIdentityName>17158gangal.tripple</MainPackageIdentityName>
-  </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NBLGGH527R8" />
+  <AccountPackageIdentityNames />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9NBLGGH526MX" />
 </StoreAssociation>
