@@ -11,6 +11,7 @@ using PegasusNAEMobile.ViewModels;
 using ModernHttpClient;
 using System.Net.Http;
 using PegasusNAEMobile.Collections;
+using System.Threading;
 
 namespace PegasusNAEMobile
 {
@@ -30,6 +31,25 @@ namespace PegasusNAEMobile
         //public Task CloseAsync();
 
         Task SendAsync(byte[] message);
+    }
+
+    public interface IGeolocator
+    {
+        double DesiredAccuracy { get; set; }
+        bool isGeoLocationEnabled { get; set; }
+        bool isGeoLocationAvailable { get; set; }
+        event EventHandler<PositionErrorEventArgs> PositionError;        
+        event EventHandler<PositionEventArgs> PositionChanged;       
+        Task<Position> GetPositionAsync(int timeout);        
+        Task<Position> GetPositionAsync(int timeout, bool includeHeading);        
+        Task<Position> GetPositionAsync(CancellationToken cancelToken);        
+        Task<Position> GetPositionAsync(CancellationToken cancelToken, bool includeHeading);
+        Task<Position> GetPositionAsync(int timeout, CancellationToken cancelToken);
+        Task<Position> GetPositionAsync(int timeout, CancellationToken cancelToken, bool includeHeading);
+        void StartListening(uint minTime, double minDistance);
+        void StartListening(uint minTime, double minDistance, bool includeHeading);
+        void StopListening();
+
     }
 
     public class App : Application
