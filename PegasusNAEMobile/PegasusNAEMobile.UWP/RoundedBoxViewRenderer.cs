@@ -18,12 +18,19 @@ namespace PegasusNAEMobile.UWP
         protected override void OnElementChanged(ElementChangedEventArgs<RoundedBoxView> e)
         {
             base.OnElementChanged(e);
-            var ellipse = new Ellipse();
-            ellipse.Height = this.Height;
-            ellipse.Width = this.Width;
-            ellipse.StrokeThickness = 3;
-            ellipse.Stroke = new SolidColorBrush(Colors.Red);
-            this.SetNativeControl(ellipse);
+            try
+            {
+                var ellipse = new Ellipse();
+                ellipse.Height = this.Height;
+                ellipse.Width = this.Width;
+                ellipse.StrokeThickness = 3;
+                ellipse.Stroke = new SolidColorBrush(Colors.Red);
+                this.SetNativeControl(ellipse);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
         }
     }
 }
