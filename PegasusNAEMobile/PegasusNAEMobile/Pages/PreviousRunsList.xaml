@@ -23,6 +23,7 @@
         <Button Text="GET EVENT UPDATES"
                     x:Name="RegisterForEventNotifications"
                     TextColor="White"
+                    Clicked="RegisterForEventNotifications_Clicked"
                     HeightRequest="50"
                     Margin="0,0,0,10"
                     BackgroundColor="#d90000"

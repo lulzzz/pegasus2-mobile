@@ -36,6 +36,12 @@ namespace PegasusNAEMobile
             }
         }
 
+        private void RegisterForEventNotifications_Clicked(object sender, EventArgs e)
+        {
+            Uri uri = new Uri("https://www.pegasusmission.io/Home/Notifications");
+            Device.OpenUri(uri);
+        }
+
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);

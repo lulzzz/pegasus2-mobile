@@ -25,6 +25,7 @@
                   x:Name="RegisterForEventNotifications"
                   TextColor="White" 
                   HeightRequest="50"
+                  Clicked="RegisterForEventNotifications_Clicked"
                   Margin="0,0,0,10"                 
                   BackgroundColor="#d90000"
                   HorizontalOptions="CenterAndExpand"

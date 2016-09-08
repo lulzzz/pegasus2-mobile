@@ -59,6 +59,12 @@ namespace PegasusNAEMobile
             }
         }
 
+        private void RegisterForEventNotifications_Clicked(object sender, EventArgs e)
+        {
+            Uri uri = new Uri("https://www.pegasusmission.io/Home/Notifications");
+            Device.OpenUri(uri);
+        }
+
         private async void WatchLiveEvent_Clicked(object sender, EventArgs e)
         {
             App.Instance.ConnectWebSocketLiveTelemetry();
