@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PegasusNAEMobile.Collections;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using Newtonsoft.Json;
 
 namespace PegasusNAEMobile
 {
@@ -77,12 +78,13 @@ namespace PegasusNAEMobile
                 {
                     NoFileAvailable.IsVisible = false;
                     FileAvailable.IsVisible = true;
-                    RootObjectConfig rconfig = ConfigCollection.DataDeserializer(configjson);
+                    List<CollectionConfig> configList = new List<CollectionConfig>();
+                    configList = JsonConvert.DeserializeObject<List<CollectionConfig>>(configjson);
+                   
                     runlist.Clear();
-                    foreach (var config in rconfig.collection)
+                    foreach (var config in configList)
                     {
-                        PreviousRunCollection runcollect = new PreviousRunCollection();
-                        runcollect.AggregateTelemtryUrl = config.AggregateTelemtryUrl;
+                        PreviousRunCollection runcollect = new PreviousRunCollection();                       
                         runcollect.Drone1VideoUrl = config.Drone1VideoUrl;
                         runcollect.Drone2VideoUrl = config.Drone2VideoUrl;
                         runcollect.Location = config.Location;
@@ -91,10 +93,13 @@ namespace PegasusNAEMobile
                         runcollect.Pilot = config.Pilot;
                         runcollect.RunId = config.RunId;
                         runcollect.Timestamp = config.Timestamp;
+                        runcollect.maxAccelX = config.Aggregates.MaxAccelX;
+                        runcollect.maxAccelY = config.Aggregates.MaxAccelY;
+                        runcollect.maxAccelZ = config.Aggregates.MaxAccelZ;
+                        runcollect.maxSpeed = config.Aggregates.MaxSpeed;
                         addRunToUI(runcollect);
                         runlist.Add(runcollect);
-                        // PreviousRunListView.ItemsSource = runlist;
-                        //break;
+                       
                     }
                 }
             }

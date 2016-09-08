@@ -16,6 +16,28 @@ namespace PegasusNAEMobile.Collections
     }
 
     [JsonObject]
+    public class AggregateValues
+    {
+        public AggregateValues()
+        {
+        }
+
+        [JsonProperty("maxSpeed")]
+        public double MaxSpeed { get; set; }
+
+        [JsonProperty("maxAccelX")]
+        public double MaxAccelX { get; set; }
+
+        [JsonProperty("maxAccelY")]
+        public double MaxAccelY { get; set; }
+
+        [JsonProperty("maxAccelZ")]
+        public double MaxAccelZ { get; set; }
+
+
+    }
+
+    [JsonObject]
     public class CollectionConfig
     {
         [JsonProperty("timestamp")]
@@ -42,8 +64,8 @@ namespace PegasusNAEMobile.Collections
         [JsonProperty("onboardTelemetryUrl")]
         public string OnboardTelemetryUrl { get; set; }
 
-        [JsonProperty("AggregateTelemetryUrl")]
-        public string AggregateTelemtryUrl { get; set; }
+        [JsonProperty("aggregateTelemetry")]
+        public AggregateValues Aggregates { get; set; }
     }
 
     [JsonObject]

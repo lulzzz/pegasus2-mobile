@@ -16,7 +16,10 @@ namespace PegasusNAEMobile.Collections
         public string Drone2VideoUrl { get; set; }
         public string OnboardVideoUrl { get; set; }
         public string OnboardTelemetryUrl { get; set; }
-        public string AggregateTelemtryUrl { get; set; }
+        public double maxAccelX { get; set; }
+        public double maxAccelY { get; set; }
+        public double maxAccelZ { get; set; }
+        public double maxSpeed { get; set; }
     }
 
      
