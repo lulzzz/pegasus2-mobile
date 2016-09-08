@@ -34,7 +34,7 @@
               <ColumnDefinition Width="*"></ColumnDefinition>
               <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label x:Name="RunTimeStamp" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
+            <Label x:Name="RunTimeStamp" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
             <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>
           </Grid>
 
@@ -52,7 +52,7 @@
             </Grid.ColumnDefinitions>
             <Label x:Name="SpeedGridTitle" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Text="MAX AIR SPEED"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
-              <Label x:Name="SpeedMPH" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label x:Name="SpeedMPH" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="MPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
             </StackLayout>
@@ -77,7 +77,7 @@
 
             <Label Text="SOUND LEVEL" x:Name="SoundLevelLabel"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
-              <Label x:Name="SoundLevel" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label x:Name="SoundLevel" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="DB" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
             </StackLayout>
           </Grid>
