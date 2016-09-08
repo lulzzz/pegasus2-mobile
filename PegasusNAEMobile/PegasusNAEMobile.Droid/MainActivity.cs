@@ -14,6 +14,7 @@ using System.Linq;
 using Android.Util;
 using Octane.Xam.VideoPlayer.Android;
 
+
 namespace PegasusNAEMobile.Droid
 {
     [Activity(Label = "PegasusMission NAE", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -269,6 +270,7 @@ namespace PegasusNAEMobile.Droid
             this.messageQueue = new Queue<byte[]>();
             PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            //ImageCircleRenderer.Init();
             FormsVideoPlayer.Init();          
             App.SetScreenHeightAndWidth((int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density),(int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density) );  // Get device independednt pixels
             LoadApplication(new App());

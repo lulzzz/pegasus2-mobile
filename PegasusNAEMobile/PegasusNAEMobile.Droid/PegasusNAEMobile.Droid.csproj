@@ -48,11 +48,16 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
     <Reference Include="Octane.Xam.VideoPlayer, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\MonoAndroid10\Octane.Xam.VideoPlayer.dll</HintPath>
@@ -132,7 +137,9 @@
     <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PegasusNAEMobile\PegasusNAEMobile.csproj">
@@ -175,6 +182,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\pause.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\arrowup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\arrowup.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

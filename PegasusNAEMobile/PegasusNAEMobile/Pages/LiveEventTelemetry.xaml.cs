@@ -20,13 +20,19 @@ namespace PegasusNAEMobile
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             //sendMessageButton.Image = ImageSource.FromFile("Assets/pegasus_herobackground.png");
-            sendMessageButton.Image = "Assets/Send.png";
+
+            //sendMessageButton.Image = "Assets/Send.png";
+            //ArrowImage.Source = Device.OnPlatform(
+            //iOS: ImageSource.FromFile("arrowup.png"),
+            //Android: ImageSource.FromFile("arrowup.png"),
+            //WinPhone: ImageSource.FromFile("Assets/arrowup_small.png"));
             SizeChanged += LiveEventTelemetry_SizeChanged;
             //UserMessageSentStatus.FadeTo(0, 0);
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "Back.png";
                 sendMessageButton.Image = "send.png";
+                
             }
             else if (Device.OS == TargetPlatform.Android)
             {
@@ -47,10 +53,25 @@ namespace PegasusNAEMobile
             double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
             double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            
+            double radius = 60;
+            try
+            {
+                radius = Device.GetNamedSize(NamedSize.Large, typeof(BoxView));
+                radius = radius + fontsizeMedium*2;
+            }
+            catch (Exception ex)
+            {
+                radius = 60;
+            }
             AtmosphericLabel.FontSize = fontsizeMedium;
             LinearAccelerationLabel.FontSize = fontsizeMedium;
-            CompassDirection.FontSize = fontsizeLarge;
-            DirectionLabel.FontSize = fontsizeMedium;
+            
+            CircleDirection.WidthRequest = radius;
+            CircleDirection.HeightRequest = radius;
+            CompassDirection.FontSize = fontsizeMedium;
+            
+            DirectionLabel.FontSize = fontSizeSmall;
         }
 
         protected override void OnSizeAllocated(double width, double height)

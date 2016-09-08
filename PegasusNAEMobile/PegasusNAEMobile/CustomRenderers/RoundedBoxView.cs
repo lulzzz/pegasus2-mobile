@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace PegasusNAEMobile
 { 
-    public class RoundedBoxView : BoxView
+    public class RoundedBoxView : View
     {
         public static readonly BindableProperty CornerRadiusProperty = BindableProperty.Create<RoundedBoxView, double>(p => p.CornerRadius, 0);
         public double CornerRadius
@@ -16,14 +16,21 @@ namespace PegasusNAEMobile
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly BindableProperty StrokeProperty = BindableProperty.Create<RoundedBoxView, Color>(p => p.Stroke, Color.Transparent);
+        public static readonly BindableProperty StrokeProperty = BindableProperty.Create<RoundedBoxView, Color>(p => p.Stroke, Color.Red);
         public Color Stroke
         {
             get { return (Color)GetValue(StrokeProperty); }
             set { SetValue(StrokeProperty, value); }
         }
 
-        public static readonly BindableProperty StrokeThickProperty = BindableProperty.Create<RoundedBoxView, double>(p => p.StrokeThick, default(double));
+        //public static readonly BindableProperty StrokeProperty = BindableProperty.Create<RoundedBoxView, Color>(p => p.Stroke, Color.Transparent);
+        //public Color Stroke
+        //{
+        //    get { return (Color)GetValue(StrokeProperty); }
+        //    set { SetValue(StrokeProperty, value); }
+        //}
+
+        public static readonly BindableProperty StrokeThickProperty = BindableProperty.Create<RoundedBoxView, double>(p => p.StrokeThick, 2);
 
         public double StrokeThick
         {
