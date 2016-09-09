@@ -116,12 +116,14 @@ namespace PegasusNAEMobile
 
         private void addRunToUI(PreviousRunCollection runcollect)
         {
+            double fontsizemedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            double fontsizelarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
             Grid childGrid = new Grid{
                 RowDefinitions =
                 {
-                    new RowDefinition {Height = GridLength.Star },
-                    new RowDefinition {Height = GridLength.Star },
-                    new RowDefinition {Height = GridLength.Star }
+                    new RowDefinition {Height = GridLength.Auto },
+                    new RowDefinition {Height = GridLength.Auto },
+                    new RowDefinition {Height = GridLength.Auto }
                 }                   
             };
             
@@ -137,22 +139,23 @@ namespace PegasusNAEMobile
                 System.Diagnostics.Debug.WriteLine(runcollect.OnboardTelemetryUrl);
                 await Navigation.PushAsync(new NonLiveEventTelemetry(runcollect));
             };
-
+            /*Row 0*/
             StackLayout sl1 = new StackLayout {
                 Orientation = StackOrientation.Vertical
             };
             Label label1 = new Label();
-            label1.Text = "August 21, 2016";//String.Format("{0 : MMMM d, yyyy" ,runcollect.Timestamp);
+            //label1.Text = String.Format("{0 : MMMM d, yyyy" ,runcollect.Timestamp);
+            label1.Text = String.Format("{0:MMMM dd, yyyy HH:mm:ss}", runcollect.Timestamp);
             label1.TextColor = Color.White;
             Label label2 = new Label();
             label2.Text = runcollect.Pilot;
             label2.TextColor = Color.FromHex("#656472");
             sl1.Children.Add(label1);
             sl1.Children.Add(label2);
-            sl1.Margin = new Thickness(15, 10, 5, 5);
+            sl1.Margin = new Thickness(25, 10, 5, 15);
             childGrid.BackgroundColor = Color.FromHex("#23232b");
             childGrid.Children.Add(sl1, 0, 0);
-
+            /*Row 1*/
             StackLayout sl2 = new StackLayout {
                 Orientation = StackOrientation.Vertical
                 };
@@ -163,7 +166,7 @@ namespace PegasusNAEMobile
                 Orientation = StackOrientation.Horizontal
             };
             Label label5 = new Label();
-            label5.Text = "867.745";
+            label5.Text = (runcollect.maxSpeed).ToString(); ;
             label5.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
             label5.TextColor = Color.White;
 
@@ -177,8 +180,65 @@ namespace PegasusNAEMobile
             sl3.Children.Add(label3);
             sl2.Children.Add(label4);
             sl2.Children.Add(sl3);
-            sl2.Margin = new Thickness(15, 10, 5, 5);
+            sl2.Margin = new Thickness(25, 10, 5, 15);
             childGrid.Children.Add(sl2, 0, 1);
+
+            /*Row 2*/
+            StackLayout sl4 = new StackLayout { Orientation = StackOrientation.Horizontal };
+
+            Grid sl4g1 = new Grid();
+            sl4g1.Margin = new Thickness(0, 5, 15, 0);
+            RoundedBoxView rbview = new RoundedBoxView();
+            rbview.HeightRequest = fontsizelarge * 2.5;
+            rbview.WidthRequest = fontsizelarge * 2.5;
+            rbview.HorizontalOptions = LayoutOptions.Center;
+            rbview.VerticalOptions = LayoutOptions.Center;
+            Label maxacclx = new Label();
+            maxacclx.Text = (runcollect.maxAccelX).ToString() + " g";
+            maxacclx.TextColor = Color.White;
+            maxacclx.HorizontalOptions = LayoutOptions.Center;
+            maxacclx.VerticalOptions = LayoutOptions.Center;
+            sl4g1.Children.Add(rbview);
+            StackLayout slmaxacclx = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions=LayoutOptions.Center, VerticalOptions = LayoutOptions.Center };
+            Label accllabel = new Label();
+            accllabel.Text = "ACCL";
+            accllabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
+            accllabel.TextColor = Color.FromHex("#656472");
+            slmaxacclx.Children.Add(maxacclx);
+            slmaxacclx.Children.Add(accllabel);
+            //sl4g1.Children.Add(maxacclx);
+            sl4g1.Children.Add(slmaxacclx);
+
+
+            Grid sl4g2 = new Grid();
+            sl4g2.Margin = new Thickness(0, 5, 15, 0);
+            RoundedBoxView rbview1 = new RoundedBoxView();
+            rbview1.HeightRequest = fontsizelarge * 2.5;
+            rbview1.WidthRequest = fontsizelarge * 2.5;
+            rbview1.HorizontalOptions = LayoutOptions.Center;
+            rbview1.VerticalOptions = LayoutOptions.Center;
+            Label sideaccly = new Label();
+            sideaccly.Text = (runcollect.maxAccelY).ToString() + " g";
+            sideaccly.TextColor = Color.White;
+            sideaccly.HorizontalOptions = LayoutOptions.Center;
+            sideaccly.VerticalOptions = LayoutOptions.Center;
+            sl4g2.Children.Add(rbview1);
+            StackLayout sideacclysl = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center };
+            Label accllabely = new Label();
+            accllabely.Text = "SIDE";
+            accllabely.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
+            accllabely.TextColor = Color.FromHex("#656472");
+            sideacclysl.Children.Add(sideaccly);
+            sideacclysl.Children.Add(accllabely);
+            //sl4g1.Children.Add(maxacclx);
+            sl4g2.Children.Add(sideacclysl);
+
+
+            sl4.Margin = new Thickness(15, 5, 5, 15);
+            sl4.Children.Add(sl4g1);
+            sl4.Children.Add(sl4g2);
+            childGrid.Children.Add(sl4, 0, 2);
+
             childGrid.Margin = new Thickness(0, 20, 0, 20);
             childGrid.GestureRecognizers.Add(tgr);
             ListRuns.Children.Add(childGrid);

@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="Black"
              xmlns:converter="clr-namespace:PegasusNAEMobile"
-             xmlns:renderer="clr-namespace:PegasusNAEMobile;assembly=PegasusNAEMobile"
-             xmlns:imagecircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:renderer="clr-namespace:PegasusNAEMobile;assembly=PegasusNAEMobile"             
              x:Class="PegasusNAEMobile.LiveEventTelemetry">  
   <ContentPage.Resources>
     <ResourceDictionary>
