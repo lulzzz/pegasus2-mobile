@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PegasusData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,27 @@ namespace PegasusNAEMobile
             InitializeComponent();
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             NavigationPage.SetHasNavigationBar(this, false);
-            this.BindingContext = new MainPageViewModel();                           
+            this.BindingContext = new MainPageViewModel();
+            pegasus_HeroBackground.Source = Device.OnPlatform(
+                iOS: ImageSource.FromFile("pegasus_herobackground.png"),
+                Android: ImageSource.FromFile("pegasus_herobackground.png"),
+                WinPhone: ImageSource.FromFile("Assets/pegasus_herobackground.png"));
+
+            SizeChanged += MainPage_SizeChanged;
+        }
+
+        private void MainPage_SizeChanged(object sender, EventArgs e)
+        {
+            double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+            if (fontsizeLarge < 35)
+                fontsizeLarge = 45;
+            fontsizeLarge = (int)(Constants.ScreenHeight / 14);
+            double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+            double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+            PageTitle.FontSize = fontsizeMedium;
+            HeroTitle.FontSize = fontsizeLarge;
+            //RegisterForEventNotifications.FontSize = fontSizeSmall;
+            
         }
 
         protected override void OnSizeAllocated(double width, double height)
@@ -31,12 +52,57 @@ namespace PegasusNAEMobile
                 if (width > height)
                 {
                     Padding = new Thickness(0, 0, 0, 0);
+                    Grid.SetColumn(HeroTitle, 0);
+                    Grid.SetColumnSpan(HeroTitle, 1);
+                    Grid.SetRow(HeroTitle, 0);
+                    Grid.SetRowSpan(HeroTitle, 2);
+
+                    Grid.SetColumn(ButtonLayout, 1);
+                    Grid.SetColumnSpan(ButtonLayout, 1);
+                    Grid.SetRow(ButtonLayout, 0);
+                    Grid.SetRowSpan(ButtonLayout, 2);
+
+                    RegisterForEventNotifications.WidthRequest = (int)((Constants.ScreenWidth) * 0.4);
+                    WatchEventButton.WidthRequest = (int)((Constants.ScreenWidth) * 0.4);
+                    WatchPreviousRuns.WidthRequest = (int)((Constants.ScreenWidth) * 0.4);
+                    HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.5);
                 }
                 else
                 {
                     Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+                    Grid.SetRow(HeroTitle, 0);
+                    Grid.SetRowSpan(HeroTitle, 1);
+                    Grid.SetColumn(HeroTitle, 0);
+                    Grid.SetColumnSpan(HeroTitle, 2);
+                    Grid.SetRow(ButtonLayout, 1);
+                    Grid.SetRowSpan(ButtonLayout, 1);
+                    Grid.SetColumn(ButtonLayout, 0);
+                    Grid.SetColumnSpan(ButtonLayout, 2);
+                    RegisterForEventNotifications.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
+                    WatchEventButton.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
+                    WatchPreviousRuns.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
+                    HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
                 }
             }
+        }
+
+        private void RegisterForEventNotifications_Clicked(object sender, EventArgs e)
+        {
+            Uri uri = new Uri("https://www.pegasusmission.io/Home/Notifications");
+            Device.OpenUri(uri);
+        }
+
+        private async void WatchLiveEvent_Clicked(object sender, EventArgs e)
+        {
+            App.Instance.ConnectWebSocketLiveTelemetry();
+            //var LiveEventTelemetryPage = new LiveEventTelemetry();
+            //LiveEventTelemetryPage.BindingContext = App.Instance.CurrentVehicleTelemetry;
+            await Navigation.PushAsync(new LiveEventTelemetry());
+        }
+
+        private async void WatchPreviousRuns_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PreviousRunsList());
         }
     }
 }
