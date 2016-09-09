@@ -28,7 +28,7 @@
 	<key>MinimumOSVersion</key>
 	<string>6.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>PegasusMissions NAE</string>
+	<string>PegasusMission NAE</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.pegasusmission.nae</string>
 	<key>CFBundleVersion</key>
@@ -39,5 +39,7 @@
 	<string></string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/AppIcon.xcassets/AppIcons.appiconset</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/AppIcon.xcassets/LaunchImages.launchimage</string>
 </dict>
 </plist>
