@@ -50,11 +50,11 @@
           <Grid Grid.Column="0" Margin="0,0,0,0">
             <Grid.RowDefinitions>
               <RowDefinition Height="Auto"></RowDefinition>
-              <RowDefinition Height="*"></RowDefinition>
-              <RowDefinition Height="*"></RowDefinition>
-              <RowDefinition Height="*"></RowDefinition>
-              <RowDefinition Height="*"></RowDefinition>
-              <RowDefinition Height="*"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
+              <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Orientation="Vertical" Grid.Row="0" Margin="10,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
               <Label x:Name="RunTimeStampNonLive" TextColor="White"></Label>
