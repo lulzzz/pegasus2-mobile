@@ -189,10 +189,11 @@ namespace PegasusNAEMobile
             Grid sl4g1 = new Grid();
             sl4g1.Margin = new Thickness(0, 5, 15, 0);
             RoundedBoxView rbview = new RoundedBoxView();
-            rbview.HeightRequest = fontsizelarge * 2.5;
-            rbview.WidthRequest = fontsizelarge * 2.5;
+            rbview.HeightRequest = fontsizelarge * 3;
+            rbview.WidthRequest = fontsizelarge * 3;
             rbview.HorizontalOptions = LayoutOptions.Center;
             rbview.VerticalOptions = LayoutOptions.Center;
+            //rbview.Margin = new Thickness(5, 5, 5, 5);
             Label maxacclx = new Label();
             maxacclx.Text = (runcollect.maxAccelX).ToString() + " g";
             maxacclx.TextColor = Color.White;
@@ -213,10 +214,11 @@ namespace PegasusNAEMobile
             Grid sl4g2 = new Grid();
             sl4g2.Margin = new Thickness(0, 5, 15, 0);
             RoundedBoxView rbview1 = new RoundedBoxView();
-            rbview1.HeightRequest = fontsizelarge * 2.5;
-            rbview1.WidthRequest = fontsizelarge * 2.5;
+            rbview1.HeightRequest = fontsizelarge * 3;
+            rbview1.WidthRequest = fontsizelarge * 3;
             rbview1.HorizontalOptions = LayoutOptions.Center;
             rbview1.VerticalOptions = LayoutOptions.Center;
+            //rbview1 = new Thickness(5, 5, 5, 5);
             Label sideaccly = new Label();
             sideaccly.Text = (runcollect.maxAccelY).ToString() + " g";
             sideaccly.TextColor = Color.White;
