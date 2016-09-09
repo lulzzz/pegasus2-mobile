@@ -1,0 +1,86 @@
+{
+  "images": [
+    {
+      "scale": "2x",
+      "size": "29x29",
+      "idiom": "iphone",
+      "filename": "splash_yellow58x58.png"
+    },
+    {
+      "scale": "3x",
+      "size": "29x29",
+      "idiom": "iphone",
+      "filename": "splash_yellow87x87.png"
+    },
+    {
+      "scale": "2x",
+      "size": "40x40",
+      "idiom": "iphone",
+      "filename": "splash_yellow80x80.png"
+    },
+    {
+      "scale": "3x",
+      "size": "40x40",
+      "idiom": "iphone",
+      "filename": "splash_yellow120x120.png"
+    },
+    {
+      "scale": "2x",
+      "size": "60x60",
+      "idiom": "iphone",
+      "filename": "splash_yellow120x120.png"
+    },
+    {
+      "scale": "3x",
+      "size": "60x60",
+      "idiom": "iphone",
+      "filename": "splash_yellow180x180.png"
+    },
+    {
+      "scale": "1x",
+      "size": "29x29",
+      "idiom": "ipad",
+      "filename": "splash_yellow29x29.png"
+    },
+    {
+      "scale": "2x",
+      "size": "29x29",
+      "idiom": "ipad",
+      "filename": "splash_yellow58x58.png"
+    },
+    {
+      "scale": "1x",
+      "size": "40x40",
+      "idiom": "ipad",
+      "filename": "splash_yellow_withshadow_metallic40x40.png"
+    },
+    {
+      "scale": "2x",
+      "size": "40x40",
+      "idiom": "ipad",
+      "filename": "splash_yellow80x80-1.png"
+    },
+    {
+      "scale": "1x",
+      "size": "76x76",
+      "idiom": "ipad",
+      "filename": "splash_yellow76x76.png"
+    },
+    {
+      "scale": "2x",
+      "size": "76x76",
+      "idiom": "ipad",
+      "filename": "splash_yellow152x152.png"
+    },
+    {
+      "scale": "2x",
+      "size": "83.5x83.5",
+      "idiom": "ipad"
+    }
+  ],
+  "properties": {},
+  "info": {
+    "version": 1,
+    "author": ""
+  }
+}
