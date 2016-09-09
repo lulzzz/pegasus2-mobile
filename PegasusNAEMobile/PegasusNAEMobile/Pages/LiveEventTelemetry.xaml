@@ -67,7 +67,7 @@
               <Label x:Name="DirectionLabel" Text="DIRECTION" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
               <!--<Image x:Name="ArrowImage" HorizontalOptions="Center" Aspect="AspectFill" VerticalOptions="Center" Margin="0,5,0,5"></Image>-->
               <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
-                <renderer:RoundedBoxView x:Name="CircleDirection"  HorizontalOptions="Center" VerticalOptions="Center" ></renderer:RoundedBoxView>
+                <renderer:RoundedBoxView x:Name="CircleDirection"  HorizontalOptions="Center" VerticalOptions="Center"></renderer:RoundedBoxView>
                 <Label x:Name="CompassDirection" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource convertToCompass}}"
                    TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
               </Grid>
