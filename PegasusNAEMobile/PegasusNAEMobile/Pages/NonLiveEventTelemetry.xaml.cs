@@ -7,6 +7,7 @@ using PegasusData;
 using Xamarin.Forms;
 using PegasusNAEMobile.Collections;
 using System.Threading;
+using Newtonsoft.Json;
 
 namespace PegasusNAEMobile
 {
@@ -120,7 +121,7 @@ namespace PegasusNAEMobile
                 NoseWeightLabel.FontSize = fontsizesmall;
                 SideToSideLabel.FontSize = fontsizesmall;
                 NoseWeightNonLive.FontSize = fontsizemedium;
-                SideToSide.FontSize = fontsizemedium;
+                SideToSide.FontSize = fontsizesmall;
                 AccelX_Label.FontSize = fontsizemicro;
                 AccelY_Label.FontSize = fontsizemicro;
                 AccelZ_Label.FontSize = fontsizemicro;
@@ -174,7 +175,14 @@ namespace PegasusNAEMobile
                 {
                     NoFileAvailable.IsVisible = false;
                     FileAvailable.IsVisible = true;
-                    ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
+                    List<Collection> telemetrylist = new List<Collection>();
+                    telemetrylist = JsonConvert.DeserializeObject<List<Collection>>(onboardtelemetry);
+                    ronboardtelem.collection = new List<Collection>();
+                    foreach (var telemetry in telemetrylist)
+                    {
+                        ronboardtelem.collection.Add(telemetry);
+                    }
+                   // ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
                     TelemetrySlider.Minimum = 0;
                     TelemetrySlider.Maximum = ronboardtelem.collection.Count;
                     TimeSpan duration = new TimeSpan(0, 0, 0, 0, (ronboardtelem.collection.Count * 500));
@@ -250,9 +258,11 @@ namespace PegasusNAEMobile
                     RearLeft.Text = RoundToDecimalPlaces(currenttelemetry.LeftRearWeightLbf);
                     RearRight.Text = RoundToDecimalPlaces(currenttelemetry.RightRearWeightLbf);
                     TelemetrySlider.Value = currenttelemetrypos;
-                    AccelX.Text = RoundToDecimalPlaces(currenttelemetry.AccelXG);
-                    AccelY.Text = RoundToDecimalPlaces(currenttelemetry.AccelYG);
-                    AccelZ.Text = RoundToDecimalPlaces(currenttelemetry.AccelZG);
+                    AccelX.Text = RoundToDecimalPlaces(currenttelemetry.SteerBoxAccelXG);
+                    AccelY.Text = RoundToDecimalPlaces(currenttelemetry.SteerBoxAccelYG);
+                    AccelZ.Text = RoundToDecimalPlaces(currenttelemetry.SteerBoxAccelZG);
+                    MaxAcclValue.Text = RoundToDecimalPlaces(currenttelemetry.AccelXG);
+                    SideToSide.Text = RoundToDecimalPlaces(currenttelemetry.AccelYG);
                     //MaxAccl.Text = (currenttelemetry.acc)
                     currenttelemetrypos++;
                     return true;                    
