@@ -271,7 +271,7 @@ namespace PegasusNAEMobile.Droid
             PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init(this, bundle);
             //ImageCircleRenderer.Init();
-            FormsVideoPlayer.Init();          
+            FormsVideoPlayer.Init("EC98EB3C1D9B07A03E67203528E3F3055FD5AB36");          
             App.SetScreenHeightAndWidth((int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density),(int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density) );  // Get device independednt pixels
             LoadApplication(new App());
         }

@@ -62,7 +62,7 @@ namespace PegasusNAEMobile.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-                FormsVideoPlayer.Init();
+                FormsVideoPlayer.Init("046EA26A33BE39A4012A0BC803B7258180359AB9");
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
