@@ -31,8 +31,8 @@ namespace PegasusNAEMobile.Droid
             try
             {
                 var element = this.Element;
-                var rect = new Rect();
-                this.GetDrawingRect(rect);
+                //var rect = new Rect();
+                //this.GetDrawingRect(rect);
                 var paint = new Paint()
                 {
                     Color = (Xamarin.Forms.Color.FromHex("#d90000")).ToAndroid(),
@@ -43,36 +43,6 @@ namespace PegasusNAEMobile.Droid
                 
                 canvas.DrawCircle(this.Width/2, this.Height/2, this.Height/2, paint);
                
-                //var radius = Math.Min(Width, Height);
-                //var strokeWidth = 2;
-                //radius -= strokeWidth / 2;
-
-                ////Create path to clip
-                //var path = new Path();
-                //path.AddCircle(Width / 2, Height / 2, radius, Path.Direction.Ccw);
-                //canvas.Save();
-                //canvas.ClipPath(path);
-
-                //base.Draw(canvas);
-
-                //canvas.Restore();
-
-                //// Create path for circle border
-                //path = new Path();
-                //path.AddCircle(Width / 2, Height / 2, radius, Path.Direction.Ccw);
-
-                //var paint = new Paint();
-                //paint.AntiAlias = true;
-                //paint.StrokeWidth = 5;
-                //paint.SetStyle(Paint.Style.Stroke);
-                //paint.Color = (Xamarin.Forms.Color.FromHex("#d90000")).ToAndroid();
-                ////paint.Color = global::Android.Graphics.Color.Red;
-
-                //canvas.DrawPath(path, paint);
-
-                ////Properly dispose
-                //paint.Dispose();
-                //path.Dispose();
                 
             }
             catch (Exception ex)
