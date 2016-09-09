@@ -144,7 +144,7 @@
               </Grid.RowDefinitions>
               <Image x:Name="vehicle" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Aspect="AspectFit" IsVisible="True"></Image>
               <BoxView Grid.Row="0" VerticalOptions="Center" Color="#d90000" HorizontalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="80"></BoxView>
-              <Label x:Name="NoseWeightNonLive" Text="231 lbf" TextColor="White" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
+              <Label x:Name="NoseWeightNonLive" Text="" TextColor="White" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
               <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                 <Label x:Name="SideToSideLabel" Text="SIDE TO SIDE" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"></Label>
                 <Grid>

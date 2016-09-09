@@ -120,7 +120,7 @@ namespace PegasusNAEMobile
                 
                 NoseWeightLabel.FontSize = fontsizesmall;
                 SideToSideLabel.FontSize = fontsizesmall;
-                NoseWeightNonLive.FontSize = fontsizemedium;
+                NoseWeightNonLive.FontSize = fontsizesmall;
                 SideToSide.FontSize = fontsizesmall;
                 AccelX_Label.FontSize = fontsizemicro;
                 AccelY_Label.FontSize = fontsizemicro;
