@@ -75,12 +75,15 @@ namespace PegasusNAEMobile.iOS
 
         public async Task CloseAsync()
         {
-            await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Web Socket closed by client.", CancellationToken.None);
-            // TODO: reap thread
-
-            if (OnClose != null)
+            if (IsConnected)
             {
-                OnClose(this, "Web socket is closed.");
+                await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Web Socket closed by client.", CancellationToken.None);
+                // TODO: reap thread
+
+                if (OnClose != null)
+                {
+                    OnClose(this, "Web socket is closed.");
+                }
             }
         }
         private async void ReceiveLoopAsync()
@@ -253,6 +256,8 @@ namespace PegasusNAEMobile.iOS
             return tcs.Task;
         }
 
+       
+
         public async Task SendAsync(byte[] messageBytes)
         {
             var ev = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -278,6 +283,6 @@ namespace PegasusNAEMobile.iOS
             LoadApplication(new App());
             App.SetScreenHeightAndWidth((int)UIScreen.MainScreen.Bounds.Height, (int)UIScreen.MainScreen.Bounds.Width);
             return base.FinishedLaunching(app, options);
-        }
+        }       
     }
 }

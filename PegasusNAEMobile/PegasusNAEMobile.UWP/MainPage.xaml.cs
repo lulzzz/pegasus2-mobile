@@ -37,7 +37,9 @@ namespace PegasusNAEMobile.UWP
         private MessageWebSocket client;
         private const int receiveChunkSize = 1024;
         private bool connected = false;
-        private Queue<byte[]> messageQueue;  
+        private Queue<byte[]> messageQueue;
+
+        
 
         public MainPage()
         {
@@ -157,5 +159,14 @@ namespace PegasusNAEMobile.UWP
             }
         }
 
+        public async Task CloseAsync()
+        {
+            //this.client.Close(1000, "Web Socket closed by client.");
+
+            if (OnClose != null)
+            {
+                OnClose(this, "Web socket is closed.");
+            }
+        }
     }
 }

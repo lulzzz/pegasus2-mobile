@@ -97,6 +97,11 @@ namespace PegasusNAEMobile
             }
         }
 
+        protected override void OnDisappearing()
+        {
+            App.Instance.CloseSocketAsync();
+            base.OnDisappearing();
+        }
         private void LiveEventTelemetry_SizeChanged(object sender, EventArgs e)
         {
             double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
