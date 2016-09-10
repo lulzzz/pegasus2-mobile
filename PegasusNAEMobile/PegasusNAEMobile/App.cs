@@ -243,7 +243,11 @@ namespace PegasusNAEMobile
             return (App.WebSocketClient.SendAsync(message));
         }
 
-
+        public string RoundToDecimalPlaces(double val)
+        {
+            double round = (Math.Round((double)val, 2, MidpointRounding.AwayFromZero));
+            return (String.Format("{0:0.00}", round));
+        }
         public async Task SendUserMessageAsync(string message)
         {
             //this.AppData.StatusMessage = "Sending...";
