@@ -29,14 +29,7 @@ namespace PegasusNAEMobile
 
         private void MainPage_SizeChanged(object sender, EventArgs e)
         {
-            double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
-            if (fontsizeLarge < 35)
-                fontsizeLarge = 45;
-            fontsizeLarge = (int)(Constants.ScreenHeight / 14);
-            double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
-            double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-            PageTitle.FontSize = fontsizeMedium;
-            HeroTitle.FontSize = fontsizeLarge;
+            
             //RegisterForEventNotifications.FontSize = fontSizeSmall;
             
         }
@@ -51,6 +44,13 @@ namespace PegasusNAEMobile
 
                 if (width > height)
                 {
+                    double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                    
+                    fontsizeLarge = (int)(this.Height / 14);
+                    double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                    double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                    PageTitle.FontSize = fontsizeMedium;
+                    HeroTitle.FontSize = fontsizeLarge;
                     Padding = new Thickness(0, 0, 0, 0);
                     Grid.SetColumn(HeroTitle, 0);
                     Grid.SetColumnSpan(HeroTitle, 1);
@@ -62,13 +62,20 @@ namespace PegasusNAEMobile
                     Grid.SetRow(ButtonLayout, 0);
                     Grid.SetRowSpan(ButtonLayout, 2);
 
-                    RegisterForEventNotifications.WidthRequest = (int)((Constants.ScreenWidth) * 0.4);
-                    WatchEventButton.WidthRequest = (int)((Constants.ScreenWidth) * 0.4);
-                    WatchPreviousRuns.WidthRequest = (int)((Constants.ScreenWidth) * 0.4);
+                    RegisterForEventNotifications.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
+                    WatchEventButton.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
+                    WatchPreviousRuns.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
                     HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.5);
                 }
                 else
                 {
+                    double fontsizeLarge = Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                    
+                    fontsizeLarge = (int)(this.height / 14);
+                    double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
+                    double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+                    PageTitle.FontSize = fontsizeMedium;
+                    HeroTitle.FontSize = fontsizeLarge;
                     Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
                     Grid.SetRow(HeroTitle, 0);
                     Grid.SetRowSpan(HeroTitle, 1);
