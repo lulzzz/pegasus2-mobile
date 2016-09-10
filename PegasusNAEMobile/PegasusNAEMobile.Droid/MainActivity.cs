@@ -76,22 +76,15 @@ namespace PegasusNAEMobile.Droid
 
         public async Task CloseAsync()
         {
-            try
+            if (IsConnected)
             {
-                if (IsConnected)
-                {
-                    await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Web Socket closed by client.", CancellationToken.None);
-                    // TODO: reap thread
+                await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Web Socket closed by client.", CancellationToken.None);
+                // TODO: reap thread
 
-                    if (OnClose != null)
-                    {
-                        OnClose(this, "Web socket is closed.");
-                    }
+                if (OnClose != null)
+                {
+                    OnClose(this, "Web socket is closed.");
                 }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
         private async void ReceiveLoopAsync()
