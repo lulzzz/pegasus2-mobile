@@ -26,6 +26,7 @@ namespace PegasusNAEMobile
                 WinPhone: ImageSource.FromFile("Assets/pegasus_herobackground.png"));
 
             SizeChanged += MainPage_SizeChanged;
+            //PegasusNAEMobile.App.Init(PegasusNAEMobile.Droid.MainActivity);
         }
 
         private void MainPage_SizeChanged(object sender, EventArgs e)
