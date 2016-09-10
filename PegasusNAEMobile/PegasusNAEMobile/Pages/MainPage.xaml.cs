@@ -1,4 +1,5 @@
 ﻿using PegasusData;
+using PegasusNAEMobile.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -107,9 +108,14 @@ namespace PegasusNAEMobile
             await Navigation.PushAsync(new LiveEventTelemetry());
         }
 
+        private async void AboutButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new About());
+        }
+
         private async void WatchPreviousRuns_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PreviousRunsList());
-        }
+        }       
     }
 }

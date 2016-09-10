@@ -21,70 +21,35 @@ using PegasusData;
 using Newtonsoft.Json;
 using Windows.Storage.Streams;
 using System.Threading;
-using Windows.Devices.Geolocation;
+
 
 namespace PegasusNAEMobile.UWP
 {
-    public sealed partial class MainPage : IWebSocketClient, IGeolocator
+    public sealed partial class MainPage : IWebSocketClient
     {
-        private readonly Windows.Devices.Geolocation.Geolocator _locator;
+        
         public event WebSocketEventHandler OnClose;
         public event WebSocketErrorHandler OnError;
         public event WebSocketMessageHandler OnMessage;
         public event WebSocketEventHandler OnOpen;
-        public event EventHandler<PositionErrorEventArgs> PositionError;
-        public event EventHandler<PositionEventArgs> PositionChanged;
-
+        
         private MessageWebSocket client_LiveURI;
         private MessageWebSocket client;
         private const int receiveChunkSize = 1024;
         private bool connected = false;
-        private Queue<byte[]> messageQueue;
-
-        public double DesiredAccuracy
-        {
-            get
-            {
-                return (_locator.DesiredAccuracy == PositionAccuracy.Default) ? 100 : 10;
-            }
-
-            set
-            {
-                _locator.DesiredAccuracy = (value > 10) ? PositionAccuracy.Default : PositionAccuracy.High;
-            }
-        }
-
-
-        public bool isGeoLocationEnabled
-        {
-            get
-            {
-                return _locator.LocationStatus != PositionStatus.Disabled;
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool isGeoLocationAvailable
-        {
-            get
-            {
-                return _locator.LocationStatus != PositionStatus.NotAvailable;
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+        private Queue<byte[]> messageQueue;  
 
         public MainPage()
         {
             this.client = new MessageWebSocket();
             client_LiveURI = new MessageWebSocket();
             this.messageQueue = new Queue<byte[]>();
-            _locator = new Windows.Devices.Geolocation.Geolocator();
+
+            //SimpleContainer container = new SimpleContainer();
+            //container.Register<IDevice>(t => WindowsPhoneDevice.CurrentDevice);
+            //container.Register<IGeolocator, Geolocator>();
+            //Resolver.SetResolver(container.GetResolver());
+
             this.InitializeComponent();
             PegasusNAEMobile.App.Init(this);
             PegasusNAEMobile.App.SetScreenHeightAndWidth((int)Window.Current.Bounds.Height, (int)Window.Current.Bounds.Width);
@@ -192,51 +157,5 @@ namespace PegasusNAEMobile.UWP
             }
         }
 
-        public async Task<Position> GetPositionAsync(int timeout)
-        {
-            var accessStatus = await Geolocator.RequestAccessAsync();
-            Position p = null;
-            return p;
-        }
-
-        public Task<Position> GetPositionAsync(int timeout, bool includeHeading)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Position> GetPositionAsync(CancellationToken cancelToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Position> GetPositionAsync(CancellationToken cancelToken, bool includeHeading)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Position> GetPositionAsync(int timeout, CancellationToken cancelToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Position> GetPositionAsync(int timeout, CancellationToken cancelToken, bool includeHeading)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StartListening(uint minTime, double minDistance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StartListening(uint minTime, double minDistance, bool includeHeading)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StopListening()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

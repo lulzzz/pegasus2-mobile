@@ -173,7 +173,8 @@ namespace PegasusNAEMobile
             label5.Text = (runcollect.maxSpeed).ToString(); ;
             label5.FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label));
             label5.TextColor = Color.White;
-
+            label5.HorizontalOptions = LayoutOptions.Center;
+            label5.VerticalOptions = LayoutOptions.End;
             Label label3 = new Label();
             label3.Text = "KPH";
             label3.VerticalOptions = LayoutOptions.End;
@@ -207,6 +208,7 @@ namespace PegasusNAEMobile
             StackLayout slmaxacclx = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions=LayoutOptions.Center, VerticalOptions = LayoutOptions.Center };
             Label accllabel = new Label();
             accllabel.Text = "ACCL";
+            accllabel.VerticalOptions = LayoutOptions.Center;
             accllabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
             accllabel.TextColor = Color.FromHex("#656472");
             slmaxacclx.Children.Add(maxacclx);
@@ -232,6 +234,7 @@ namespace PegasusNAEMobile
             StackLayout sideacclysl = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions = LayoutOptions.Center, VerticalOptions = LayoutOptions.Center };
             Label accllabely = new Label();
             accllabely.Text = "SIDE";
+            accllabely.HorizontalOptions = LayoutOptions.Center;
             accllabely.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
             accllabely.TextColor = Color.FromHex("#656472");
             sideacclysl.Children.Add(sideaccly);

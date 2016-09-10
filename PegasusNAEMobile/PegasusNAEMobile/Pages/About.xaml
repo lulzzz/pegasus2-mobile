@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="Black"
+             x:Class="PegasusNAEMobile.Pages.About">
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
+        <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
+        <Label Text="About Us" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+      </Grid>
+      <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
+      <ScrollView Grid.Row="1" Margin="15">
+        <StackLayout Orientation="Vertical" Spacing="10" Grid.Row="1">
+          <Label Text="What is the Pegasus Mission?" TextColor="White" FontAttributes="Bold"></Label>
+          <Label TextColor="White" HorizontalOptions="Start"
+                 VerticalOptions="Center" Margin="8,0,0,0" XAlign="Start"
+                 Text="The Pegasus Mission is all about experimentation and the search for new ideas to achieve something that is not currently possible. This is not our day job, it’s our passion for experimentation."></Label>
+          <Label TextColor="White" XAlign="Start"
+                 HorizontalOptions="Start" Margin="8,0,0,0"
+                 VerticalOptions="Center"
+                 Text="Pegasus Mission is partnering with North American Eagle (NAE) to help support the attempt at breaking the Land Speed Record. We will run a series of experiments from a high speed vehicle in a remote location and connect this with a global audience in real-time."></Label>
+
+          <StackLayout Orientation="Horizontal" Spacing="5" >
+            <Label TextColor="White" Text="Learn more about NAE at " VerticalOptions="Center"></Label>
+            <Button x:Name="landspeedlink" Clicked="landspeedlink_Clicked" VerticalOptions="Center"
+                    Text="landspeed.com" TextColor="#d90000" BackgroundColor="Transparent"></Button>
+          </StackLayout>
+          <Label Text="Follow us on Twitter! " TextColor="White" VerticalOptions="Center"></Label>
+          <StackLayout Orientation="Horizontal" Spacing="5">
+            <Button x:Name="PegasusMissionTwitterLink" Clicked="PegasusMissionTwitterLink_Clicked" Text="@PegasusMission" VerticalOptions="Center" TextColor="#d90000" BackgroundColor="Transparent"></Button>
+            <Label Text="and" TextColor="White" VerticalOptions="Center"></Label>
+            <Button x:Name="LandspeedTwitterLink" Clicked="LandspeedTwitterLink_Clicked" Text="@landspeed763" TextColor="#d90000" BackgroundColor="Transparent" VerticalOptions="Center"></Button>
+          </StackLayout>
+
+          <Label Text="Privacy Policy" TextColor="White" FontAttributes="Bold" Margin="0,15,0,0"></Label>
+          <Label Text="PegasusMission NAE does not store any user information anywhere. 
+                 When a user sends a message to the vehicle cockpit, 
+                 the country they are sending a message from will be transmitted to the vehicle cockpit 
+                 and displayed on a screen. This information will not be stored and will be discarded once shown on the display."
+                 TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" XAlign="Start"></Label>
+        </StackLayout>
+      </ScrollView>
+      
+    </Grid>
+    
+  </ContentPage.Content>
+</ContentPage>
