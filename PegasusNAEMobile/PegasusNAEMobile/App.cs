@@ -28,7 +28,7 @@ namespace PegasusNAEMobile
 
         Task ConnectAsync(string host, string subprotocol, string securityToken);
         
-        Task CloseAsync();
+        //public Task CloseAsync();
 
         Task SendAsync(byte[] message);
     }
@@ -86,11 +86,6 @@ namespace PegasusNAEMobile
         {
             get;
             private set;
-        }
-
-        public async void CloseSocketAsync()
-        {
-            await App.WebSocketClient.CloseAsync();
         }
 
         public async void ConnectWebSocketLiveTelemetry()
