@@ -44,6 +44,7 @@ namespace PegasusNAEMobile
             {
                 //BackButton.Image = "Assets/" + "Back.png";
                 sendMessageButton.Image = "Assets/Send.png";
+                NAEUserMessage.BackgroundColor = Color.White;
                 BackButton.IsVisible = false;
                 BackButton.IsEnabled = false;
             }

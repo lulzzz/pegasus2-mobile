@@ -188,6 +188,7 @@
       </ScrollView>
       <Grid HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Grid.Row="2" VerticalOptions="Center">
           <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
           </Grid.RowDefinitions>
@@ -195,9 +196,12 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
           </Grid.ColumnDefinitions>
-          <Entry Grid.Row="0" BackgroundColor="White" TextChanged="NAEUserMessage_TextChanged" HeightRequest="35" Grid.Column="0" x:Name="NAEUserMessage" Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Entry>
-          <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>
-          <Label x:Name="UserMessageSentStatus" Text="40 characters remaining" TextColor="#d90000" Grid.Row="1" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+        <BoxView Grid.Row="0" Color="#d90000" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="1"></BoxView>
+        <Entry Grid.Row="1" TextChanged="NAEUserMessage_TextChanged"
+               Grid.Column="0" x:Name="NAEUserMessage"
+               Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+          <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>
+          <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
     </Grid>
       
