@@ -46,18 +46,21 @@ namespace PegasusNAEMobile
             TelemetrySlider.BindingContext = currenttelemetrypos;
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
                 TakeToVideosPage.Image = "videocam.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
                 BackButton.Image = "back.png";
+                BackButton.BackgroundColor = Color.Transparent;
                 TakeToVideosPage.Image = "videocam.png";
             }
             else
             {
-                BackButton.Image = "Assets/" + "Back.png";
+                //BackButton.Image = "Assets/" + "Back.png";
                 TakeToVideosPage.Image = "Assets/videocam.png";
+                BackButton.IsVisible = false;
+                BackButton.IsEnabled = false;
             }
            // System.Diagnostics.Debug.WriteLine(Constants.ScreenHeight + ", " + Constants.ScreenWidth);    
         }

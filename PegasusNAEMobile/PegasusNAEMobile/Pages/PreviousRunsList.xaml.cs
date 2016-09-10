@@ -7,6 +7,7 @@ using PegasusNAEMobile.Collections;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
+using PegasusData;
 
 namespace PegasusNAEMobile
 {
@@ -28,12 +29,15 @@ namespace PegasusNAEMobile
             else if (Device.OS == TargetPlatform.Android)
             {
                 BackButton.Image = "back.png";
+                BackButton.BackgroundColor = Color.Transparent;
                 ActivityIndicate.HorizontalOptions = LayoutOptions.Center;
                 ActivityIndicate.VerticalOptions = LayoutOptions.Center;
             }
             else
             {
-                BackButton.Image = "Assets/" + "Back.png";
+                // BackButton.Image = "Assets/" + "Back.png";
+                BackButton.IsVisible = false;
+                BackButton.IsEnabled = false;
             }
         }
 
@@ -68,7 +72,7 @@ namespace PegasusNAEMobile
             ActivityIndicate.IsRunning = true;
             try
             {
-                string configjson = await App.Instance.GetFileFromBlob("https://pegasustest.blob.core.windows.net/pegasustestblob/config.json");
+                string configjson = await App.Instance.GetFileFromBlob(Constants.ConfigBlobFileUri);
                 if (String.IsNullOrEmpty(configjson))
                 {
                     NoFileAvailable.IsVisible = true;
@@ -145,7 +149,7 @@ namespace PegasusNAEMobile
             };
             Label label1 = new Label();
             //label1.Text = String.Format("{0 : MMMM d, yyyy" ,runcollect.Timestamp);
-            label1.Text = String.Format("{0:MMMM dd, yyyy HH:mm:ss}", runcollect.Timestamp);
+            label1.Text = String.Format("{0:MMMM dd, yyyy}", runcollect.Timestamp);
             label1.TextColor = Color.White;
             Label label2 = new Label();
             label2.Text = runcollect.Pilot;

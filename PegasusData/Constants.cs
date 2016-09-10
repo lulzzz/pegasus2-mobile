@@ -74,5 +74,10 @@ namespace PegasusData
         {
             get { return "https://pegasustest.blob.core.windows.net/pegasustestblob/eagletelemetry.json"; }
         }
+
+        public static string ConfigBlobFileUri
+        {
+            get { return "https://pegasustest.blob.core.windows.net/pegasustestblob/config.json"; }
+        }
     }
 }

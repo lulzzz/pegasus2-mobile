@@ -30,7 +30,7 @@ namespace PegasusNAEMobile
             //UserMessageSentStatus.FadeTo(0, 0);
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
                 sendMessageButton.Image = "send.png";
                 
             }
@@ -38,11 +38,14 @@ namespace PegasusNAEMobile
             {
                 BackButton.Image = "back.png";
                 sendMessageButton.Image = "send.png";
+                BackButton.BackgroundColor = Color.Transparent;
             }
             else
             {
-                BackButton.Image = "Assets/" + "Back.png";
+                //BackButton.Image = "Assets/" + "Back.png";
                 sendMessageButton.Image = "Assets/Send.png";
+                BackButton.IsVisible = false;
+                BackButton.IsEnabled = false;
             }
             SizeChanged += LiveEventTelemetry_SizeChanged1;
         }
