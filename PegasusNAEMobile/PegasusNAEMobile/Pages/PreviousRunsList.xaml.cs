@@ -208,6 +208,7 @@ namespace PegasusNAEMobile
             StackLayout slmaxacclx = new StackLayout { Orientation = StackOrientation.Vertical, HorizontalOptions=LayoutOptions.Center, VerticalOptions = LayoutOptions.Center };
             Label accllabel = new Label();
             accllabel.Text = "ACCL";
+            //accllabel.VerticalOptions = LayoutOptions.Center;
             accllabel.VerticalOptions = LayoutOptions.Center;
             accllabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
             accllabel.TextColor = Color.FromHex("#656472");

@@ -32,17 +32,14 @@
                     Text="landspeed.com" TextColor="#d90000" BackgroundColor="Transparent"></Button>
           </StackLayout>
           <Label Text="Follow us on Twitter! " TextColor="White" VerticalOptions="Center"></Label>
-          <StackLayout Orientation="Horizontal" Spacing="5">
-            <Button x:Name="PegasusMissionTwitterLink" Clicked="PegasusMissionTwitterLink_Clicked" Text="@PegasusMission" VerticalOptions="Center" TextColor="#d90000" BackgroundColor="Transparent"></Button>
+          <StackLayout Orientation="Horizontal" Spacing="3">
+            <Button x:Name="PegasusMissionTwitterLink" HorizontalOptions="Start" Clicked="PegasusMissionTwitterLink_Clicked" Text="@PegasusMission" VerticalOptions="Center" TextColor="#d90000" BackgroundColor="Transparent"></Button>
             <Label Text="and" TextColor="White" VerticalOptions="Center"></Label>
-            <Button x:Name="LandspeedTwitterLink" Clicked="LandspeedTwitterLink_Clicked" Text="@landspeed763" TextColor="#d90000" BackgroundColor="Transparent" VerticalOptions="Center"></Button>
+            <Button x:Name="LandspeedTwitterLink" HorizontalOptions="Start" Clicked="LandspeedTwitterLink_Clicked" Text="@landspeed763" TextColor="#d90000" BackgroundColor="Transparent" VerticalOptions="Center"></Button>
           </StackLayout>
 
           <Label Text="Privacy Policy" TextColor="White" FontAttributes="Bold" Margin="0,15,0,0"></Label>
-          <Label Text="PegasusMission NAE does not store any user information anywhere. 
-                 When a user sends a message to the vehicle cockpit, 
-                 the country they are sending a message from will be transmitted to the vehicle cockpit 
-                 and displayed on a screen. This information will not be stored and will be discarded once shown on the display."
+          <Label Text="PegasusMission NAE does not store any user information anywhere. When a user sends a message to the vehicle cockpit, the country they are sending a message from will be transmitted to the vehicle cockpit and displayed on a screen. This information will not be stored and will be discarded once shown on the display."
                  TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" XAlign="Start"></Label>
         </StackLayout>
       </ScrollView>
