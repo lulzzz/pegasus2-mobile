@@ -54,6 +54,7 @@ namespace PegasusNAEMobile
                 BackButton.Image = "back.png";
                 BackButton.BackgroundColor = Color.Transparent;
                 TakeToVideosPage.Image = "videocam.png";
+                TakeToVideosPage.BackgroundColor = Color.Transparent;
             }
             else
             {
