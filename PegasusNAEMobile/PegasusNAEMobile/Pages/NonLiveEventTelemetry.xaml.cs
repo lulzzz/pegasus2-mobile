@@ -69,14 +69,14 @@ namespace PegasusNAEMobile
         {
             Slider slider = sender as Slider;
             System.Diagnostics.Debug.WriteLine("Previous Slider Value : " + prevslidervalue + "  Current Slider Value : " + slider.Value);
-            if (prevslidervalue > slider.Value)
+            if (prevslidervalue > Math.Ceiling(slider.Value))
             {
                 System.Diagnostics.Debug.WriteLine("User moved the slider");
-                slider.Value = (int)slider.Value;
+                slider.Value = Math.Ceiling(slider.Value);
                 cancellation.Cancel();
-                currenttelemetrypos = (int)slider.Value;
+                currenttelemetrypos = (int)Math.Ceiling(slider.Value);
             }
-            prevslidervalue = (int)slider.Value;
+            prevslidervalue = Math.Ceiling(slider.Value);
             
             //throw new NotImplementedException();
         }
@@ -120,7 +120,7 @@ namespace PegasusNAEMobile
                 MaxAcclLabel.FontSize = fontsizesmall;
                 RearLeftLabel.FontSize = fontsizesmall;
                 RearRightLabel.FontSize = fontsizesmall;
-                
+                MaxAcclValue.FontSize = fontsizesmall;
                 NoseWeightLabel.FontSize = fontsizesmall;
                 SideToSideLabel.FontSize = fontsizesmall;
                 NoseWeightNonLive.FontSize = fontsizesmall;
@@ -152,11 +152,11 @@ namespace PegasusNAEMobile
                 }
                 else
                 {
-                    RearLeft.FontSize = fontsizemedium;
-                    RearRight.FontSize = fontsizemedium;
-                    AccelX.FontSize = fontsizelarge;
-                    AccelY.FontSize = fontsizelarge;
-                    AccelZ.FontSize = fontsizelarge;
+                    RearLeft.FontSize = fontsizesmall;
+                    RearRight.FontSize = fontsizesmall;
+                    AccelX.FontSize = fontsizesmall;
+                    AccelY.FontSize = fontsizesmall;
+                    AccelZ.FontSize = fontsizesmall;
                 }
                 SteeringAcclLabel.FontSize = fontsizesmall;
                 NoFileLabel.FontSize = fontsizemedium;
@@ -208,6 +208,8 @@ namespace PegasusNAEMobile
             if (PlayPauseIcon)   // Pause is displayed. So Pause the playback
             {
                 updateButtonIcon("play.png");
+                System.Diagnostics.Debug.WriteLine("Previous Slider Value : " + prevslidervalue + "  Current Slider Value : " + TelemetrySlider.Value);
+
                 cancellation.Cancel();
                 PlayPauseIcon = false;   // Because the button has been changed to show the play icon
             }
@@ -215,6 +217,7 @@ namespace PegasusNAEMobile
             {
                 updateButtonIcon("pause.png");
                 PlayPauseIcon = true;
+                prevslidervalue = Math.Ceiling(TelemetrySlider.Value);
                 cancellation = new CancellationTokenSource();
                 TimeSpan T = TimeSpan.FromSeconds(0.5);
                 UpdateNonLiveTelemetryUI(T);
@@ -250,22 +253,22 @@ namespace PegasusNAEMobile
                 {
                     System.Diagnostics.Debug.WriteLine(currenttelemetrypos);
                     var currenttelemetry = ronboardtelem.collection[currenttelemetrypos];
-                    RunTimeStampNonLive.Text = String.Format("{0:MMMM dd, yyyy HH:mm:ss}", currenttelemetry.timestamp);
+                    RunTimeStampNonLive.Text = String.Format("{0:MMMM dd, yyyy}", currenttelemetry.timestamp);
                     
                     SpeedKPHNonLive.Text = RoundToDecimalPlaces(currenttelemetry.AirSpeedKph);
                     SteeringBoxPositionNonLive.Text = RoundToDecimalPlaces(currenttelemetry.SteeringBoxPositionDegrees);
-                    NoseWeightNonLive.Text = RoundToDecimalPlaces(currenttelemetry.NoseWeightLbf);
+                    NoseWeightNonLive.Text = RoundToDecimalPlaces(currenttelemetry.NoseWeightLbf) + " lbf";
                     //SideToSide.Text = (currenttelemetry.)
                     ThrottlePosition.Text = RoundToDecimalPlaces(currenttelemetry.ThrottlePosition);
                     StickPosition.Text = RoundToDecimalPlaces(currenttelemetry.StickPosition);
-                    RearLeft.Text = RoundToDecimalPlaces(currenttelemetry.LeftRearWeightLbf);
-                    RearRight.Text = RoundToDecimalPlaces(currenttelemetry.RightRearWeightLbf);
+                    RearLeft.Text = RoundToDecimalPlaces(currenttelemetry.LeftRearWeightLbf) + " lbf";
+                    RearRight.Text = RoundToDecimalPlaces(currenttelemetry.RightRearWeightLbf) + " lbf";
                     TelemetrySlider.Value = currenttelemetrypos;
                     AccelX.Text = RoundToDecimalPlaces(currenttelemetry.SteerBoxAccelXG);
                     AccelY.Text = RoundToDecimalPlaces(currenttelemetry.SteerBoxAccelYG);
                     AccelZ.Text = RoundToDecimalPlaces(currenttelemetry.SteerBoxAccelZG);
-                    MaxAcclValue.Text = RoundToDecimalPlaces(currenttelemetry.AccelXG);
-                    SideToSide.Text = RoundToDecimalPlaces(currenttelemetry.AccelYG);
+                    MaxAcclValue.Text = RoundToDecimalPlaces(currenttelemetry.AccelXG) + "g";
+                    SideToSide.Text = RoundToDecimalPlaces(currenttelemetry.AccelYG) + "g";
                     //MaxAccl.Text = (currenttelemetry.acc)
                     currenttelemetrypos++;
                     return true;                    
