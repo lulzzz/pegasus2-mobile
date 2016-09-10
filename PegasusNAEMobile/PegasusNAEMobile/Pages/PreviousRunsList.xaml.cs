@@ -199,7 +199,7 @@ namespace PegasusNAEMobile
             rbview.VerticalOptions = LayoutOptions.Center;
             //rbview.Margin = new Thickness(5, 5, 5, 5);
             Label maxacclx = new Label();
-            maxacclx.Text = (runcollect.maxAccelX).ToString() + " g";
+            maxacclx.Text = (App.Instance.RoundToDecimalPlaces(runcollect.maxAccelX)).ToString() + " g";
             maxacclx.TextColor = Color.White;
             maxacclx.HorizontalOptions = LayoutOptions.Center;
             maxacclx.VerticalOptions = LayoutOptions.Center;
@@ -224,7 +224,7 @@ namespace PegasusNAEMobile
             rbview1.VerticalOptions = LayoutOptions.Center;
             //rbview1 = new Thickness(5, 5, 5, 5);
             Label sideaccly = new Label();
-            sideaccly.Text = (runcollect.maxAccelY).ToString() + " g";
+            sideaccly.Text = (App.Instance.RoundToDecimalPlaces(runcollect.maxAccelY)).ToString() + " g";
             sideaccly.TextColor = Color.White;
             sideaccly.HorizontalOptions = LayoutOptions.Center;
             sideaccly.VerticalOptions = LayoutOptions.Center;
