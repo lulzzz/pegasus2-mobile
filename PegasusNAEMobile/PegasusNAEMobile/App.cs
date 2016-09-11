@@ -35,6 +35,7 @@ namespace PegasusNAEMobile
     
     public class App : Application
     {
+        private string securitytoken;
         private ushort messageId;
         public static IWebSocketClient WebSocketClient { get; set; }
         public static void Init(IWebSocketClient client)
@@ -47,6 +48,7 @@ namespace PegasusNAEMobile
 
             // The root page of your application
             Instance = this;
+            securitytoken = null;
             CurrentVehicleTelemetry = new LiveTelemetryViewModel();
             NavigationPage page = new NavigationPage(new MainPage() { Title = "Pegasus Mission" })
             {
@@ -92,25 +94,31 @@ namespace PegasusNAEMobile
         {
             if (App.WebSocketClient != null)
             {
+                //if (String.IsNullOrEmpty(Constants.Sa))
                 try
                 {
                     // GET security Token.
 
-                    if (String.IsNullOrEmpty(Constants.SavedSecurityToken))
+                    if (Constants.SavedSecurityToken == null)
                     {
                         await LoadSecurityToken();
-                    }
-                    messageId = 1;
-                    App.WebSocketClient.OnClose += WebSocketClient_OnClose;
-                    App.WebSocketClient.OnError += WebSocketClient_OnError;
-                    App.WebSocketClient.OnMessage += WebSocketClient_OnMessage;
-                    App.WebSocketClient.OnOpen += WebSocketClient_OnOpen;
-                    await App.WebSocketClient.ConnectAsync(Constants.LiveTelemetryHostUri, Constants.SubProtocol, Constants.SavedSecurityToken);    // Use the token to open the web socket connection.
-                    
-                    await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri          
+
+                        messageId = 1;
+                        App.WebSocketClient.OnClose += WebSocketClient_OnClose;
+                        App.WebSocketClient.OnError += WebSocketClient_OnError;
+                        App.WebSocketClient.OnMessage += WebSocketClient_OnMessage;
+                        App.WebSocketClient.OnOpen += WebSocketClient_OnOpen;
+                        await App.WebSocketClient.ConnectAsync(Constants.LiveTelemetryHostUri, Constants.SubProtocol, Constants.SavedSecurityToken);    // Use the token to open the web socket connection.
+                        if (!String.IsNullOrEmpty(Constants.SavedSecurityToken))
+                        {
+                            securitytoken = Constants.SavedSecurityToken;
+                        }
+                        await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri  
+                    }        
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
                     //App.WebSocketClient.OnError
                 }
             }            
