@@ -7,7 +7,7 @@
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
-        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
@@ -39,7 +39,7 @@
           </StackLayout>
 
           <Label Text="Privacy Policy" TextColor="White" FontAttributes="Bold" Margin="0,15,0,0"></Label>
-          <Label Text="PegasusMission NAE does not store any user information anywhere. When a user sends a message to the vehicle cockpit, the country they are sending a message from will be transmitted to the vehicle cockpit and displayed on a screen. This information will not be stored and will be discarded once shown on the display."
+          <Label Text="PegasusMission NAE does not store or transmit any user information."
                  TextColor="White" HorizontalOptions="Start" VerticalOptions="Center" XAlign="Start"></Label>
         </StackLayout>
       </ScrollView>

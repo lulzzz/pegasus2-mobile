@@ -10,6 +10,8 @@ namespace PegasusNAEMobile.Pages
 {
     public partial class About : ContentPage
     {
+        private double height = 0;
+        private double width = 0;
         public About()
         {
             InitializeComponent();
@@ -28,6 +30,27 @@ namespace PegasusNAEMobile.Pages
                 // BackButton.Image = "Assets/" + "Back.png";
                 BackButton.IsVisible = false;
                 BackButton.IsEnabled = false;
+            }
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+
+            base.OnSizeAllocated(width, height);
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+
+                if (width > height)
+                {
+                    Padding = new Thickness(0, 0, 0, 0);
+
+                }
+                else
+                {
+                    Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
+                }
             }
         }
 

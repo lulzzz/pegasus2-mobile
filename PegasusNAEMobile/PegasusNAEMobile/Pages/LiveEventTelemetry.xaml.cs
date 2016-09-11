@@ -89,6 +89,7 @@ namespace PegasusNAEMobile
                 if (width > height)
                 {
                     Padding = new Thickness(0, 0, 0, 0);
+                    
                 }
                 else
                 {
