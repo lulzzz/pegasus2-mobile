@@ -24,7 +24,7 @@ namespace PegasusNAEMobile
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
@@ -194,8 +194,16 @@ namespace PegasusNAEMobile
             Grid sl4g1 = new Grid();
             sl4g1.Margin = new Thickness(0, 5, 15, 0);
             RoundedBoxView rbview = new RoundedBoxView();
-            rbview.HeightRequest = fontsizelarge * 3;
-            rbview.WidthRequest = fontsizelarge * 3;
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                rbview.HeightRequest = fontsizelarge * 4;
+                rbview.WidthRequest = fontsizelarge * 4;
+            }
+            else
+            {
+                rbview.HeightRequest = fontsizelarge * 3;
+                rbview.WidthRequest = fontsizelarge * 3;
+            }
             rbview.HorizontalOptions = LayoutOptions.Center;
             rbview.VerticalOptions = LayoutOptions.Center;
             //rbview.Margin = new Thickness(5, 5, 5, 5);
@@ -209,7 +217,7 @@ namespace PegasusNAEMobile
             Label accllabel = new Label();
             accllabel.Text = "ACCL";
             //accllabel.VerticalOptions = LayoutOptions.Center;
-            accllabel.VerticalOptions = LayoutOptions.Center;
+            accllabel.HorizontalOptions = LayoutOptions.Center;
             accllabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
             accllabel.TextColor = Color.FromHex("#656472");
             slmaxacclx.Children.Add(maxacclx);
@@ -221,8 +229,16 @@ namespace PegasusNAEMobile
             Grid sl4g2 = new Grid();
             sl4g2.Margin = new Thickness(0, 5, 15, 0);
             RoundedBoxView rbview1 = new RoundedBoxView();
-            rbview1.HeightRequest = fontsizelarge * 3;
-            rbview1.WidthRequest = fontsizelarge * 3;
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                rbview1.HeightRequest = fontsizelarge * 4;
+                rbview1.WidthRequest = fontsizelarge * 4;
+            }
+            else
+            {
+                rbview1.HeightRequest = fontsizelarge * 3;
+                rbview1.WidthRequest = fontsizelarge * 3;
+            }
             rbview1.HorizontalOptions = LayoutOptions.Center;
             rbview1.VerticalOptions = LayoutOptions.Center;
             //rbview1 = new Thickness(5, 5, 5, 5);
