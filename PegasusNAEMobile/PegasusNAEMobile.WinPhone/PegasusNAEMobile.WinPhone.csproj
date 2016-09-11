@@ -96,12 +96,22 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\arrowup_small.png" />
+    <Content Include="Assets\Back%402x.png" />
+    <Content Include="Assets\Back.png" />
     <Content Include="Assets\Logo.scale-240.png" />
+    <Content Include="Assets\NAE_ScaledDown.png" />
+    <Content Include="Assets\Pause.png" />
     <Content Include="Assets\pegasus_herobackground.png" />
+    <Content Include="Assets\pegasus_vehicle.png" />
+    <Content Include="Assets\pegasus_vehicle_small.png" />
+    <Content Include="Assets\Play.png" />
+    <Content Include="Assets\Send.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />
     <Content Include="Assets\SplashScreen.scale-240.png" />
     <Content Include="Assets\Square71x71Logo.scale-240.png" />
     <Content Include="Assets\StoreLogo.scale-240.png" />
+    <Content Include="Assets\videocam.png" />
     <Content Include="Assets\WideLogo.scale-240.png" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
@@ -121,6 +131,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Octane.Xam.VideoPlayer, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\wpa81\Octane.Xam.VideoPlayer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Octane.Xam.VideoPlayer.WP81, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\wpa81\Octane.Xam.VideoPlayer.WP81.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.1.114\lib\wpa81\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>
