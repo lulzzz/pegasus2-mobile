@@ -72,7 +72,7 @@ namespace PegasusData
 
         public static string ConfigBlobFileUri
         {
-            get { return "https://pegasustest.blob.core.windows.net/pegasustestblob/config.json"; }
+            get { return "https://pegasus2.blob.core.windows.net/config/config.json"; }
         }
     }
 }
