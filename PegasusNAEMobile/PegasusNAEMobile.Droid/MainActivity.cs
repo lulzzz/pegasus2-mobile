@@ -13,7 +13,7 @@ using System.Threading;
 using System.Linq;
 using Android.Util;
 using Octane.Xam.VideoPlayer.Android;
-
+using PegasusData;
 
 namespace PegasusNAEMobile.Droid
 {
@@ -52,22 +52,27 @@ namespace PegasusNAEMobile.Droid
         {
             client.Options.SetBuffer(1024, 1024);
             client.Options.KeepAliveInterval = TimeSpan.FromMilliseconds(5000);
-
-            if (!string.IsNullOrEmpty(subprotocol))
+            try
             {
-                this.client.Options.AddSubProtocol(subprotocol);
-            }
+                if (!string.IsNullOrEmpty(subprotocol))
+                {
+                    this.client.Options.AddSubProtocol(subprotocol);
+                }
 
-            if (!string.IsNullOrEmpty(securityToken))
+                if (!string.IsNullOrEmpty(securityToken))
+                {
+                    client.Options.SetRequestHeader("Authorization", String.Format("Bearer {0}", securityToken));
+                }
+
+                await client.ConnectAsync(new Uri(host), CancellationToken.None);
+
+                Thread receiveLoopThread = new Thread(ReceiveLoopAsync);
+                receiveLoopThread.Start();
+            }
+            catch (Exception ex)
             {
-                client.Options.SetRequestHeader("Authorization", String.Format("Bearer {0}", securityToken));
+                Constants.SavedSecurityToken = null;
             }
-
-            await client.ConnectAsync(new Uri(host), CancellationToken.None);
-
-            Thread receiveLoopThread = new Thread(ReceiveLoopAsync);
-            receiveLoopThread.Start();
-
             if (OnOpen != null)
             {
                 OnOpen(this, "Web socket is opened.");
@@ -169,6 +174,7 @@ namespace PegasusNAEMobile.Droid
             {
                 if (OnError != null)
                 {
+                    System.Diagnostics.Debug.WriteLine(new WebSocketException(exception.Message));
                     OnError(this, new WebSocketException(exception.Message));
                 }
             }
