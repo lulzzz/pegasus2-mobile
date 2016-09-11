@@ -23,8 +23,8 @@
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
       <Image x:Name="pegasus_HeroBackground"
-             Grid.Row="1" HorizontalOptions="FillAndExpand"
-             VerticalOptions="FillAndExpand" Aspect="Fill" IsVisible="True"></Image>
+             Grid.Row="1" HorizontalOptions="FillAndExpand" IsVisible="False"
+             VerticalOptions="FillAndExpand" Aspect="Fill"></Image>
       <ScrollView Grid.Row="1">
         <Grid>
           <Grid.RowDefinitions>

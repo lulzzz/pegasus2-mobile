@@ -16,6 +16,9 @@ namespace PegasusNAEMobile
         {
             InitializeComponent();
             VideoElement.Source = video_url;
+            VideoElement.Failed += VideoElement_Failed;
+            VideoElement.Playing += VideoElement_Playing;
+            VideoElement.Paused += VideoElement_Paused;
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             if (Device.OS == TargetPlatform.iOS)
@@ -27,6 +30,8 @@ namespace PegasusNAEMobile
             {
                 BackButton.Image = "back.png";
                 BackButton.BackgroundColor = Color.Transparent;
+                ActivityIndicate.HorizontalOptions = LayoutOptions.Center;
+                ActivityIndicate.VerticalOptions = LayoutOptions.Center;
                 //TakeToVideosPage.Image = "videocam.png";
             }
             else
@@ -38,6 +43,35 @@ namespace PegasusNAEMobile
             }
             this.SizeChanged += ShowVideo_SizeChanged;
             
+        }
+
+        protected override void OnAppearing()
+        {
+            ActivityIndicate.IsVisible = true;
+            ActivityIndicate.IsRunning = true;
+            base.OnAppearing();
+        }
+
+        private void VideoElement_Paused(object sender, Octane.Xam.VideoPlayer.Events.VideoPlayerEventArgs e)
+        {
+            //throw new NotImplementedException();
+            ActivityIndicate.IsVisible = false;
+            ActivityIndicate.IsRunning = false;
+            System.Diagnostics.Debug.WriteLine("Paused");
+        }
+
+        private void VideoElement_Playing(object sender, Octane.Xam.VideoPlayer.Events.VideoPlayerEventArgs e)
+        {
+            //throw new NotImplementedException();
+            ActivityIndicate.IsVisible = false;
+            ActivityIndicate.IsRunning = false;
+            System.Diagnostics.Debug.WriteLine("Playing");
+        }
+
+        private void VideoElement_Failed(object sender, Octane.Xam.VideoPlayer.Events.VideoPlayerErrorEventArgs e)
+        {
+            //throw new NotImplementedException();
+            System.Diagnostics.Debug.WriteLine("Failed");
         }
 
         protected override void OnSizeAllocated(double width, double height)
