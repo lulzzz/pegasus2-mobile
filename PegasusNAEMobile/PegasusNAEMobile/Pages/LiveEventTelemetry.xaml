@@ -186,7 +186,7 @@
           
         </Grid>-->
       </ScrollView>
-      <Grid HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Grid.Row="2" VerticalOptions="Center">
+      <Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Grid.Row="2" VerticalOptions="Center">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -196,13 +196,21 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
           </Grid.ColumnDefinitions>
-        <BoxView Grid.Row="0" Color="#d90000" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="1"></BoxView>
-        <Entry Grid.Row="1" TextChanged="NAEUserMessage_TextChanged"
-               Grid.Column="0" x:Name="NAEUserMessage"
-               Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
-          <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>
-          <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+        <BoxView Grid.RowSpan="2" Color="#d90000" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="1"></BoxView>
+        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+           <Entry TextChanged="NAEUserMessage_TextChanged" 
+                  x:Name="NAEUserMessage"
+                  Placeholder="Post a message to NAE!" 
+                  HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand"></Entry>   
+          <Entry x:Name="UserCountry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Placeholder="What country are you in? (optional)"></Entry>
+        </StackLayout>
+        <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
+        <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
+      
+      <!--Prompt user to get which country they are in.-->
+      
     </Grid>
       
   </ContentPage.Content>

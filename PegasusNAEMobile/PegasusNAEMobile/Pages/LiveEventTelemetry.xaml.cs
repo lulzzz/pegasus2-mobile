@@ -19,32 +19,28 @@ namespace PegasusNAEMobile
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
-            //sendMessageButton.Image = ImageSource.FromFile("Assets/pegasus_herobackground.png");
-
-            //sendMessageButton.Image = "Assets/Send.png";
-            //ArrowImage.Source = Device.OnPlatform(
-            //iOS: ImageSource.FromFile("arrowup.png"),
-            //Android: ImageSource.FromFile("arrowup.png"),
-            //WinPhone: ImageSource.FromFile("Assets/arrowup_small.png"));
+            
             SizeChanged += LiveEventTelemetry_SizeChanged;
-            //UserMessageSentStatus.FadeTo(0, 0);
+            UserMessageGrid.BackgroundColor = Color.FromHex("##23232b");
+            
             if (Device.OS == TargetPlatform.iOS)
             {
                 BackButton.Image = "back.png";
-                sendMessageButton.Image = "send.png";
-                
+                sendMessageButton.Image = "send.png";                
             }
             else if (Device.OS == TargetPlatform.Android)
             {
                 BackButton.Image = "back.png";
                 sendMessageButton.Image = "send.png";
                 BackButton.BackgroundColor = Color.Transparent;
+                UserCountry.BackgroundColor = Color.Transparent;
             }
             else
             {
                 //BackButton.Image = "Assets/" + "Back.png";
                 sendMessageButton.Image = "Assets/Send.png";
                 NAEUserMessage.BackgroundColor = Color.White;
+                UserCountry.BackgroundColor = Color.White;
                 BackButton.IsVisible = false;
                 BackButton.IsEnabled = false;
             }
@@ -69,12 +65,10 @@ namespace PegasusNAEMobile
                 radius = 60;
             }
             AtmosphericLabel.FontSize = fontsizeMedium;
-            LinearAccelerationLabel.FontSize = fontsizeMedium;
-            
+            LinearAccelerationLabel.FontSize = fontsizeMedium;            
             CircleDirection.WidthRequest = radius;
             CircleDirection.HeightRequest = radius;
-            CompassDirection.FontSize = fontsizeMedium;
-            
+            CompassDirection.FontSize = fontsizeMedium;            
             DirectionLabel.FontSize = fontSizeSmall;
         }
 
@@ -88,8 +82,7 @@ namespace PegasusNAEMobile
 
                 if (width > height)
                 {
-                    Padding = new Thickness(0, 0, 0, 0);
-                    
+                    Padding = new Thickness(0, 0, 0, 0);                    
                 }
                 else
                 {
@@ -125,19 +118,23 @@ namespace PegasusNAEMobile
         {
             try
             {
-                await UserMessageSentStatus.FadeTo(0, 0);   // hide it
+                //await UserMessageSentStatus.FadeTo(0, 0);   // hide it
+                UserMessageSentStatus.IsVisible = false;
                 sendMessageButton.IsEnabled = false;
-                await App.Instance.SendUserMessageAsync(NAEUserMessage.Text);
+                string message = NAEUserMessage.Text + "`" + UserCountry.Text;
+                await App.Instance.SendUserMessageAsync(message);
                 UserMessageSentStatus.Text = "Your message was sent successfully";   //change the message
                 NAEUserMessage.Text = "";
-                await UserMessageSentStatus.FadeTo(1, 500);   // make it visible over 0.5 seconds
+                UserMessageSentStatus.IsVisible = true;
+                //await UserMessageSentStatus.FadeTo(1, 500);   // make it visible over 0.5 seconds
                 startTimer(1);
             }
             catch (Exception ex)
             {
-                await UserMessageSentStatus.FadeTo(0, 0);
+                //await UserMessageSentStatus.FadeTo(0, 0);
+                UserMessageSentStatus.IsVisible = false;
                 UserMessageSentStatus.Text = "There was a problem sending your message";
-                await UserMessageSentStatus.FadeTo(1, 500);
+                UserMessageSentStatus.IsVisible = true;
                 startTimer(2);
             }
         }
@@ -147,15 +144,22 @@ namespace PegasusNAEMobile
             TimeSpan ts = TimeSpan.FromSeconds(seconds);
             try
             {
-                Device.StartTimer(ts, () => { UserMessageSentStatus.FadeTo(0, 300); UserMessageSentStatus.Text = "40 characters remaining"; UserMessageSentStatus.FadeTo(1, 0); return true; });
+                Device.StartTimer(ts, () => {
+                    UserMessageSentStatus.IsVisible = false;
+                    UserMessageSentStatus.Text = "40 characters remaining";
+                    UserMessageSentStatus.IsVisible = true;
+                    return true;
+                });
                 sendMessageButton.IsEnabled = true;
             }
             catch (Exception ex)
             {
-                UserMessageSentStatus.FadeTo(0, 200);
+                //UserMessageSentStatus.FadeTo(0, 200);
+                UserMessageSentStatus.IsVisible = false;
                 sendMessageButton.IsEnabled = true;
                 UserMessageSentStatus.Text = "40 characters remaining";
-                UserMessageSentStatus.FadeTo(1, 0);
+                UserMessageSentStatus.IsVisible = true;
+                //UserMessageSentStatus.FadeTo(1, 0);
             }
         }
 
