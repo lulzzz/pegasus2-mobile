@@ -5,7 +5,7 @@
              BackgroundColor="#23232b"
              x:Class="PegasusNAEMobile.VideoList">
   <ContentPage.Content>
-    <Grid Margin="5,0,5,0" x:Name="MainGrid">
+    <Grid x:Name="MainGrid">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>        
