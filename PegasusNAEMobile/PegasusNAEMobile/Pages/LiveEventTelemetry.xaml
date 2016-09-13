@@ -208,7 +208,7 @@
         <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
         <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
-      
+      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000"></ActivityIndicator> 
       <!--Prompt user to get which country they are in.-->
       
     </Grid>

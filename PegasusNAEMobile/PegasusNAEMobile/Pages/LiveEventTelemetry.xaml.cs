@@ -7,7 +7,7 @@ using PegasusNAEMobile.ViewModels;
 using Xamarin.Forms;
 using PegasusNAEMobile.ViewModels.Pages;
 using System.Globalization;
-
+using PegasusData;
 namespace PegasusNAEMobile
 {
     public partial class LiveEventTelemetry : ContentPage
@@ -33,6 +33,8 @@ namespace PegasusNAEMobile
             {
                 BackButton.Image = "back.png";
                 sendMessageButton.Image = "send.png";
+                ActivityIndicate.HorizontalOptions = LayoutOptions.Center;
+                ActivityIndicate.VerticalOptions = LayoutOptions.Center;
                 BackButton.BackgroundColor = Color.Transparent;
                 UserCountry.BackgroundColor = Color.Transparent;
             }
@@ -166,6 +168,23 @@ namespace PegasusNAEMobile
 
         protected override void OnAppearing()
         {
+            ActivityIndicate.IsVisible = true;
+            ActivityIndicate.IsRunning = true;
+            sendMessageButton.IsEnabled = false;
+            TimeSpan ts = TimeSpan.FromMilliseconds(200);
+            Device.StartTimer(ts, () => {
+                if (Constants.SubscribedSuccessfully == true)
+                {
+                    ActivityIndicate.IsVisible = false;
+                    ActivityIndicate.IsEnabled = false;
+                    sendMessageButton.IsEnabled = true;
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            });
             base.OnAppearing();
             this.BindingContext = new TelemetryViewModel();
             NAEUserMessage.Text = "";
