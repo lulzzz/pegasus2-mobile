@@ -20,6 +20,7 @@ namespace PegasusNAEMobile
         {
             runlist = new ObservableCollection<PreviousRunCollection>();
             InitializeComponent();
+            MainGrid.BackgroundColor = Color.Black;
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             if (Device.OS == TargetPlatform.iOS)
