@@ -12,6 +12,7 @@ namespace PegasusNAEMobile
     {
         private double width = 0;
         private double height = 0;
+        private bool videostarted = false;
         public ShowVideo(string video_url)
         {
             InitializeComponent();
@@ -50,8 +51,11 @@ namespace PegasusNAEMobile
 
         protected override void OnAppearing()
         {
-            ActivityIndicate.IsVisible = true;
-            ActivityIndicate.IsRunning = true;
+            if (videostarted == false)
+            {
+                ActivityIndicate.IsVisible = true;
+                ActivityIndicate.IsRunning = true;
+            }
             base.OnAppearing();
         }
 
@@ -66,6 +70,7 @@ namespace PegasusNAEMobile
         private void VideoElement_Playing(object sender, Octane.Xam.VideoPlayer.Events.VideoPlayerEventArgs e)
         {
             //throw new NotImplementedException();
+            videostarted = true;
             ActivityIndicate.IsVisible = false;
             ActivityIndicate.IsRunning = false;
             System.Diagnostics.Debug.WriteLine("Playing");
