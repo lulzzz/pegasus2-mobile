@@ -55,19 +55,19 @@ namespace PegasusNAEMobile.Collections
         /// <summary>
         /// Position of stick between 0 (full Left) and 1 (full right)
         /// </summary>
-        [JsonProperty("stickPosition")]   // definitely show
+        [JsonProperty("stickPosition")]   
         public double StickPosition { get; set; }
-        [JsonProperty("steeringBoxPositionDegrees")]  // definitely show
+        [JsonProperty("steeringBoxPositionDegrees")]  
         public double SteeringBoxPositionDegrees { get; set; }
-        [JsonProperty("noseWeightLbf")]     // // definitely show
+        [JsonProperty("noseWeightLbf")]     
         public double NoseWeightLbf { get; set; }
-        [JsonProperty("airSpeedKph")]      // still deciding
+        [JsonProperty("airSpeedKph")]     
         public double AirSpeedKph { get; set; }
-        [JsonProperty("throttlePosition")]  // still deciding
+        [JsonProperty("throttlePosition")]  
         public double ThrottlePosition { get; set; }
-        [JsonProperty("leftRearWeightLbf")]     // definitely show
+        [JsonProperty("leftRearWeightLbf")]     
         public double LeftRearWeightLbf { get; set; }
-        [JsonProperty("rightRearWeightLbf")]        // definitely show
+        [JsonProperty("rightRearWeightLbf")]      
         public double RightRearWeightLbf { get; set; }
         [JsonProperty("accelXG")]
         public double AccelXG { get; set; }
@@ -75,11 +75,11 @@ namespace PegasusNAEMobile.Collections
         public double AccelYG { get; set; }
         [JsonProperty("accelZG")]
         public double AccelZG { get; set; }
-        [JsonProperty("steerBoxAccelXG")]       // definitely show
+        [JsonProperty("steerBoxAccelXG")]       
         public double SteerBoxAccelXG { get; set; }
-        [JsonProperty("steerBoxAccelYG")]       // definitely show
+        [JsonProperty("steerBoxAccelYG")]      
         public double SteerBoxAccelYG { get; set; }
-        [JsonProperty("steerBoxAccelZG")]       // definitely show
+        [JsonProperty("steerBoxAccelZG")]      
         public double SteerBoxAccelZG { get; set; }
     }
 

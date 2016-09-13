@@ -11,7 +11,7 @@
         <RowDefinition Height="Auto"></RowDefinition>        
         <RowDefinition Height="*"></RowDefinition>
       </Grid.RowDefinitions>
-      <Grid Grid.Row="0" BackgroundColor="#23232b">
+      <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
@@ -26,12 +26,12 @@
         <Label  x:Name="HeroTitle" Text="Pegasus Mission Goes Supersonic with NAE" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" XAlign="Start" Margin="15,20,25,0"></Label>
         
         <StackLayout Orientation="Vertical" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
-          <Button Text="REGISTER FOR EVENT NOTIFICATIONS"
+          <Button Text="GET EVENT UPDATES"
                   x:Name="RegisterForEventNotifications"
                   TextColor="White" 
                   HeightRequest="50"
                   Margin="0,0,0,10"
-                 
+                  Clicked="RegisterForEventNotifications_Clicked"
                   BackgroundColor="#d90000"
                   HorizontalOptions="CenterAndExpand"
                   VerticalOptions="Center"></Button>

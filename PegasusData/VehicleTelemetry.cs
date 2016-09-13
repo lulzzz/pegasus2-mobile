@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.ComponentModel;
-
+using System.Globalization;
 namespace PegasusData
 {
     // This is based on VehicleJsonV1.json at aka.ms/pegasusmissions
@@ -13,6 +13,7 @@ namespace PegasusData
     [JsonObject]
     public class VehicleTelemetry 
     {
+        private const string prefix = "$:";
 
         [JsonProperty("timestamp")]
         public DateTime Timestamp { get; set; }
@@ -91,8 +92,42 @@ namespace PegasusData
 
         public static VehicleTelemetry Load(string csvString)
         {
+            int checkValue = 0;
+            byte checkSum = 0;
+
+            if (!csvString.Contains("*")) //not a valid message; no check value
+            {
+                return null;
+            }
+
+            string messagePrefix = csvString.Substring(0, 2); //identifies message type
+
+            if (messagePrefix != prefix)
+            {
+                return null;
+            }
+
+            string messageString = csvString.Substring(2, csvString.Length - 6);  //the message without identifier and check value
+            string checkValueString = csvString.Substring(csvString.Length - 2, 2); //the check value
+
+            string[] parts = messageString.Split(new char[] { ',' }); //the message parts as string array
+
+            //get the check value as an int
+            if (!int.TryParse(csvString.Substring(csvString.Length - 2, 2), NumberStyles.AllowHexSpecifier, null, out checkValue))
+            {
+                return null;
+            }
+
+            //compute the check sum
+            checkSum = (byte)Encoding.UTF8.GetBytes(csvString.Substring(0, csvString.Length - 4)).Sum(x => (int)x);
+
+            //check value should equal check value; otherwise invalid message 
+            if (checkSum != (byte)checkValue)
+            {
+                return null;
+            }
             int index = 0;
-            string[] parts = csvString.Split(new char[] { ',' });
+            //string[] parts = csvString.Split(new char[] { ',' });
             VehicleTelemetry instance = new VehicleTelemetry();
             instance.Timestamp = Convert.ToDateTime(parts[index++]);
             instance.GpsLatitude = Convert.ToDouble(parts[index++]);

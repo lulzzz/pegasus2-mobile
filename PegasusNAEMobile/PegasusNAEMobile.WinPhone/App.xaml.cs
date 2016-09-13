@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Octane.Xam.VideoPlayer.WP81;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -65,7 +66,7 @@ namespace PegasusNAEMobile.WinPhone
                 rootFrame.CacheSize = 1;
 
                 Xamarin.Forms.Forms.Init(e);
-
+                FormsVideoPlayer.Init("046EA26A33BE39A4012A0BC803B7258180359AB9");
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     // TODO: Load state from previously suspended application

@@ -1,16 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="Black"
+             BackgroundColor="#23232b"
              x:Class="PegasusNAEMobile.PreviousRunsList">
   <ContentPage.Content>
-    <Grid>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto"></ColumnDefinition>
-        <ColumnDefinition Width="*"></ColumnDefinition>
-        <ColumnDefinition Width="Auto"></ColumnDefinition>
-      </Grid.ColumnDefinitions>
-      <ListView x:Name="PreviousRunListView" ItemSelected="ListViewItemSelection_Changed" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+    <Grid x:Name="MainGrid">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+        <RowDefinition Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000"></ActivityIndicator>
+      
+      <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
+        <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="FillAndExpand"></Button>
+        <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+      </Grid>
+      <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
+
+      <Grid Grid.Row="1" x:Name="NoFileAvailable" IsVisible="False">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"></RowDefinition>
+          <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label x:Name="NoFileLabel" Grid.Row="0" Margin="15" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" XAlign="Center"
+            Text="It doesn't look like we have anything here right now. You can sign up for event updates, and we'll let you know once we have gathered all the data and videos from the vehicle."></Label>
+        <Button Text="GET EVENT UPDATES"
+                    x:Name="RegisterForEventNotifications"
+                    TextColor="White" Grid.Row="1"
+                    Clicked="RegisterForEventNotifications_Clicked"
+                    HeightRequest="50"
+                    Margin="0,0,0,10"
+                    BackgroundColor="#d90000"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center"></Button>
+      </Grid>
+      
+      <ScrollView x:Name="FileAvailable" Grid.Row="1" Margin="0,0,0,0">
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <StackLayout x:Name="ListRuns" Margin="0,20,0,0" Grid.Column="1" >
+            
+          </StackLayout>
+        </Grid>
+      </ScrollView>
+      <!--<ListView x:Name="PreviousRunListView" ItemSelected="ListViewItemSelection_Changed" Grid.Row="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -22,9 +59,9 @@
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1" BackgroundColor="#23232b" >
                   <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                   </Grid.RowDefinitions>
                   <BoxView Grid.Row="0" Color="#d90000" Grid.RowSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="0.5"></BoxView>
 
@@ -50,7 +87,7 @@
             </ViewCell>            
           </DataTemplate>
         </ListView.ItemTemplate>      
-      </ListView>
+      </ListView>-->
     </Grid>
     
   </ContentPage.Content>

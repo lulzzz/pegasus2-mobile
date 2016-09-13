@@ -14,7 +14,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.Azure.Engagement;
+
+using Octane.Xam.VideoPlayer;
+using Octane.Xam.VideoPlayer.UWP;
 
 namespace PegasusNAEMobile.UWP
 {
@@ -40,13 +42,13 @@ namespace PegasusNAEMobile.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            InitEngagement(e);
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+            
+//#if DEBUG
+//            if (System.Diagnostics.Debugger.IsAttached)
+//            {
+//                this.DebugSettings.EnableFrameRateCounter = true;
+//            }
+//#endif
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -60,7 +62,7 @@ namespace PegasusNAEMobile.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
-
+                FormsVideoPlayer.Init("046EA26A33BE39A4012A0BC803B7258180359AB9");
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
@@ -105,14 +107,11 @@ namespace PegasusNAEMobile.UWP
             deferral.Complete();
         }
 
-        private void InitEngagement(IActivatedEventArgs e)
-        {
-            EngagementAgent.Instance.Init(e);
-        }
+      
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
-            InitEngagement(args);
+           
             base.OnActivated(args);
         }
     }

@@ -25,10 +25,20 @@ namespace PegasusData
             return JsonConvert.DeserializeObject<UserMessage>(Encoding.UTF8.GetString(message, 0, message.Length - 1));
         }
 
+        //public static byte[] ToCraftMessage(UserMessage umessage)
+        //{
+        //    int v = (byte)Encoding.UTF8.GetBytes(prefix + umessage.Message).Sum(x => (int)x);
+        //    string suffix = v.ToString("X2");
+        //    string message = String.Format("{0}{1},*{2}", prefix, umessage.Message, suffix);
+        //    return Encoding.UTF8.GetBytes(message);
+        //}
+
         public static UserMessage Load(string jsonString)
         {
             return JsonConvert.DeserializeObject<UserMessage>(jsonString);
         }
+
+       // private const string prefix = "{U:";
 
         [JsonProperty("id")]
         public string Id { get; set; }

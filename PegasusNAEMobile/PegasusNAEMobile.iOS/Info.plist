@@ -1,52 +1,58 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>UIDeviceFamily</key>
-    <array>
-      <integer>1</integer>
-      <integer>2</integer>
-    </array>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>MinimumOSVersion</key>
-    <string>6.0</string>
-    <key>CFBundleDisplayName</key>
-    <string>PegasusNAEMobile</string>
-    <key>CFBundleIdentifier</key>
-    <string>com.yourcompany.PegasusNAEMobile</string>
-    <key>CFBundleVersion</key>
-    <string>1.0</string>
-    <key>CFBundleIconFiles</key>
-    <array>
-      <string>Icon-60@2x</string>
-      <string>Icon-60@3x</string>
-      <string>Icon-76</string>
-      <string>Icon-76@2x</string>
-      <string>Default</string>
-      <string>Default@2x</string>
-      <string>Default-568h@2x</string>
-      <string>Default-Portrait</string>
-      <string>Default-Portrait@2x</string>
-      <string>Icon-Small-40</string>
-      <string>Icon-Small-40@2x</string>
-      <string>Icon-Small-40@3x</string>
-      <string>Icon-Small</string>
-      <string>Icon-Small@2x</string>
-      <string>Icon-Small@3x</string>
-    </array>
-    <key>UILaunchStoryboardName</key>
-    <string>LaunchScreen</string>
-  </dict>
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSExceptionDomains</key>
+    <dict>
+        <key>pegasusnae.azureedge.net</key>
+        <dict>
+            <!--Include to allow subdomains-->
+            <key>NSIncludesSubdomains</key>
+            <true/>
+            <!--Include to allow HTTP requests-->
+            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+            <true/>
+            <!--Include to specify minimum TLS version-->
+            <key>NSTemporaryExceptionMinimumTLSVersion</key>
+            <string>TLSv1.1</string>
+        </dict>
+    </dict>
+</dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>6.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>PegasusMission NAE</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.pegasusmission.nae</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>CFBundleIconFiles</key>
+	<array/>
+	<key>CFBundleShortVersionString</key>
+	<string></string>
+	<key>XSAppIconAssets</key>
+	<string>Resources/AppIcon.xcassets/AppIcons.appiconset</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/AppIcon.xcassets/LaunchImages.launchimage</string>
+</dict>
 </plist>

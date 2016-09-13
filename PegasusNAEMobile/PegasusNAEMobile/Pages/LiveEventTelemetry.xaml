@@ -1,28 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundColor="Black"
+             BackgroundColor="#23232b"
              xmlns:converter="clr-namespace:PegasusNAEMobile"
-             xmlns:renderer="clr-namespace:PegasusNAEMobile;assembly=PegasusNAEMobile"
+             xmlns:renderer="clr-namespace:PegasusNAEMobile;assembly=PegasusNAEMobile"             
              x:Class="PegasusNAEMobile.LiveEventTelemetry">  
   <ContentPage.Resources>
     <ResourceDictionary>
       <converter:RoundToDecimalPlaces x:Key="roundToDecimalPlace"></converter:RoundToDecimalPlaces>
+      <converter:HeadingToCompassDirection x:Key="convertToCompass"></converter:HeadingToCompassDirection>
     </ResourceDictionary>
   </ContentPage.Resources>
   <ContentPage.Content>
-    <Grid>
+    <Grid x:Name="MainGrid">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
-        
+        <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
-      <ScrollView Grid.Row="1">
+      <ScrollView Grid.Row="1" Margin="10,0,0,0">
         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Grid.Column="0" Spacing="10">
           <Grid Margin="5,5,5,10">
             <Grid.RowDefinitions>
@@ -33,7 +34,7 @@
               <ColumnDefinition Width="*"></ColumnDefinition>
               <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label x:Name="RunTimeStamp" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
+            <Label x:Name="RunTimeStamp" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Timestamp, StringFormat='{0:MMMM dd, yyyy}'}" TextColor="White"></Label>
             <Label x:Name="RunID" Text="{Binding LiveTelemetry.Data.RunId}" Grid.Row="1" TextColor="#656472"></Label>
           </Grid>
 
@@ -45,17 +46,32 @@
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="*"></ColumnDefinition>
+              <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Label x:Name="SpeedGridTitle" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center" Text="MAX AIR SPEED"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
-              <Label x:Name="SpeedMPH" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label x:Name="SpeedMPH" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.GpsSpeedMph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="MPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Grid.Row="2">
+            <StackLayout Orientation="Horizontal" Grid.Column="0" Grid.Row="2">
               <Label x:Name="SpeedKPH" Text="{Binding LiveTelemetry.Data.GpsSpeedKph, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
+            </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.RowSpan="3" Grid.Column="1">
+              
+              
+              <Label x:Name="DirectionLabel" Text="DIRECTION" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+              <!--<Image x:Name="ArrowImage" HorizontalOptions="Center" Aspect="AspectFill" VerticalOptions="Center" Margin="0,5,0,5"></Image>-->
+              <Grid x:Name="DirectionGrid" HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+                <renderer:RoundedBoxView x:Name="CircleDirection"  HorizontalOptions="Center" VerticalOptions="Center"></renderer:RoundedBoxView>
+                <Label x:Name="CompassDirection" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource convertToCompass}}"
+                   TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+              </Grid>
+              
             </StackLayout>
           </Grid>
 
@@ -68,7 +84,7 @@
 
             <Label Text="SOUND LEVEL" x:Name="SoundLevelLabel"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
-              <Label x:Name="SoundLevel" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label x:Name="SoundLevel" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="DB" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
             </StackLayout>
           </Grid>
@@ -84,13 +100,13 @@
               <ColumnDefinition Width="Auto"></ColumnDefinition>
               <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="ATMOSPHERIC" Grid.ColumnSpan="3" TextColor="White"></Label>
+            <Label x:Name="AtmosphericLabel" Text="ATMOSPHERIC" Grid.ColumnSpan="3" TextColor="White"></Label>
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="0,0,10,0">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="atmTemperature"
                        Text="{Binding LiveTelemetry.Data.Temperature, Converter={StaticResource roundToDecimalPlace}}"
                        TextColor="White"></Label>
-                <Label Text=" c" TextColor="White"></Label>
+                <Label Text=" °C" TextColor="White"></Label>
               </StackLayout>
               <Label Text="TEMP" TextColor="#656472"></Label>
             </StackLayout>
@@ -108,7 +124,7 @@
                 <Label x:Name="atmPressure" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Pressure, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
                 <Label Text=" kpa"  TextColor="White"></Label>
               </StackLayout>
-              <Label  Text="Pressure" TextColor="#656472"></Label>
+              <Label  Text="PRESSURE" TextColor="#656472"></Label>
             </StackLayout>
           </Grid>
 
@@ -122,11 +138,11 @@
               <ColumnDefinition Width="Auto"></ColumnDefinition>
               <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="LINEAR ACCELERATION" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3" FontSize="20" TextColor="White"></Label>
+            <Label x:Name="LinearAccelerationLabel" Text="LINEAR ACCELERATION" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3" TextColor="White"></Label>
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelX" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelX, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
-                <Label Grid.Row="2" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="g"  TextColor="White"></Label>
               </StackLayout>
               <Label Grid.Row="2" Grid.Column="1"  Text="ACCEL X" TextColor="#656472"></Label>
             </StackLayout>
@@ -134,7 +150,7 @@
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="1">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelY" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelY, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
-                <Label Text=" g"  TextColor="White"></Label>
+                <Label Text="g"  TextColor="White"></Label>
               </StackLayout>
               <Label Text="ACCEL Y" TextColor="#656472"></Label>
             </StackLayout>
@@ -142,7 +158,7 @@
             <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="2">
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="AccelZ" Grid.Row="1" Text="{Binding LiveTelemetry.Data.LinearAccelZ, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
-                <Label Grid.Row="2" Grid.Column="1" Text=" g"  TextColor="White"></Label>
+                <Label Grid.Row="2" Grid.Column="1" Text="g"  TextColor="White"></Label>
               </StackLayout>
               <Label Grid.Row="2" Grid.Column="1"  Text="ACCEL Z" TextColor="#656472"></Label>
             </StackLayout>
@@ -153,7 +169,7 @@
               <RowDefinition Height="*"></RowDefinition>
               <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Text="ORIENTATION"  TextColor="White"></Label>
+            <Label x:Name="OrientationLabel" Text="ORIENTATION"  TextColor="White"></Label>
             <Label x:Name="Orientation" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
             <Label Grid.Row="2" Text="HEADING" TextColor="#656472"></Label>
           </Grid>
@@ -170,8 +186,9 @@
           
         </Grid>-->
       </ScrollView>
-      <Grid HorizontalOptions="FillAndExpand" Grid.Row="2" VerticalOptions="Center">
+      <Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Grid.Row="2" VerticalOptions="Center">
           <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="20"></RowDefinition>
           </Grid.RowDefinitions>
@@ -179,10 +196,21 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
           </Grid.ColumnDefinitions>
-          <Entry Grid.Row="0" Grid.Column="0" x:Name="NAEUserMessage" Placeholder="Post a message to NAE!" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Entry>
-          <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>
-          <Label x:Name="UserMessageSentStatus" TextColor="#d90000" Grid.Row="1" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+        <BoxView Grid.RowSpan="2" Color="#d90000" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="1"></BoxView>
+        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+           <Entry TextChanged="NAEUserMessage_TextChanged" 
+                  x:Name="NAEUserMessage"
+                  Placeholder="Post a message to NAE!" 
+                  HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand"></Entry>   
+          <Entry x:Name="UserCountry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Placeholder="What country are you in? (optional)"></Entry>
+        </StackLayout>
+        <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
+        <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
+      <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000"></ActivityIndicator> 
+      <!--Prompt user to get which country they are in.-->
+      
     </Grid>
       
   </ContentPage.Content>

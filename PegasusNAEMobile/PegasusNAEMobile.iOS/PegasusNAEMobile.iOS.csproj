@@ -95,29 +95,33 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
-    <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
     <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-76.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="KeyboardOverlap.Forms.Plugin.iOSUnified, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.KeyboardOverlap.1.0.0.4\lib\Xamarin.iOS10\KeyboardOverlap.Forms.Plugin.iOSUnified.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Octane.Xam.VideoPlayer, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\Xamarin.iOS10\Octane.Xam.VideoPlayer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Octane.Xam.VideoPlayer.iOS, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Octane.Xam.VideoPlayer.1.1.4.0\lib\Xamarin.iOS10\Octane.Xam.VideoPlayer.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -140,19 +144,18 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PegasusData\PegasusData.csproj">
+      <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
+      <Name>PegasusData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PegasusNAEMobile\PegasusNAEMobile.csproj">
       <Project>{5CFBC09A-6DB1-47A8-AAFC-B759218B9E86}</Project>
       <Name>PegasusNAEMobile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\pegasus_herobackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Pause.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Play.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\pegasus_vehicle.png" />
@@ -161,13 +164,117 @@
     <BundleResource Include="Resources\pegasus_vehicle_small.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Back.png" />
+    <BundleResource Include="Resources\NAE_ScaledDown.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Back%402x.png" />
+    <BundleResource Include="Resources\Pause.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Back%403x.png" />
+    <BundleResource Include="Resources\pause%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pause%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\play%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\play%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\videocam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\videocam%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\videocam%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\back%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\back%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\send%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowup%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrowup%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow120x120.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow152x152.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow180x180.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow29x29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow58x58.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow76x76.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow80x80-1.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow80x80.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow87x87.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\AppIcons.appiconset\splash_yellow_withshadow_metallic40x40.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Launchfile_ios_1024x768.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Launchfile_ios_1536x2048.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Launchfile_ios_2048x1536.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Launchfile_ios_640x1136.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Launchfile_ios_640x960.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcon.xcassets\LaunchImages.launchimage\Launchfile_ios_768x1024.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.1.114\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

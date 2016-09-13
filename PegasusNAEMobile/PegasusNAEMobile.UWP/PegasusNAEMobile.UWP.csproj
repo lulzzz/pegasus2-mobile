@@ -17,7 +17,11 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>Windows_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>PegasusNAEMobile.UWP_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>B05E301FDB80DD9F52903C370308D22C697E0216</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +94,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="PegasusNAEMobile.UWP_StoreKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -100,7 +105,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\overlay\EngagementPageOverlay.cs" />
+    <Compile Include="RoundedBoxViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -109,12 +114,22 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\arrowup_small.png" />
+    <Content Include="Assets\Back%402x.png" />
+    <Content Include="Assets\Back.png" />
+    <Content Include="Assets\NAE_ScaledDown.png" />
     <Content Include="Assets\Pause.png" />
     <Content Include="Assets\pegasus_herobackground.png" />
     <Content Include="Assets\pegasus_vehicle.png" />
     <Content Include="Assets\pegasus_vehicle_small.png" />
     <Content Include="Assets\Play.png" />
     <Content Include="Assets\Send.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\videocam.png" />
+    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -123,13 +138,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="Resources\EngagementConfiguration.xml" />
-    <Content Include="Resources\html\EngagementAnnouncement.html" />
-    <Content Include="Resources\html\EngagementNotification.html" />
-    <Content Include="Resources\images\EngagementIconClose.png" />
-    <Content Include="Resources\images\EngagementIconNOk.png" />
-    <Content Include="Resources\images\EngagementIconNotification.png" />
-    <Content Include="Resources\images\EngagementIconOk.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -150,6 +158,14 @@
       <Project>{5CFBC09A-6DB1-47A8-AAFC-B759218B9E86}</Project>
       <Name>PegasusNAEMobile</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.10586.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+    <SDKReference Include="WindowsMobile, Version=10.0.10586.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

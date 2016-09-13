@@ -12,12 +12,12 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using Android.Util;
-using Microsoft.Azure.Engagement.Xamarin;
-using Microsoft.Azure.Engagement.Xamarin.Activity;
+using Octane.Xam.VideoPlayer.Android;
+using PegasusData;
 
 namespace PegasusNAEMobile.Droid
 {
-    [Activity(Label = "PegasusNAEMobile", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PegasusMission NAE", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IWebSocketClient
     {
         public event WebSocketEventHandler OnClose;
@@ -50,24 +50,32 @@ namespace PegasusNAEMobile.Droid
 
         public async Task ConnectAsync(string host, string subprotocol, string securityToken)
         {
+            this.client = new ClientWebSocket();            
+            PegasusNAEMobile.App.Init(this);
+            this.messageQueue = new Queue<byte[]>();
             client.Options.SetBuffer(1024, 1024);
             client.Options.KeepAliveInterval = TimeSpan.FromMilliseconds(5000);
-
-            if (!string.IsNullOrEmpty(subprotocol))
+            try
             {
-                this.client.Options.AddSubProtocol(subprotocol);
-            }
+                if (!string.IsNullOrEmpty(subprotocol))
+                {
+                    this.client.Options.AddSubProtocol(subprotocol);
+                }
 
-            if (!string.IsNullOrEmpty(securityToken))
+                if (!string.IsNullOrEmpty(securityToken))
+                {
+                    client.Options.SetRequestHeader("Authorization", String.Format("Bearer {0}", securityToken));
+                }
+
+                await client.ConnectAsync(new Uri(host), CancellationToken.None);
+
+                Thread receiveLoopThread = new Thread(ReceiveLoopAsync);
+                receiveLoopThread.Start();
+            }
+            catch (Exception ex)
             {
-                client.Options.SetRequestHeader("Authorization", String.Format("Bearer {0}", securityToken));
+                Constants.SavedSecurityToken = null;
             }
-
-            await client.ConnectAsync(new Uri(host), CancellationToken.None);
-
-            Thread receiveLoopThread = new Thread(ReceiveLoopAsync);
-            receiveLoopThread.Start();
-
             if (OnOpen != null)
             {
                 OnOpen(this, "Web socket is opened.");
@@ -169,6 +177,7 @@ namespace PegasusNAEMobile.Droid
             {
                 if (OnError != null)
                 {
+                    System.Diagnostics.Debug.WriteLine(new WebSocketException(exception.Message));
                     OnError(this, new WebSocketException(exception.Message));
                 }
             }
@@ -210,6 +219,7 @@ namespace PegasusNAEMobile.Droid
                         {
                             //Trace.TraceWarning("Web Socket send fault.");
                             //Trace.TraceError(ex.Message);
+                            System.Diagnostics.Debug.WriteLine(ex.Message);
                             throw;
 
                         }
@@ -262,30 +272,21 @@ namespace PegasusNAEMobile.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-            engagementConfiguration.ConnectionString = "Endpoint=PegasusMissions.device.mobileengagement.windows.net;SdkKey=8793710d17cf2f66578a557eedb0e00b;AppId=cup000171";
-            EngagementAgent.Init(engagementConfiguration);
-
+            //EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+            //engagementConfiguration.ConnectionString = "Endpoint=PegasusMissions.device.mobileengagement.windows.net;SdkKey=8793710d17cf2f66578a557eedb0e00b;AppId=cup000171";
+            //EngagementAgent.Init(engagementConfiguration);
+            
             this.client = new ClientWebSocket();
             this.messageQueue = new Queue<byte[]>();
             PegasusNAEMobile.App.Init(this);
-            global::Xamarin.Forms.Forms.Init(this, bundle);            
+            global::Xamarin.Forms.Forms.Init(this, bundle);
+            //ImageCircleRenderer.Init();
+            FormsVideoPlayer.Init("EC98EB3C1D9B07A03E67203528E3F3055FD5AB36");          
             App.SetScreenHeightAndWidth((int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density),(int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density) );  // Get device independednt pixels
             LoadApplication(new App());
         }
 
-        protected override void OnResume()
-        {
-            EngagementAgent.StartActivity(EngagementAgentUtils.BuildEngagementActivityName(Java.Lang.Class.FromType(this.GetType())), null);
-
-            base.OnResume();
-        }
-
-        protected override void OnPause()
-        {
-            EngagementAgent.EndActivity();
-            base.OnPause();
-        }
+       
     }
 }
 

@@ -20,31 +20,40 @@ using Windows.Web;
 using PegasusData;
 using Newtonsoft.Json;
 using Windows.Storage.Streams;
-using Microsoft.Azure.Engagement.Overlay;
+using System.Threading;
+
 
 namespace PegasusNAEMobile.UWP
 {
     public sealed partial class MainPage : IWebSocketClient
     {
-
+        
         public event WebSocketEventHandler OnClose;
         public event WebSocketErrorHandler OnError;
         public event WebSocketMessageHandler OnMessage;
         public event WebSocketEventHandler OnOpen;
+        
         private MessageWebSocket client_LiveURI;
         private MessageWebSocket client;
         private const int receiveChunkSize = 1024;
         private bool connected = false;
-        private Queue<byte[]> messageQueue;
+        private Queue<byte[]> messageQueue;  
 
         public MainPage()
         {
             this.client = new MessageWebSocket();
             client_LiveURI = new MessageWebSocket();
             this.messageQueue = new Queue<byte[]>();
+
+            //SimpleContainer container = new SimpleContainer();
+            //container.Register<IDevice>(t => WindowsPhoneDevice.CurrentDevice);
+            //container.Register<IGeolocator, Geolocator>();
+            //Resolver.SetResolver(container.GetResolver());
+
             this.InitializeComponent();
             PegasusNAEMobile.App.Init(this);
             PegasusNAEMobile.App.SetScreenHeightAndWidth((int)Window.Current.Bounds.Height, (int)Window.Current.Bounds.Width);
+            
             LoadApplication(new PegasusNAEMobile.App());
         }
 
@@ -147,5 +156,6 @@ namespace PegasusNAEMobile.UWP
                 }
             }
         }
+
     }
 }

@@ -11,6 +11,7 @@ using PegasusNAEMobile.ViewModels;
 using ModernHttpClient;
 using System.Net.Http;
 using PegasusNAEMobile.Collections;
+using System.Threading;
 
 namespace PegasusNAEMobile
 {
@@ -31,9 +32,10 @@ namespace PegasusNAEMobile
 
         Task SendAsync(byte[] message);
     }
-
+    
     public class App : Application
     {
+        private string securitytoken;
         private ushort messageId;
         public static IWebSocketClient WebSocketClient { get; set; }
         public static void Init(IWebSocketClient client)
@@ -46,6 +48,7 @@ namespace PegasusNAEMobile
 
             // The root page of your application
             Instance = this;
+            securitytoken = null;
             CurrentVehicleTelemetry = new LiveTelemetryViewModel();
             NavigationPage page = new NavigationPage(new MainPage() { Title = "Pegasus Mission" })
             {
@@ -91,25 +94,35 @@ namespace PegasusNAEMobile
         {
             if (App.WebSocketClient != null)
             {
+                //if (String.IsNullOrEmpty(Constants.Sa))
                 try
                 {
                     // GET security Token.
 
-                    if (String.IsNullOrEmpty(Constants.SavedSecurityToken))
+                    if (Constants.SavedSecurityToken == null)
                     {
                         await LoadSecurityToken();
+
+                        messageId = 1;
+                        App.WebSocketClient.OnClose += WebSocketClient_OnClose;
+                        App.WebSocketClient.OnError += WebSocketClient_OnError;
+                        App.WebSocketClient.OnMessage += WebSocketClient_OnMessage;
+                        App.WebSocketClient.OnOpen += WebSocketClient_OnOpen;
+                        await App.WebSocketClient.ConnectAsync(Constants.LiveTelemetryHostUri, Constants.SubProtocol, Constants.SavedSecurityToken);    // Use the token to open the web socket connection.
+                        if (!String.IsNullOrEmpty(Constants.SavedSecurityToken))
+                        {
+                            securitytoken = Constants.SavedSecurityToken;
+                        }
+                        await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri  
+                        Constants.SubscribedSuccessfully = true;
                     }
-                    messageId = 1;
-                    App.WebSocketClient.OnClose += WebSocketClient_OnClose;
-                    App.WebSocketClient.OnError += WebSocketClient_OnError;
-                    App.WebSocketClient.OnMessage += WebSocketClient_OnMessage;
-                    App.WebSocketClient.OnOpen += WebSocketClient_OnOpen;
-                    await App.WebSocketClient.ConnectAsync(Constants.LiveTelemetryHostUri, Constants.SubProtocol, Constants.SavedSecurityToken);    // Use the token to open the web socket connection.
-                    
-                    await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri          
+                    Constants.SubscribedSuccessfully = true;
                 }
                 catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                    Constants.SubscribedSuccessfully = false;
+                    RetryConnectWebSocket();
                     //App.WebSocketClient.OnError
                 }
             }            
@@ -133,6 +146,7 @@ namespace PegasusNAEMobile
 
             if (coapMessage.ResourceUri.OriginalString == Constants.TelemteryPublishUri)
             {
+                VehicleTelemetry vtr = VehicleTelemetry.Load(jsonString);
                 var telemetry = JsonConvert.DeserializeObject<VehicleTelemetry>(jsonString);
                 this.CurrentVehicleTelemetry.Data = telemetry;
             }
@@ -141,15 +155,21 @@ namespace PegasusNAEMobile
         private void WebSocketClient_OnError(object sender, Exception ex)
         {
             //throw new NotImplementedException();
+            RetryConnectWebSocket();
+        }
+
+        private void RetryConnectWebSocket()
+        {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 // this.AppData.StatusMessage = "Web Socket error: " + ex.Message;
                 //this.AppData.BusyCount--;
-                App.WebSocketClient = null;
+                //App.WebSocketClient = DependencyService.Get<IWebSocketClient>(DependencyFetchTarget.NewInstance);
+                Constants.SavedSecurityToken = null;
                 // Always give us two seconds before trying to reconnect, in case
                 // the phone is bringing up a connection.  This also solves an
                 // animation problem.
-                await Task.Delay(2000);
+                await Task.Delay(4000);
                 ConnectWebSocketLiveTelemetry();
             });
         }
@@ -222,7 +242,11 @@ namespace PegasusNAEMobile
             return (App.WebSocketClient.SendAsync(message));
         }
 
-
+        public string RoundToDecimalPlaces(double val)
+        {
+            double round = (Math.Round((double)val, 2, MidpointRounding.AwayFromZero));
+            return (String.Format("{0:0.00}", round));
+        }
         public async Task SendUserMessageAsync(string message)
         {
             //this.AppData.StatusMessage = "Sending...";
@@ -234,6 +258,7 @@ namespace PegasusNAEMobile
             umessage.Id = Guid.NewGuid().ToString();
             string jsonString = UserMessage.UserMessageSerializer(umessage);
             byte[] payload = Encoding.UTF8.GetBytes(jsonString);
+            //byte[] payload = UserMessage.ToCraftMessage(umessage);
             CoapRequest request = new CoapRequest(messageId++,
                                                     RequestMessageType.NonConfirmable,
                                                     MethodType.POST,

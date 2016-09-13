@@ -11,6 +11,8 @@ namespace PegasusNAEMobile
 {
     public partial class CountdownView : ContentView
     {
+        private double height = 0;
+        private double width = 0;
         public CountdownView()
         {
             InitializeComponent();
@@ -38,12 +40,29 @@ namespace PegasusNAEMobile
             RegisterForEventNotifications.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
             WatchEventButton.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
             WatchPreviousRuns.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
-            HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);
-            //HeroMessageLabel.FontSize = fontsizeLarge;
-            //RegisterForEventNotifications.FontSize = fontSizeSmall - 2;
-            // CountDownLabel.FontSize = Math.Round((fontsizeMedium + fontsizeLarge) / 2);
-            //WatchEventButton.FontSize = fontSizeSmall - 2;
-            // //System.Diagnostics.Debug.WriteLine(fontsize);
+            HeroTitle.WidthRequest = (int)((Constants.ScreenWidth) * 0.8);            
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+
+            base.OnSizeAllocated(width, height);
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                
+            }
+            if (this.width > this.height)
+            {
+
+            }
+        }
+
+        private void RegisterForEventNotifications_Clicked(object sender, EventArgs e)
+        {
+            Uri uri = new Uri("https://www.pegasusmission.io/Home/Notifications");
+            Device.OpenUri(uri);
         }
 
         private async void WatchLiveEvent_Clicked(object sender, EventArgs e)

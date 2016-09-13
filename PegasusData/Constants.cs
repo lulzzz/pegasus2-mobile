@@ -70,9 +70,16 @@ namespace PegasusData
             get { return "coaps://pegasusmission.io/publish?topic=http://pegasus2.org/usermessage"; }
         }
 
-        public static string TempEagleTelemetryUri
+        public static string ConfigBlobFileUri
         {
-            get { return "https://pegasustest.blob.core.windows.net/pegasustestblob/eagletelemetry.json"; }
+            get { return "https://pegasus2.blob.core.windows.net/config/config.json"; }
+        }
+
+        private static bool _subscribedsuccessfully; //hack to figure out when to turn off the activity indicator on Live Telemetry page
+        public static bool SubscribedSuccessfully
+        {
+            get { return _subscribedsuccessfully; }
+            set { _subscribedsuccessfully = value; }
         }
     }
 }
