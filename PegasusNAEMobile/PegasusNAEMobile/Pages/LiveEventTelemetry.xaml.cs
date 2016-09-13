@@ -17,6 +17,7 @@ namespace PegasusNAEMobile
         public LiveEventTelemetry()
         {
             InitializeComponent();
+            MainGrid.BackgroundColor = Color.Black;
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             

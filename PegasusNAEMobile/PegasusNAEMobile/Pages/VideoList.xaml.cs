@@ -17,6 +17,7 @@ namespace PegasusNAEMobile
         public VideoList(PreviousRunCollection runcollect)
         {
             InitializeComponent();
+            MainGrid.BackgroundColor = Color.Black;
             this.runcollect = runcollect;
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);

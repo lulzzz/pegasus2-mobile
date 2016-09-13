@@ -17,6 +17,7 @@ namespace PegasusNAEMobile
         public MainPage()
         {
             InitializeComponent();
+            MainGrid.BackgroundColor = Color.Black;
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             NavigationPage.SetHasNavigationBar(this, false);
             this.BindingContext = new MainPageViewModel();

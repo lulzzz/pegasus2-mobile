@@ -25,7 +25,7 @@ namespace PegasusNAEMobile
         public NonLiveEventTelemetry(PreviousRunCollection rpc)
         {
             InitializeComponent();
-           
+            MainGrid.BackgroundColor = Color.Black;
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             runcollect = new PreviousRunCollection();

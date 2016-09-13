@@ -13,7 +13,7 @@
                              BindingContext="{Binding Countdown}">
         </local:CountdownView>-->
 
-    <Grid>
+    <Grid x:Name="MainGrid">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
