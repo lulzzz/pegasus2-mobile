@@ -216,6 +216,7 @@ namespace PegasusNAEMobile.Droid
                         {
                             //Trace.TraceWarning("Web Socket send fault.");
                             //Trace.TraceError(ex.Message);
+                            System.Diagnostics.Debug.WriteLine(ex.Message);
                             throw;
 
                         }
