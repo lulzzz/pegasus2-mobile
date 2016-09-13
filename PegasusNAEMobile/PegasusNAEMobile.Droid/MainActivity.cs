@@ -50,6 +50,9 @@ namespace PegasusNAEMobile.Droid
 
         public async Task ConnectAsync(string host, string subprotocol, string securityToken)
         {
+            this.client = new ClientWebSocket();            
+            PegasusNAEMobile.App.Init(this);
+            this.messageQueue = new Queue<byte[]>();
             client.Options.SetBuffer(1024, 1024);
             client.Options.KeepAliveInterval = TimeSpan.FromMilliseconds(5000);
             try

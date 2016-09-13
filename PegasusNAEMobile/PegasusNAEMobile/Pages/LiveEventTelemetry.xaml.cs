@@ -128,17 +128,29 @@ namespace PegasusNAEMobile
                 await App.Instance.SendUserMessageAsync(message);
                 UserMessageSentStatus.Text = "Your message was sent successfully";   //change the message
                 NAEUserMessage.Text = "";
+                UserCountry.Text = "";
                 UserMessageSentStatus.IsVisible = true;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    
+                    await Task.Delay(2000);
+                    UserMessageSentStatus.Text = "40 characters remaining";
+                    sendMessageButton.IsEnabled = true;
+                });
+                
+                
                 //await UserMessageSentStatus.FadeTo(1, 500);   // make it visible over 0.5 seconds
-                startTimer(1);
+                // startTimer(1);
             }
             catch (Exception ex)
             {
                 //await UserMessageSentStatus.FadeTo(0, 0);
                 UserMessageSentStatus.IsVisible = false;
                 UserMessageSentStatus.Text = "There was a problem sending your message";
+                UserCountry.Text = "";
+                sendMessageButton.IsEnabled = true;
                 UserMessageSentStatus.IsVisible = true;
-                startTimer(2);
+                //startTimer(2);
             }
         }
 

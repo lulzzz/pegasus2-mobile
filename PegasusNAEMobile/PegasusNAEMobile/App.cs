@@ -164,12 +164,12 @@ namespace PegasusNAEMobile
             {
                 // this.AppData.StatusMessage = "Web Socket error: " + ex.Message;
                 //this.AppData.BusyCount--;
-                App.WebSocketClient = DependencyService.Get<IWebSocketClient>(DependencyFetchTarget.NewInstance);
+                //App.WebSocketClient = DependencyService.Get<IWebSocketClient>(DependencyFetchTarget.NewInstance);
                 Constants.SavedSecurityToken = null;
                 // Always give us two seconds before trying to reconnect, in case
                 // the phone is bringing up a connection.  This also solves an
                 // animation problem.
-                await Task.Delay(000);
+                await Task.Delay(4000);
                 ConnectWebSocketLiveTelemetry();
             });
         }
