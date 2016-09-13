@@ -114,11 +114,15 @@ namespace PegasusNAEMobile
                             securitytoken = Constants.SavedSecurityToken;
                         }
                         await SubscribeTopicAsync(Constants.TelemterySubscribeUri);     // Subscribe to the Telemetry Uri  
-                    }        
+                        Constants.SubscribedSuccessfully = true;
+                    }
+                    Constants.SubscribedSuccessfully = true;
                 }
                 catch (Exception ex)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.Message);
+                    Constants.SubscribedSuccessfully = false;
+                    RetryConnectWebSocket();
                     //App.WebSocketClient.OnError
                 }
             }            
@@ -151,15 +155,21 @@ namespace PegasusNAEMobile
         private void WebSocketClient_OnError(object sender, Exception ex)
         {
             //throw new NotImplementedException();
+            RetryConnectWebSocket();
+        }
+
+        private void RetryConnectWebSocket()
+        {
             Device.BeginInvokeOnMainThread(async () =>
             {
                 // this.AppData.StatusMessage = "Web Socket error: " + ex.Message;
                 //this.AppData.BusyCount--;
-                App.WebSocketClient = null;
+                App.WebSocketClient = DependencyService.Get<IWebSocketClient>(DependencyFetchTarget.NewInstance);
+                Constants.SavedSecurityToken = null;
                 // Always give us two seconds before trying to reconnect, in case
                 // the phone is bringing up a connection.  This also solves an
                 // animation problem.
-                await Task.Delay(2000);
+                await Task.Delay(000);
                 ConnectWebSocketLiveTelemetry();
             });
         }

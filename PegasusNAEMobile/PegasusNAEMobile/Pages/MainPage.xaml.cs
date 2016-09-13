@@ -25,7 +25,10 @@ namespace PegasusNAEMobile
                 iOS: ImageSource.FromFile("pegasus_herobackground.png"),
                 Android: ImageSource.FromFile("pegasus_herobackground.png"),
                 WinPhone: ImageSource.FromFile("Assets/pegasus_herobackground.png"));
-
+            if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
+            {
+                pegasus_HeroBackground.IsVisible = true;
+            }
             SizeChanged += MainPage_SizeChanged;
         }
 
@@ -103,6 +106,7 @@ namespace PegasusNAEMobile
 
         private async void WatchLiveEvent_Clicked(object sender, EventArgs e)
         {
+            Constants.SubscribedSuccessfully = false;
             App.Instance.ConnectWebSocketLiveTelemetry();
             //var LiveEventTelemetryPage = new LiveEventTelemetry();
             //LiveEventTelemetryPage.BindingContext = App.Instance.CurrentVehicleTelemetry;
