@@ -18,7 +18,7 @@ namespace PegasusNAEMobile.Pages
             NavigationPage.SetHasNavigationBar(this, false);    // Hides the navigation bar.
             if (Device.OS == TargetPlatform.iOS)
             {
-                BackButton.Image = "Back.png";
+                BackButton.Image = "back.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
@@ -35,7 +35,6 @@ namespace PegasusNAEMobile.Pages
 
         protected override void OnSizeAllocated(double width, double height)
         {
-
             base.OnSizeAllocated(width, height);
             if (this.width != width || this.height != height)
             {
@@ -57,6 +56,12 @@ namespace PegasusNAEMobile.Pages
         private async void BackButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private void PegasusWebsiteButton_Clicked(object sender, EventArgs e)
+        {
+            Uri uri = new Uri("https://pegasusmission.io/");
+            Device.OpenUri(uri);
         }
 
         private void landspeedlink_Clicked(object sender, EventArgs e)
