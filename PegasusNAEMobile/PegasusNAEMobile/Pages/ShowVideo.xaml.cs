@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,6 +57,7 @@ namespace PegasusNAEMobile
                 ActivityIndicate.IsVisible = true;
                 ActivityIndicate.IsRunning = true;
             }
+            
             base.OnAppearing();
         }
 
