@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Icon-60.png" translatesAutoresizingMaskIntoConstraints="NO" id="23">
                                 <rect key="frame" x="270" y="270" width="60" height="60"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             </imageView>
@@ -34,6 +34,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon-60.png" width="180" height="180"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="arrowup.png" width="24" height="24"/>
+        <image name="back.png" width="24" height="24"/>
+        <image name="Icon-76.png" width="76" height="76"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="NAE_ScaledDown.png" width="156" height="100"/>
+        <image name="Pause.png" width="24" height="24"/>
+        <image name="pause.png" width="24" height="24"/>
+        <image name="pegasus_herobackground.png" width="748" height="982"/>
+        <image name="pegasus_vehicle.png" width="112" height="653"/>
+        <image name="pegasus_vehicle_small.png" width="69" height="400"/>
+        <image name="play.png" width="24" height="24"/>
+        <image name="send.png" width="24" height="24"/>
+        <image name="videocam.png" width="24" height="24"/>
     </resources>
 </document>

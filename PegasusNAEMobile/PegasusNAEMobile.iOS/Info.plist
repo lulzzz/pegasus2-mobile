@@ -8,23 +8,20 @@
 		<integer>2</integer>
 	</array>
 	<key>NSAppTransportSecurity</key>
-<dict>
-    <key>NSExceptionDomains</key>
-    <dict>
-        <key>pegasusnae.azureedge.net</key>
-        <dict>
-            <!--Include to allow subdomains-->
-            <key>NSIncludesSubdomains</key>
-            <true/>
-            <!--Include to allow HTTP requests-->
-            <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-            <true/>
-            <!--Include to specify minimum TLS version-->
-            <key>NSTemporaryExceptionMinimumTLSVersion</key>
-            <string>TLSv1.1</string>
-        </dict>
-    </dict>
-</dict>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>pegasusnae.azureedge.net</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+			</dict>
+		</dict>
+	</dict>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -39,7 +36,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>6.0</string>
+	<string>7.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>PegasusMission NAE</string>
 	<key>CFBundleIdentifier</key>
@@ -49,10 +46,12 @@
 	<key>CFBundleIconFiles</key>
 	<array/>
 	<key>CFBundleShortVersionString</key>
-	<string></string>
+	<string>2.0</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/AppIcon.xcassets/AppIcons.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Resources/AppIcon.xcassets/LaunchImages.launchimage</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 </dict>
 </plist>

@@ -75,7 +75,8 @@
     {
       "scale": "2x",
       "size": "83.5x83.5",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "167x167.png"
     }
   ],
   "properties": {},

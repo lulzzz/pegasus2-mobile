@@ -280,7 +280,7 @@ namespace PegasusNAEMobile.iOS
             PegasusNAEMobile.App.Init(this);
             global::Xamarin.Forms.Forms.Init();
             FormsVideoPlayer.Init("292549828E2DBC28EF9FF0EF3333BEC67EE6FA4E");
-            KeyboardOverlapRenderer.Init();       
+            //KeyboardOverlapRenderer.Init();       
             LoadApplication(new App());
             App.SetScreenHeightAndWidth((int)UIScreen.MainScreen.Bounds.Height, (int)UIScreen.MainScreen.Bounds.Width);
             return base.FinishedLaunching(app, options);
