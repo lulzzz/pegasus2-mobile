@@ -86,7 +86,7 @@ namespace PegasusNAEMobile.UWP
             {
                 System.Diagnostics.Debug.WriteLine("Web Socket Failed to connect");
                 connected = false;
-                throw;
+                //throw;
             }
 
             connected = true;

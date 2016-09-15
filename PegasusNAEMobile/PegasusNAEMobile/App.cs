@@ -23,7 +23,8 @@ namespace PegasusNAEMobile
         event WebSocketEventHandler OnOpen;
         event WebSocketEventHandler OnClose;
         event WebSocketErrorHandler OnError;
-        event WebSocketMessageHandler OnMessage;       
+        event WebSocketMessageHandler OnMessage;   
+            
         Task ConnectAsync(string host);
 
         Task ConnectAsync(string host, string subprotocol, string securityToken);
@@ -37,6 +38,7 @@ namespace PegasusNAEMobile
     {
         private string securitytoken;
         private ushort messageId;
+        private DateTime lastconnecttime = DateTime.MinValue;
         public static IWebSocketClient WebSocketClient { get; set; }
         public static void Init(IWebSocketClient client)
         {
@@ -152,10 +154,33 @@ namespace PegasusNAEMobile
             }
         }
 
-        private void WebSocketClient_OnError(object sender, Exception ex)
+        private async void WebSocketClient_OnError(object sender, Exception ex)
         {
             //throw new NotImplementedException();
-            RetryConnectWebSocket();
+            if (lastconnecttime == DateTime.MinValue)
+            {
+                lastconnecttime = DateTime.UtcNow;
+                RetryConnectWebSocket();
+            }
+            else
+            {
+                while (lastconnecttime.AddSeconds(5) > DateTime.UtcNow)
+                {
+                    System.Diagnostics.Debug.WriteLine("Delaying 5 seconds before connecting");
+                    await Task.Delay(1000);
+                }
+                RetryConnectWebSocket();
+            }
+            //if (DateTime.Compare(lastconnecttime, DateTime.Now.AddSeconds(-5)) < 0)
+            //{
+
+            //    lastconnecttime = DateTime.Now;
+            //    RetryConnectWebSocket();
+            //}
+            //else
+            //{
+            //    while ()
+            //}
         }
 
         private void RetryConnectWebSocket()

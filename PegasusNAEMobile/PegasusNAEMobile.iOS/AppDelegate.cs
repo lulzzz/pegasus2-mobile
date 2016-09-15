@@ -216,7 +216,7 @@ namespace PegasusNAEMobile.iOS
                         {
                             //Trace.TraceWarning("Web Socket send fault.");
                             //Trace.TraceError(ex.Message);
-                            throw;
+                            //throw;
 
                         }
                     } while (remainingLength > 0);
