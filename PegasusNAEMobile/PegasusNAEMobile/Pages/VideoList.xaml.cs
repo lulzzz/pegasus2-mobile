@@ -53,7 +53,13 @@ namespace PegasusNAEMobile
             }
             else
             {
+                Drone1VideoFrame.IsVisible = true;
+                Drone2VideoFrame.IsVisible = true;
+                OnboardVideoFrame.IsVisible = true;
                 Drone1VideoButton.Image = "Assets/" + "videocam.png";
+                Drone1VideoButton.BackgroundColor = Color.Transparent;
+                Drone2VideoButton.BackgroundColor = Color.Transparent;
+                OnboardVideoButton.BackgroundColor = Color.Transparent;
                 Drone2VideoButton.Image = "Assets/" + "videocam.png";
                 OnboardVideoButton.Image = "Assets/" + "videocam.png";
             }
