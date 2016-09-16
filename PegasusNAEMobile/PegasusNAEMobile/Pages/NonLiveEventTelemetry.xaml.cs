@@ -186,7 +186,9 @@ namespace PegasusNAEMobile
                     {
                         ronboardtelem.collection.Add(telemetry);
                     }
-                   // ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
+                    // ronboardtelem = OnboardTelemetryCollection.DataDeserializer(onboardtelemetry);
+
+                    RunIDNonLive.Text = runcollect.RunId;
                     TelemetrySlider.Minimum = 0;
                     TelemetrySlider.Maximum = ronboardtelem.collection.Count;
                     TimeSpan duration = new TimeSpan(0, 0, 0, 0, (ronboardtelem.collection.Count * 500));

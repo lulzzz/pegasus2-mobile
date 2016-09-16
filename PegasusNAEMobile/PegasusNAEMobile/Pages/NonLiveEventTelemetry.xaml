@@ -60,7 +60,7 @@
               <Label x:Name="RunTimeStampNonLive" TextColor="White"></Label>
               <Label x:Name="RunIDNonLive" Grid.Row="1" TextColor="#656472"></Label>
             </StackLayout>
-            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="10,0,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="10,15,0,0" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
               <Label x:Name="SpeedGridTitleNonLive" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="MAX AIR SPEED"  TextColor="White"></Label>
               <StackLayout Orientation="Horizontal">
                 <Label x:Name="SpeedKPHNonLive"  HorizontalOptions="Start" VerticalOptions="Center" TextColor="White"></Label>
