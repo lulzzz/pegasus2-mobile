@@ -18,31 +18,44 @@ namespace PegasusNAEMobile
         {
             InitializeComponent();
             MainGrid.BackgroundColor = Color.Black;
-            VideoElement.Source = video_url;
-            VideoElement.Failed += VideoElement_Failed;
-            VideoElement.Playing += VideoElement_Playing;
-            VideoElement.Paused += VideoElement_Paused;
+
             NavigationPage.SetHasNavigationBar(this, false);
             Padding = new Thickness(0, Device.OnPlatform(20, 0, 0), 0, 0);
             if (Device.OS == TargetPlatform.iOS)
             {
+                WinVideoPlayer.IsVisible = false;
+                WinVideoPlayer.IsEnabled = false;
                 BackButton.Image = "back.png";
+                VideoElement.Source = video_url;
+                VideoElement.Failed += VideoElement_Failed;
+                VideoElement.Playing += VideoElement_Playing;
+                VideoElement.Paused += VideoElement_Paused;
                 //TakeToVideosPage.Image = "videocam.png";
             }
             else if (Device.OS == TargetPlatform.Android)
             {
+                WinVideoPlayer.IsVisible = false;
+                WinVideoPlayer.IsEnabled = false;
                 BackButton.Image = "back.png";
                 BackButton.BackgroundColor = Color.Transparent;
                 ActivityIndicate.HorizontalOptions = LayoutOptions.Center;
                 ActivityIndicate.VerticalOptions = LayoutOptions.Center;
-                VideoElement.HorizontalOptions = LayoutOptions.CenterAndExpand;
-                VideoElement.VerticalOptions = LayoutOptions.CenterAndExpand;
+                VideoElement.Source = video_url;
+                VideoElement.Failed += VideoElement_Failed;
+                VideoElement.Playing += VideoElement_Playing;
+                VideoElement.Paused += VideoElement_Paused;
+                //VideoElement.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                //VideoElement.VerticalOptions = LayoutOptions.CenterAndExpand;
                 //TakeToVideosPage.Image = "videocam.png";
             }
             else
             {
                 //BackButton.Image = "Assets/" + "Back.png";
                 //TakeToVideosPage.Image = "Assets/videocam.png";
+               
+                WinVideoPlayer.FileSource = video_url;
+                VideoElement.IsVisible = false;
+                VideoElement.IsEnabled = false;
                 BackButton.IsVisible = false;
                 BackButton.IsEnabled = false;
             }
@@ -54,8 +67,16 @@ namespace PegasusNAEMobile
         {
             if (videostarted == false)
             {
-                ActivityIndicate.IsVisible = true;
-                ActivityIndicate.IsRunning = true;
+                if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
+                {
+                    ActivityIndicate.IsVisible = false;
+                    ActivityIndicate.IsRunning = false;
+                }
+                else
+                {
+                    ActivityIndicate.IsVisible = true;
+                    ActivityIndicate.IsRunning = true;
+                }
             }
             
             base.OnAppearing();

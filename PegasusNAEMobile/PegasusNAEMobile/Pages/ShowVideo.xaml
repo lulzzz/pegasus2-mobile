@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:o="clr-namespace:Octane.Xam.VideoPlayer;assembly=Octane.Xam.VideoPlayer"
+             xmlns:winplayer="clr-namespace:PegasusNAEMobile;assembly=PegasusNAEMobile"
              BackgroundColor="#23232b"
              x:Class="PegasusNAEMobile.ShowVideo">
   <ContentPage.Content>
@@ -15,6 +16,7 @@
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
+      <winplayer:VideoPlayerView x:Name="WinVideoPlayer" Grid.Row="1"></winplayer:VideoPlayerView>
       <o:VideoPlayer x:Name="VideoElement" FillMode="ResizeAspect" Grid.Row="1" AutoPlay="True"></o:VideoPlayer>
       <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000"></ActivityIndicator>
 

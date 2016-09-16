@@ -40,6 +40,7 @@
     <Compile Include="Collections\OnboardTelemetryCollection.cs" />
     <Compile Include="Collections\PreviousRunCollection.cs" />
     <Compile Include="CustomRenderers\RoundedBoxView.cs" />
+    <Compile Include="CustomRenderers\VideoPlayerView.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Pages\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
