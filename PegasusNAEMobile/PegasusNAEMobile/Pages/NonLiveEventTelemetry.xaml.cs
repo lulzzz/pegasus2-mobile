@@ -59,7 +59,9 @@ namespace PegasusNAEMobile
             else
             {
                 //BackButton.Image = "Assets/" + "Back.png";
-                TakeToVideosPage.Image = "Assets/videocam.png";
+                //TakeToVideosPage.Image = "Assets/videocam.png";
+                VideoImage.Source = "Assets/videocam.png";
+
                 BackButton.IsVisible = false;
                 BackButton.IsEnabled = false;
             }
@@ -307,7 +309,8 @@ namespace PegasusNAEMobile
             }
             else
             {
-                PlayPauseButton.Image = "Assets/" + iconfilename;
+                //PlayPauseButton.Image = "Assets/" + iconfilename;
+                PlayPauseImage.Source = "Assets/" + iconfilename;
             }
         }
 

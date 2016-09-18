@@ -61,7 +61,7 @@
               <Label Text="KPH" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
 
             </StackLayout>
-            <StackLayout Orientation="Vertical" Grid.RowSpan="3" Grid.Column="1">
+            <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" Grid.RowSpan="3" Grid.Column="1">
               
               
               <Label x:Name="DirectionLabel" Text="DIRECTION" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"></Label>
@@ -84,7 +84,7 @@
 
             <Label Text="SOUND LEVEL" x:Name="SoundLevelLabel"  TextColor="White"></Label>
             <StackLayout Orientation="Horizontal" Grid.Row="1">
-              <Label x:Name="SoundLevel" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Sound}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+              <Label x:Name="SoundLevel" FontAttributes="Bold" Text="{Binding LiveTelemetry.Data.Sound, Converter={StaticResource roundToDecimalPlace}}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
               <Label Text="DB" VerticalOptions="End" HorizontalOptions="End" TextColor="#656472"></Label>
             </StackLayout>
           </Grid>
@@ -174,7 +174,7 @@
             <Label Grid.Row="2" Text="HEADING" TextColor="#656472"></Label>
           </Grid>
           
-          <Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" VerticalOptions="Center">
+          <Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" VerticalOptions="EndAndExpand">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
