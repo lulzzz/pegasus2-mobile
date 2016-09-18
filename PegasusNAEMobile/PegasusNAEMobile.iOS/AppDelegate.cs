@@ -157,7 +157,7 @@ namespace PegasusNAEMobile.iOS
                         }
                         else
                         {
-                            throw new WebSocketException("Expected EOF for Web Socket message received.");
+                            //throw new WebSocketException("Expected EOF for Web Socket message received.");
                         }
                     }
 
@@ -238,7 +238,7 @@ namespace PegasusNAEMobile.iOS
                     OnClose(this, "Client forced to close.");
                 }
 
-                throw exception;
+                //throw exception;
             }
         }
 

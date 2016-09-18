@@ -173,20 +173,8 @@
             <Label x:Name="Orientation" Grid.Row="1" Text="{Binding LiveTelemetry.Data.Yaw, Converter={StaticResource roundToDecimalPlace}}"  TextColor="White"></Label>
             <Label Grid.Row="2" Text="HEADING" TextColor="#656472"></Label>
           </Grid>
-
           
-        </StackLayout>
-        
-        <!--<Grid Grid.ColumnSpan="2">
-          <Grid.ColumnDefinitions>
-            <Grid.ColumnDefinition Width="*"></Grid.ColumnDefinition>
-            <Grid.ColumnDefinition Width="Auto"></Grid.ColumnDefinition>
-            <Grid.ColumnDefinition Width="Auto"></Grid.ColumnDefinition>
-          </Grid.ColumnDefinitions>
-          
-        </Grid>-->
-      </ScrollView>
-      <Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Grid.Row="2" VerticalOptions="Center">
+          <Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" VerticalOptions="Center">
           <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -210,6 +198,42 @@
         <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
         <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
+          
+        </StackLayout>
+        
+        <!--<Grid Grid.ColumnSpan="2">
+          <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinition Width="*"></Grid.ColumnDefinition>
+            <Grid.ColumnDefinition Width="Auto"></Grid.ColumnDefinition>
+            <Grid.ColumnDefinition Width="Auto"></Grid.ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          
+        </Grid>-->
+      </ScrollView>
+      <!--<Grid x:Name="UserMessageGrid" HorizontalOptions="FillAndExpand" Margin="0,5,0,5" Grid.Row="2" VerticalOptions="Center">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+        <BoxView Grid.Row="0" Color="#d90000" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="1"></BoxView>
+        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="0">
+           <Entry TextChanged="NAEUserMessage_TextChanged" 
+                  x:Name="NAEUserMessage" HeightRequest="45"
+                  Placeholder="Post a message to NAE!" 
+                  HorizontalOptions="FillAndExpand" 
+                  VerticalOptions="FillAndExpand"></Entry>   
+          <Entry x:Name="UserCountry" HorizontalOptions="FillAndExpand"
+                 HeightRequest="45"
+                 VerticalOptions="FillAndExpand" Placeholder="What country are you in? (optional)"></Entry>
+        </StackLayout>
+        <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
+        <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
+        </Grid>-->
       <ActivityIndicator x:Name="ActivityIndicate" Grid.Row="1" Color="#d90000"></ActivityIndicator> 
       <!--Prompt user to get which country they are in.-->
       
