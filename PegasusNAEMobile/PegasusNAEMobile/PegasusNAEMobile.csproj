@@ -39,6 +39,7 @@
     <Compile Include="Collections\ConfigCollection.cs" />
     <Compile Include="Collections\OnboardTelemetryCollection.cs" />
     <Compile Include="Collections\PreviousRunCollection.cs" />
+    <Compile Include="CustomRenderers\ButtonView.cs" />
     <Compile Include="CustomRenderers\RoundedBoxView.cs" />
     <Compile Include="CustomRenderers\VideoPlayerView.cs" />
     <Compile Include="Helpers\Settings.cs" />
