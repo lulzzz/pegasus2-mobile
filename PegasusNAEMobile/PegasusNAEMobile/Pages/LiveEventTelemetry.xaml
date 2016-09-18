@@ -195,7 +195,7 @@
                  HeightRequest="45"
                  VerticalOptions="FillAndExpand" Placeholder="What country are you in? (optional)"></Entry>
         </StackLayout>
-        <Button x:Name="sendMessageButton" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
+        <Button x:Name="sendMessageButton" BorderColor="Transparent" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Clicked="sendMessageButton_Clicked"></Button>        
         <Label x:Name="UserMessageSentStatus" FontAttributes="Bold" Text="40 characters remaining" TextColor="#d90000" Grid.Row="2" Grid.ColumnSpan="2" XAlign="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="Start"></Label>
         </Grid>
           

@@ -11,7 +11,7 @@
         <RowDefinition Height="Auto"></RowDefinition>
       </Grid.RowDefinitions>
       <Grid Grid.Row="0" BackgroundColor="#23232b" HorizontalOptions="FillAndExpand">
-        <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
+        <Button x:Name="BackButton" BorderColor="Transparent" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"></Button>
         <Label Text="About Us" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
@@ -29,19 +29,19 @@
           <Label Margin="0,10,0,5" TextColor="White" Text="Visit our website : " VerticalOptions="Center"></Label>
           <StackLayout Orientation="Horizontal" Spacing="5">
             <Label Text="Pegasus Mission" HorizontalOptions="Start" VerticalOptions="Center" XAlign="Start" TextColor="White"></Label>
-            <Button x:Name="PegasusWebsiteButton" Clicked="PegasusWebsiteButton_Clicked" Text="www.pegasusmission.io" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#d90000"></Button>
+            <Button x:Name="PegasusWebsiteButton" BorderColor="Transparent" Clicked="PegasusWebsiteButton_Clicked" Text="www.pegasusmission.io" BackgroundColor="Transparent" HorizontalOptions="Start" VerticalOptions="Center" TextColor="#d90000"></Button>
           </StackLayout>
           <StackLayout Orientation="Horizontal" Spacing="5">
             <Label Text="NAE" HorizontalOptions="Start" VerticalOptions="Center" XAlign="Start" TextColor="White"></Label>
-            <Button x:Name="landspeedlink" Clicked="landspeedlink_Clicked" VerticalOptions="Center" HorizontalOptions="Center"
+            <Button x:Name="landspeedlink" BorderColor="Transparent" Clicked="landspeedlink_Clicked" VerticalOptions="Center" HorizontalOptions="Center"
                    Text="www.landspeed.com" TextColor="#d90000" BackgroundColor="Transparent"></Button>
           </StackLayout>
            
           <Label Text="Follow us on Twitter! " TextColor="White" VerticalOptions="Center"></Label>
           <StackLayout Orientation="Horizontal" Spacing="5">
-            <Button x:Name="PegasusMissionTwitterLink" HorizontalOptions="Start" Clicked="PegasusMissionTwitterLink_Clicked" Text="@PegasusMission" VerticalOptions="Center" TextColor="#d90000" BackgroundColor="Transparent"></Button>
+            <Button x:Name="PegasusMissionTwitterLink" BorderColor="Transparent" HorizontalOptions="Start" Clicked="PegasusMissionTwitterLink_Clicked" Text="@PegasusMission" VerticalOptions="Center" TextColor="#d90000" BackgroundColor="Transparent"></Button>
             <Label Text="and" TextColor="White" VerticalOptions="Center"></Label>
-            <Button x:Name="LandspeedTwitterLink" HorizontalOptions="Start" Clicked="LandspeedTwitterLink_Clicked" Text="@landspeed763" TextColor="#d90000" BackgroundColor="Transparent" VerticalOptions="Center"></Button>
+            <Button x:Name="LandspeedTwitterLink" BorderColor="Transparent" HorizontalOptions="Start" Clicked="LandspeedTwitterLink_Clicked" Text="@landspeed763" TextColor="#d90000" BackgroundColor="Transparent" VerticalOptions="Center"></Button>
           </StackLayout>
 
           <Label Text="Privacy Policy" TextColor="White" FontAttributes="Bold" Margin="0,15,0,0"></Label>

@@ -41,6 +41,7 @@
             <Button Text="GET EVENT UPDATES"
                     x:Name="RegisterForEventNotifications"
                     TextColor="White"
+                    BorderColor="Transparent"
                     HeightRequest="50"
                     Margin="0,15,0,0"
                     Clicked="RegisterForEventNotifications_Clicked"
@@ -50,7 +51,7 @@
             <Button Text="WATCH LIVE EVENT"
                     x:Name="WatchEventButton"
                     TextColor="White"
-                  
+                    BorderColor="Transparent"
                     Margin="0,15,0,0"
                     HeightRequest="50"
                     Clicked="WatchLiveEvent_Clicked"
@@ -60,8 +61,8 @@
             <Button Text="WATCH PREVIOUS RUNS"
                     x:Name="WatchPreviousRuns"
                     TextColor="White"
-                    Margin="0,15,0,0"
-                 
+                    Margin="0,15,0,0"                   
+                    BorderColor="Transparent"
                     HeightRequest="50"
                     Clicked="WatchPreviousRuns_Clicked"
                     BackgroundColor="#d90000"
@@ -70,6 +71,7 @@
 
             <Button Text="About" TextColor="White" x:Name="AboutButton"
                     Clicked="AboutButton_Clicked"
+                    BorderColor="Transparent"
                     BackgroundColor="Transparent"
                     HorizontalOptions="Center" VerticalOptions="Center"
                     Margin="0,10,0,10"></Button>
