@@ -42,11 +42,11 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.pegasusmission.nae</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>2.0</string>
 	<key>CFBundleIconFiles</key>
 	<array/>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>3.0</string>
 	<key>XSAppIconAssets</key>
 	<string>Resources/AppIcon.xcassets/AppIcons.appiconset</string>
 	<key>XSLaunchImageAssets</key>
