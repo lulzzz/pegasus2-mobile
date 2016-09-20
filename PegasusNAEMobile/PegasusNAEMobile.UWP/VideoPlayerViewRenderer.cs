@@ -8,6 +8,7 @@ using PegasusNAEMobile;
 using PegasusNAEMobile.UWP;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
+using Windows.Media.Playback;
 
 [assembly: ExportRendererAttribute(typeof(VideoPlayerView), typeof(VideoPlayerViewRenderer))]
 namespace PegasusNAEMobile.UWP
@@ -17,6 +18,8 @@ namespace PegasusNAEMobile.UWP
         protected override void OnElementChanged(ElementChangedEventArgs<VideoPlayerView> e)
         {
             base.OnElementChanged(e);
+            //MediaPlayerElement 
+             
             var playerview = Element as VideoPlayerView;
             if (e.OldElement == null && playerview != null)
             {
@@ -27,8 +30,18 @@ namespace PegasusNAEMobile.UWP
                 meplayer.IsFullWindow = true;
                // meplayer.
                 meplayer.AreTransportControlsEnabled = true;
+                meplayer.Volume = 0.5;
+                meplayer.MediaEnded += Meplayer_MediaEnded;
                 Children.Add(meplayer);
             }
+        }
+
+        private void Meplayer_MediaEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            //throw new NotImplementedException();
+            var meplayer = sender as MediaElement;
+            
+           // meplayer.
         }
     }
 }
