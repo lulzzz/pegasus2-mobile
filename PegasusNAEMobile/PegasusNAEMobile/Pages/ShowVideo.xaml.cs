@@ -40,6 +40,8 @@ namespace PegasusNAEMobile
                 BackButton.BackgroundColor = Color.Transparent;
                 ActivityIndicate.HorizontalOptions = LayoutOptions.Center;
                 ActivityIndicate.VerticalOptions = LayoutOptions.Center;
+                VideoElement.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                VideoElement.VerticalOptions = LayoutOptions.CenterAndExpand;
                 VideoElement.Source = video_url;
                 VideoElement.Failed += VideoElement_Failed;
                 VideoElement.Playing += VideoElement_Playing;
