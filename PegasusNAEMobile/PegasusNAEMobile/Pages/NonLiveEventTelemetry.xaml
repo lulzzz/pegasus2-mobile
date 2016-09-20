@@ -15,8 +15,7 @@
         <Button x:Name="BackButton" WidthRequest="70" Clicked="BackButton_Clicked" HorizontalOptions="Start" VerticalOptions="FillAndExpand"></Button>
         <Label Text="Pegasus Mission" x:Name="PageTitle" Margin="0,10,0,10" TextColor="White" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center"></Label>
         <Grid HorizontalOptions="End" VerticalOptions="Center">   
-          <Image x:Name="VideoImage" WidthRequest="70" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
-          <Button x:Name="TakeToVideosPage" BorderColor="Transparent" WidthRequest="70" Clicked="TakeToVideosPage_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>          
+            <Button x:Name="TakeToVideosPage" BorderColor="Transparent" WidthRequest="70" Clicked="TakeToVideosPage_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>          
         </Grid>
       </Grid>
       <BoxView Grid.Row="0" Color="#d90000" HorizontalOptions="FillAndExpand" VerticalOptions="End" HeightRequest="0.5"></BoxView>
@@ -184,10 +183,9 @@
         <ColumnDefinition Width="Auto"></ColumnDefinition>
         <ColumnDefinition Width="*"></ColumnDefinition>
         <ColumnDefinition Width="Auto"></ColumnDefinition>
-      </Grid.ColumnDefinitions>
-        <Image x:Name="PlayPauseImage" WidthRequest="40" Margin="5,0,0,0" Aspect="AspectFit" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Image>
+      </Grid.ColumnDefinitions>        
         <Button x:Name="PlayPauseButton" BorderColor="Transparent" BackgroundColor="Transparent" WidthRequest="40" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="PlayPauseButton_Clicked"></Button>        
-        <Slider x:Name="TelemetrySlider" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="1" Value="{Binding currenttelemetrypos}"></Slider>
+        <Slider x:Name="TelemetrySlider" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1" Value="{Binding currenttelemetrypos}"></Slider>
         <Label x:Name="TotalTelemetryPlaybackTime" Margin="0,0,5,0" Grid.Column="2" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
     </Grid>
     </Grid>
