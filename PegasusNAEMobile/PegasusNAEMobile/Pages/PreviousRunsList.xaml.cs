@@ -85,26 +85,33 @@ namespace PegasusNAEMobile
                     FileAvailable.IsVisible = true;
                     List<CollectionConfig> configList = new List<CollectionConfig>();
                     configList = JsonConvert.DeserializeObject<List<CollectionConfig>>(configjson);
-                   
-                    runlist.Clear();
-                    foreach (var config in configList)
+                    if (configList.Count == 0)
                     {
-                        PreviousRunCollection runcollect = new PreviousRunCollection();                       
-                        runcollect.Drone1VideoUrl = config.Drone1VideoUrl;
-                        runcollect.Drone2VideoUrl = config.Drone2VideoUrl;
-                        runcollect.Location = config.Location;
-                        runcollect.OnboardTelemetryUrl = config.OnboardTelemetryUrl;
-                        runcollect.OnboardVideoUrl = config.OnboardVideoUrl;
-                        runcollect.Pilot = config.Pilot;
-                        runcollect.RunId = config.RunId;
-                        runcollect.Timestamp = config.Timestamp;
-                        runcollect.maxAccelX = config.Aggregates.MaxAccelX;
-                        runcollect.maxAccelY = config.Aggregates.MaxAccelY;
-                        runcollect.maxAccelZ = config.Aggregates.MaxAccelZ;
-                        runcollect.maxSpeed = config.Aggregates.MaxSpeed;
-                        addRunToUI(runcollect);
-                        runlist.Add(runcollect);
-                       
+                        NoFileAvailable.IsVisible = true;
+                        FileAvailable.IsVisible = false;
+                    }
+                    else
+                    {
+                        runlist.Clear();
+                        foreach (var config in configList)
+                        {
+                            PreviousRunCollection runcollect = new PreviousRunCollection();
+                            runcollect.Drone1VideoUrl = config.Drone1VideoUrl;
+                            runcollect.Drone2VideoUrl = config.Drone2VideoUrl;
+                            runcollect.Location = config.Location;
+                            runcollect.OnboardTelemetryUrl = config.OnboardTelemetryUrl;
+                            runcollect.OnboardVideoUrl = config.OnboardVideoUrl;
+                            runcollect.Pilot = config.Pilot;
+                            runcollect.RunId = config.RunId;
+                            runcollect.Timestamp = config.Timestamp;
+                            runcollect.maxAccelX = config.Aggregates.MaxAccelX;
+                            runcollect.maxAccelY = config.Aggregates.MaxAccelY;
+                            runcollect.maxAccelZ = config.Aggregates.MaxAccelZ;
+                            runcollect.maxSpeed = config.Aggregates.MaxSpeed;
+                            addRunToUI(runcollect);
+                            runlist.Add(runcollect);
+
+                        }
                     }
                 }
             }
