@@ -64,6 +64,8 @@ namespace PegasusNAEMobile.UWP
 
         public async Task ConnectAsync(string host, string subprotocol, string securityToken)
         {
+            this.client = new MessageWebSocket();
+            //PegasusNAEMobile.App.Init(this);
             this.client.Control.OutboundBufferSizeInBytes = 1024;
 
             if (!String.IsNullOrEmpty(subprotocol))

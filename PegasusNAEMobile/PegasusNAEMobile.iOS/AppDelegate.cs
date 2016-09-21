@@ -50,6 +50,10 @@ namespace PegasusNAEMobile.iOS
 
         public async Task ConnectAsync(string host, string subprotocol, string securityToken)
         {
+            this.client = new ClientWebSocket();
+            this.messageQueue = new Queue<byte[]>();
+            //ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+            PegasusNAEMobile.App.Init(this);
             client.Options.SetBuffer(1024, 1024);
             client.Options.KeepAliveInterval = TimeSpan.FromMilliseconds(5000);
             try
@@ -217,6 +221,15 @@ namespace PegasusNAEMobile.iOS
                             //Trace.TraceWarning("Web Socket send fault.");
                             //Trace.TraceError(ex.Message);
                             //throw;
+                            System.Diagnostics.Debug.WriteLine(ex.Message);
+                            if (OnError != null)
+                            {
+                                OnError(this, new WebSocketException("Expected EOF for Web Socket message received."));
+                            }
+                            else
+                            {
+                                throw new WebSocketException("Expected EOF for Web Socket message received.");
+                            }
 
                         }
                     } while (remainingLength > 0);

@@ -50,6 +50,7 @@ namespace PegasusNAEMobile.Droid
 
         public async Task ConnectAsync(string host, string subprotocol, string securityToken)
         {
+            GC.Collect();
             this.client = new ClientWebSocket();            
             PegasusNAEMobile.App.Init(this);
             this.messageQueue = new Queue<byte[]>();
@@ -86,7 +87,7 @@ namespace PegasusNAEMobile.Droid
         {
             await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "Web Socket closed by client.", CancellationToken.None);
             // TODO: reap thread
-
+            GC.Collect();
             if (OnClose != null)
             {
                 OnClose(this, "Web socket is closed.");
@@ -220,6 +221,14 @@ namespace PegasusNAEMobile.Droid
                             //Trace.TraceWarning("Web Socket send fault.");
                             //Trace.TraceError(ex.Message);
                             System.Diagnostics.Debug.WriteLine(ex.Message);
+                            if (OnError != null)
+                            {
+                                OnError(this, new WebSocketException("Expected EOF for Web Socket message received."));
+                            }
+                            else
+                            {
+                                throw new WebSocketException("Expected EOF for Web Socket message received.");
+                            }
                             //throw;
 
                         }
