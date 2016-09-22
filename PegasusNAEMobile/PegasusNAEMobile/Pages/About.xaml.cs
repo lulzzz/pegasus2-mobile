@@ -31,6 +31,7 @@ namespace PegasusNAEMobile.Pages
                 BackButton.IsVisible = false;
                 BackButton.IsEnabled = false;
             }
+            AboutContent.BackgroundColor = Color.Black;
         }
 
         protected override void OnSizeAllocated(double width, double height)

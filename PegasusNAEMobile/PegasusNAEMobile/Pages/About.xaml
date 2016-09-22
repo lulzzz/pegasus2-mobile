@@ -4,7 +4,7 @@
              BackgroundColor="#23232b"
              x:Class="PegasusNAEMobile.Pages.About">
   <ContentPage.Content>
-    <Grid>
+    <Grid x:Name="AboutContent">
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto"></RowDefinition>
         <RowDefinition Height="*"></RowDefinition>
