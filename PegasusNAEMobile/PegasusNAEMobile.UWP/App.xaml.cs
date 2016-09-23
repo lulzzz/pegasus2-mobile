@@ -14,13 +14,12 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Microsoft.WindowsAzure.MobileServices;
 using Octane.Xam.VideoPlayer;
 using Octane.Xam.VideoPlayer.UWP;
-using Windows.Networking.PushNotifications;
+
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using PegasusNAEMobile.PushNotifications;
+
 namespace PegasusNAEMobile.UWP
 {
     /// <summary>
@@ -82,7 +81,7 @@ namespace PegasusNAEMobile.UWP
                 // parameter
                 rootFrame.Navigate(typeof(MainPage), e.Arguments);
             }
-            await InitNotificationsAsync();
+            
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -119,27 +118,5 @@ namespace PegasusNAEMobile.UWP
             base.OnActivated(args);
         }
 
-        private async Task InitNotificationsAsync()
-        {
-            var channel = await PushNotificationChannelManager
-                .CreatePushNotificationChannelForApplicationAsync();
-
-            const string templateBodyWNS =
-                "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(messageParam)</text></binding></visual></toast>";
-
-            JObject headers = new JObject();
-            headers["X-WNS-Type"] = "wns/toast";
-
-            JObject templates = new JObject();
-            templates["genericMessage"] = new JObject
-    {
-        {"body", templateBodyWNS},
-        {"headers", headers} // Needed for WNS.
-    };
-            PushNotificationManager pmanager = new PushNotificationManager();
-            await pmanager.CurrentClient.GetPush().RegisterAsync(channel.Uri, templates);
-            //await PushNotificationManager.DefaultManager.CurrentClient.GetPush()
-            //    .RegisterAsync(channel.Uri, templates);
-        }
     }
 }

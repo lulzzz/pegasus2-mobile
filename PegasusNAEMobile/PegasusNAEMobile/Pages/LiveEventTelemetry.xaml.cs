@@ -100,7 +100,7 @@ namespace PegasusNAEMobile
             double fontsizeMedium = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
             double fontSizeSmall = Device.GetNamedSize(NamedSize.Small, typeof(Label));
             PageTitle.FontSize = fontsizeMedium;
-            RunTimeStamp.FontSize = fontsizeMedium;
+            RunTimeStamp.FontSize = fontSizeSmall;
             RunID.FontSize = fontSizeSmall;
             SpeedGridTitle.FontSize = fontSizeSmall;
             SpeedMPH.FontSize = fontsizeLarge;            
