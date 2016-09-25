@@ -30,7 +30,7 @@
               <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid HorizontalOptions="Center" Grid.Row="0" VerticalOptions="Center">
-              <Image x:Name="Drone1VideoFrame" IsVisible="False" Margin="10" Opacity="0.6" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Image>
+              <Image x:Name="Drone1VideoFrame" Margin="10" Opacity="0.6" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Image>
               <Button x:Name="Drone1VideoButton" BorderColor="Transparent" BackgroundColor="#23232b" Clicked="Drone1VideoButton_Clicked" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>
             </Grid>
             <Label Text="Video from Drone 1" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center" Margin="10" TextColor="White"></Label>           
@@ -42,7 +42,7 @@
               <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid HorizontalOptions="Center" Grid.Row="0" VerticalOptions="Center">
-              <Image x:Name="Drone2VideoFrame" IsVisible="False" Margin="10" Opacity="0.6" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Image>
+              <Image x:Name="Drone2VideoFrame" Margin="10" Opacity="0.6" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Image>
               <Button x:Name="Drone2VideoButton" BorderColor="Transparent" BackgroundColor="#23232b" Clicked="Drone2VideoButton_Clicked" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>
             </Grid>
             <Label Text="Video from Drone 2" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center" Margin="10" TextColor="White"></Label>
@@ -54,7 +54,7 @@
               <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid HorizontalOptions="Center" Grid.Row="0" VerticalOptions="Center">
-              <Image x:Name="OnboardVideoFrame" IsVisible="False" Margin="10" Opacity="0.6" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Image>
+              <Image x:Name="OnboardVideoFrame" Margin="10" Opacity="0.6" Aspect="AspectFit" HorizontalOptions="FillAndExpand" VerticalOptions="Center"></Image>
               <Button x:Name="OnboardVideoButton" BorderColor="Transparent" BackgroundColor="#23232b" Clicked="OnboardVideoButton_Clicked" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Button>
             </Grid>
             <Label Text="Video from the Vehicle" Grid.Row="1" VerticalOptions="End" HorizontalOptions="Center" Margin="10" TextColor="White"></Label>           

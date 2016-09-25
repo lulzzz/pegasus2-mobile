@@ -25,10 +25,10 @@ namespace PegasusNAEMobile
                 iOS: ImageSource.FromFile("pegasus_herobackground.png"),
                 Android: ImageSource.FromFile("pegasus_herobackground.png"),
                 WinPhone: ImageSource.FromFile("Assets/pegasus_herobackground.png"));
-            if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
-            {
-                pegasus_HeroBackground.IsVisible = true;
-            }
+            //if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
+            //{
+            //    pegasus_HeroBackground.IsVisible = true;
+            //}
             SizeChanged += MainPage_SizeChanged;
         }
 
